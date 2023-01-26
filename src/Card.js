@@ -1,7 +1,7 @@
 import React from "react";
-import "./CharCard.css"
+import "./Card.css"
 
-function CharCard({ front, back }) {
+function Card({ front, back }) {
   return (
     <div class="char-card">
       <div class="card-front">{front}</div>
@@ -10,4 +10,4 @@ function CharCard({ front, back }) {
   )
 }
 
-export default CharCard;
+export default Card;

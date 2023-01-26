@@ -14,11 +14,34 @@ const placeholder = {
 */
 
 function KanaBoard() {
+  let kanaFlatten = []
+  let hiraFlatten = []
+  let kanaEnFlatten = []
+  let hiraEnFlatten = []
+  
+  Object.values(katagana).map((type) => Object.keys(type).map((char) => {
+    kanaFlatten.push(char)
+  }))
+  Object.values(hiragana).map((type) => Object.keys(type).map((char) => {
+    hiraFlatten.push(char)
+  }))
+  Object.values(katagana).map((type) => Object.values(type).map((char) => {
+    kanaEnFlatten.push(char)
+  }))
+  Object.values(hiragana).map((type) => Object.values(type).map((char) => {
+    hiraEnFlatten.push(char)
+  }))
+
   function printKana(set, type) {
     if (set === "kana") {
       if (type === "EN") {
-        return Object.values(katagana).map((type) => Object.values(type).map((char) => {
-          return <Button char={char}/>
+        return Object.values(katagana).map((type, index) => Object.values(type).map((char, index2) => {
+          return <Button char={char + katagana[index][index2]}/>
+        }))
+      }
+      if (type === "JPEN") {
+        return Object.values(katagana).map((type) => Object.keys(type).map((char, index2) => {
+          return <Button char={char + ' ' + Object.values(type)[index2]}/>
         }))
       }
       if (type === "JP") {
@@ -32,6 +55,11 @@ function KanaBoard() {
       if (type === "EN") {
         return Object.values(hiragana).map((type) => Object.values(type).map((char) => {
           return <Button char={char}/>
+        }))
+      }
+      if (type === "JPEN") {
+        return Object.values(hiragana).map((type) => Object.keys(type).map((char, index2) => {
+          return <Button char={char + ' ' + Object.values(type)[index2]}/>
         }))
       }
       if (type === "JP") {
@@ -48,10 +76,10 @@ function KanaBoard() {
   return (
     <div class="kana-buttons">
       <div>
-        {printKana("kana", "JP")}
+        {printKana("hira", "JP")}
       </div>
       <div>
-        {printKana("hira", "JP")}
+        {printKana("kana", "JP")}
       </div>
     </div>
   )

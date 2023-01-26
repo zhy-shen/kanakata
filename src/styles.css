@@ -1,20 +1,24 @@
 body {
+  --button-color: #2a2a2a;
+  --button-highlight-color: #d9d9d9;
+  --button-text-color: #e3e3e3;
+  --button-click-color: #e3e3e3;
+  --button-click-text-color: #252525;
+  --background-color: #191919;
+}
+
+html * {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 500;
+}
+
+body {
+  background: var(--background-color);
+  margin: 0 5vw;
+
   & .main {
-    & > * {
+    & > *:not(:first-child) {
       margin-bottom: 30px;
-    }
-
-    & .header {
-      display: flex;
-      gap: 20px;
-    }
-
-    & .control-box {
-      margin: auto 0;
-      
-      & > button {
-        margin: 0 10px;
-      }
     }
   }
 
@@ -22,10 +26,4 @@ body {
     & > div {
     }
   }
-}
-
-.kana-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
 }

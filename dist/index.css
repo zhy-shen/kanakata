@@ -1,43 +1,108 @@
 /*!****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/styles.css ***!
   \****************************************************************************************************************************************/
+body {
+  --button-color: #2a2a2a;
+  --button-highlight-color: #d9d9d9;
+  --button-text-color: #e3e3e3;
+  --button-click-color: #e3e3e3;
+  --button-click-text-color: #252525;
+  --background-color: #191919;
+}
 
-    body .main > * {
+html * {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 500;
+}
+
+body {
+  background: var(--background-color);
+  margin: 0 5vw;
+}
+
+body .main > *:not(:first-child) {
       margin-bottom: 30px;
     }
-
-body .main .header {
-      display: flex;
-      gap: 20px;
-    }
-
-body .main .control-box {
-      margin: auto 0;
-    }
-
-body .main .control-box > button {
-        margin: 0 10px;
-      }
 
 body .kana-buttons > div {
     }
 
+/*!****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/Button.css ***!
+  \****************************************************************************************************************************************/
+.button-wrap {
+  display: inline-grid;
+}
+
+button {
+  color: var(--button-text-color);
+  padding: 10px 20px;
+  border: none;
+  font-size: 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  margin: auto;
+  background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--button-color) 50%);
+  background-size: 210% 210%;
+  background-color: var(--button-color);
+  background-position: bottom right;
+  animation-fill-mode: forwards;
+  transition: background 0.2s, transform 0.2s;
+}
+
+button:hover {
+    transform: translate(-1px, -1px);
+    background-position: top left;
+    color: var(--button-click-text-color);
+    background-color: var(--button-click-color);
+  }
+
+button:active {
+    transition: transform 0.03s;
+    background: var(--button-click-color);
+    transform: scale(95%);
+    color: var(--button-click-text-color);
+  }
+/*!*******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaBoard.css ***!
+  \*******************************************************************************************************************************************/
+.kana-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5vw;
+}
+.kana-buttons > div {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+    place-content: space-between;
+  }
+
+
+/*!*******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/CardBoard.css ***!
+  \*******************************************************************************************************************************************/
 .kana-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 15px;
+  place-content: center;
 }
-
-/*!******************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/CharCard.css ***!
-  \******************************************************************************************************************************************/
+/*!**************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/Card.css ***!
+  \**************************************************************************************************************************************/
 .char-card {
   display: inline-grid;
   position: relative;
   width: 150px;
   height: 150px;
   perspective: 1000px;
-  --card-color: #f0f0f0;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -59,58 +124,51 @@ body .kana-buttons > div {
     height: 100%;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
+    background: var(--button-color);
+    color: var(--button-text-color);
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
   }
 .char-card .card-front {
-    background: var(--card-color);
     position:absolute;
   }
 .char-card .card-back {
-    background: var(--card-color);
     opacity: 0.5;
     position:absolute;
     transform: rotateY(-180deg);
   }
-/*!****************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/Button.css ***!
-  \****************************************************************************************************************************************/
-.button-wrap {
-  display: inline-grid;
+/*!******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/InputBox.css ***!
+  \******************************************************************************************************************************************/
+.header {
+  display: flex;
+  gap: 20px;
+  height: 150px;
 }
-
-button {
-  padding: 10px 15px;
-  border: none;
-  font-size: 16px;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: transform 0.3s, filter 0.3s, background-color 0.25s;
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-}
-
-button:hover {
-    transform: scale(1.1);
-  }
-
-button:active {
-    transition: transform 0.1s;
-    background: #252525;
-    transform: scale(1);
-    color: white;
-  }
-/*!*******************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaBoard.css ***!
-  \*******************************************************************************************************************************************/
-.kana-buttons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-.kana-buttons > div {
+.header .control-box {
+    margin: auto 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
   }
-
-
+.header .input-wrapper {
+    color: white;
+    background-color: var(--button-color);
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+    border-radius: 30px;
+    padding: 12px 15px;
+    display: flex;
+    margin: auto 0;
+    height: 35px;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+  }
+.header .input-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+.header .input-wrapper > * {
+      margin: auto 0 auto 8px;
+      display: block;
+      white-space: nowrap;
+    }

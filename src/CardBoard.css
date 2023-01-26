@@ -1,0 +1,6 @@
+.kana-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  place-content: center;
+}
