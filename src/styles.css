@@ -1,0 +1,31 @@
+body {
+  & .main {
+    & > * {
+      margin-bottom: 30px;
+    }
+
+    & .header {
+      display: flex;
+      gap: 20px;
+    }
+
+    & .control-box {
+      margin: auto 0;
+      
+      & > button {
+        margin: 0 10px;
+      }
+    }
+  }
+
+  & .kana-buttons {
+    & > div {
+    }
+  }
+}
+
+.kana-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
