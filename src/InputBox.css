@@ -2,7 +2,7 @@
   display: flex;
   gap: 20px;
   width: max(750px, 60vw);
-  margin: 30px auto;
+  margin: 25px auto;
   background: var(--button-color);
   padding: 20px calc(((90vw - 80px) - max(600px, 60vw) )/ 2);
   border-radius: 100px;
@@ -32,9 +32,9 @@
 
   @media screen and (max-width: 1000px) {
     flex-direction: column;
-    padding: 5vw;
+    padding: 25px;
     width: calc(90vw - 40px);
-    border-radius: 12vw;
+    border-radius: 60px;
     gap: 15px;
 
     & .input-boxes {

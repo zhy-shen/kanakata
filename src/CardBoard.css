@@ -1,4 +1,4 @@
-.kana-two-column {
+.kana-two-column:has(.kana-cards) {
   margin-top: 30px;
 
   & .kana-button-control {

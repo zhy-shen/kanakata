@@ -36,7 +36,7 @@ body .kana-buttons > div {
   flex-wrap: wrap;
   grid-template-columns: repeat(5, 1fr);
   position: sticky;
-  top: 255px;
+  top: 270px;
   z-index: 1;
   background: var(--button-color);
   padding: 10px 12px;
@@ -145,7 +145,7 @@ button:active {
   display: flex;
   gap: 20px;
   width: max(750px, 60vw);
-  margin: 30px auto;
+  margin: 25px auto;
   background: var(--button-color);
   padding: 20px calc(((90vw - 80px) - max(600px, 60vw) )/ 2);
   border-radius: 100px;
@@ -178,9 +178,9 @@ button:active {
 
   .header {
     flex-direction: column;
-    padding: 5vw;
+    padding: 25px;
     width: calc(90vw - 40px);
-    border-radius: 12vw;
+    border-radius: 60px;
     gap: 15px;
 }
 
@@ -216,11 +216,11 @@ button:active {
 /*!*******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/CardBoard.css ***!
   \*******************************************************************************************************************************************/
-.kana-two-column {
+.kana-two-column:has(.kana-cards) {
   margin-top: 30px;
 }
 
-.kana-two-column .kana-button-control {
+.kana-two-column:has(.kana-cards) .kana-button-control {
     top: 30px;
   }
 
