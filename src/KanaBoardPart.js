@@ -139,7 +139,7 @@ function KanaBoardPart({
   }
 
   return (
-    <div>
+    <div className="kana-input-buttons">
       {printKana(charSet, buttonSet)}
     </div>
   )

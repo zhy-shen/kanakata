@@ -3,9 +3,9 @@ import "./Card.css"
 
 function Card({ front, back }) {
   return (
-    <div class="char-card">
-      <div class="card-front">{front}</div>
-      <div class="card-back">{back}</div>
+    <div className="char-card">
+      <div className="card-front">{front}</div>
+      <div className="card-back">{back}</div>
     </div>
   )
 }

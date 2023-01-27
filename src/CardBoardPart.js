@@ -97,7 +97,7 @@ function CardBoard({ set, type }) {
   }
 
   return (
-    <div class="kana-cards">
+    <div className="kana-cards">
       {printCards(set, type)}
     </div>
   )

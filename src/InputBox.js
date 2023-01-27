@@ -81,16 +81,16 @@ function InputBox() {
   }, [])
 
   return (
-    <div class="header">
-      <div class="input-boxes">
-      <div class="input-wrapper">
+    <div className="header">
+      <div className="input-boxes">
+      <div className="input-wrapper">
         <h2 id="input-box">インプット</h2>
       </div>
-      <div class="input-wrapper translate">
+      <div className="input-wrapper translate">
         <h2 id="input-translate">inputto</h2>
       </div>
       </div>
-      <div class="control-box">
+      <div className="control-box">
         <Button char="ッ"/>
         <Button char="Space"/>
         <Button char="Delete"/>

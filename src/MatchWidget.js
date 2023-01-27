@@ -12,7 +12,7 @@ function KanaBoard() {
   }
 
   return (
-    <div class="match-widget">
+    <div className="match-widget">
       <div></div>
     </div>
   )

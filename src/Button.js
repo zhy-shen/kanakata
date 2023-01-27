@@ -30,7 +30,7 @@ function Button({ char }) {
   }
 
   return (
-    <div class="button-wrap">
+    <div className="button-wrap">
       <button key={char} onClick={addChar}>
         <span>
           {char}

@@ -1,10 +1,16 @@
 .char-card {
+  --card-length: min(7vw, 120px);
+  --card-font-size: calc(var(--card-length) / 3);
   display: inline-grid;
   position: relative;
-  width: min(8vw, 150px);
-  height: min(8vw, 150px);
+  width: var(--card-length);
+  height: var(--card-length);
   perspective: 1000px;
   user-select: none;
+
+  @media screen and (max-width: 800px) {
+    --card-length: min(14vw, 150px);
+  }
   
   &:hover {
     & .card-front{
@@ -19,7 +25,7 @@
 
   & > div {
     display: grid;
-    font-size: 48px;
+    font-size: var(--card-font-size);
     transition: all 0.5s;
     place-content: center;
     width: 100%;

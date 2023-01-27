@@ -1,7 +1,7 @@
 .header {
   display: flex;
   gap: 20px;
-  width: 60vw;
+  width: max(750px, 60vw);
   margin: 30px auto;
   background: var(--button-color);
   padding: 20px calc(((90vw - 80px) - max(600px, 60vw) )/ 2);
@@ -11,17 +11,11 @@
   z-index: 1;
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
 
-  @media screen and (max-width: 1000px) {
-    flex-direction: column;
-    padding: 25px 5vw;
-    width: calc(90vw - 40px);
-    border-radius: 5vw;
-  }
-
   & .control-box {
     margin: auto 0;
     display: flex;
     gap: 10px;
+    justify-content: space-around;
 
     & .button-wrap button {
       background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
@@ -33,6 +27,19 @@
     flex-direction: column;
     flex-grow: 1;
     gap: 20px;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+    padding: 5vw;
+    width: calc(90vw - 40px);
+    border-radius: 12vw;
+    gap: 15px;
+
+    & .input-boxes {
+      gap: 15px;
+    }
   }
     
   & .input-wrapper {

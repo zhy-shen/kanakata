@@ -27,6 +27,42 @@ body .content > * {
 body .kana-buttons > div {
     }
 
+/*!*********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaControl.css ***!
+  \*********************************************************************************************************************************************/
+.kana-button-control {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(5, 1fr);
+  position: sticky;
+  top: 255px;
+  z-index: 1;
+  background: var(--button-color);
+  padding: 10px 12px;
+  border-radius: 50px;
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  margin: auto;
+}
+@media screen and (min-width: 1000px) {
+  .kana-button-control {
+    top: 200px;
+}
+  }
+@media screen and (min-width: 800px) {
+  .kana-button-control {
+    grid-area: 1 / 1 / 2 / 3;
+}
+  }
+.kana-button-control button {
+    background-color: var(--background-color);
+    background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+  }
+.kana-button-control button:active {
+      background: var(--button-click-color);
+    }
+
+
 /*!****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/Button.css ***!
   \****************************************************************************************************************************************/
@@ -74,26 +110,24 @@ button:active {
 /*!*******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaBoard.css ***!
   \*******************************************************************************************************************************************/
-.kana-buttons {
+.kana-two-column {
   width: -moz-fit-content;
   width: fit-content;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 35px;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
+  -moz-column-gap: min(75px, 5vw);
+       column-gap: min(75px, 5vw);
   margin-left: auto;
   margin-right: auto;
+  place-items: flex-end;
 }
-
 @media screen and (max-width: 800px) {
-
-.kana-buttons {
+  .kana-two-column {
     grid-template-columns: 1fr;
 }
   }
-
-.kana-buttons > div {
+.kana-two-column .kana-input-buttons {
     width: -moz-fit-content;
     width: fit-content;
     display: grid;
@@ -104,51 +138,13 @@ button:active {
     place-content: space-between;
     margin-bottom: auto;
   }
-
-.kana-button-control {
-
-  grid-template-columns: repeat(5, 1fr);
-  position: sticky;
-  top: 280px;
-  z-index: 1;
-  background: var(--button-color);
-  padding: 10px 5px;
-  border-radius: 50px;
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
-  margin: auto;
-}
-
-@media screen and (min-width: 1000px) {
-
-.kana-button-control {
-    top: 200px;
-}
-  }
-
-@media screen and (min-width: 800px) {
-
-.kana-button-control {
-    grid-area: 1 / 1 / 2 / 3;
-}
-  }
-
-.kana-button-control button {
-    background-color: var(--background-color);
-    background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
-  }
-
-.kana-button-control button:active {
-      background: var(--button-click-color);
-    }
-
-
 /*!******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/InputBox.css ***!
   \******************************************************************************************************************************************/
 .header {
   display: flex;
   gap: 20px;
-  width: 60vw;
+  width: max(750px, 60vw);
   margin: 30px auto;
   background: var(--button-color);
   padding: 20px calc(((90vw - 80px) - max(600px, 60vw) )/ 2);
@@ -158,28 +154,41 @@ button:active {
   z-index: 1;
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
 }
-@media screen and (max-width: 1000px) {
-  .header {
-    flex-direction: column;
-    padding: 25px 5vw;
-    width: calc(90vw - 40px);
-    border-radius: 5vw;
-}
-  }
+
 .header .control-box {
     margin: auto 0;
     display: flex;
     gap: 10px;
+    justify-content: space-around;
   }
+
 .header .control-box .button-wrap button {
       background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
     }
+
 .header .input-boxes {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     gap: 20px;
+    justify-content: space-between;
   }
+
+@media screen and (max-width: 1000px) {
+
+  .header {
+    flex-direction: column;
+    padding: 5vw;
+    width: calc(90vw - 40px);
+    border-radius: 12vw;
+    gap: 15px;
+}
+
+    .header .input-boxes {
+      gap: 15px;
+    }
+  }
+
 .header .input-wrapper {
     color: white;
     background-color: var(--background-color);
@@ -194,9 +203,11 @@ button:active {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
   }
+
 .header .input-wrapper::-webkit-scrollbar {
       display: none;
     }
+
 .header .input-wrapper > * {
       margin: auto 0 auto 8px;
       display: block;
@@ -205,24 +216,12 @@ button:active {
 /*!*******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/CardBoard.css ***!
   \*******************************************************************************************************************************************/
-.kana-cards-page {
-  width: -moz-fit-content;
-  width: fit-content;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 5vw;
-  margin-left: auto;
-  margin-right: auto;
+.kana-two-column {
+  margin-top: 30px;
 }
 
-.kana-cards-page .kana-button-control {
-    width: -moz-fit-content;
-    width: fit-content;
+.kana-two-column .kana-button-control {
     top: 30px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    -moz-column-gap: 10px;
-         column-gap: 10px;
   }
 
 .kana-cards {
@@ -238,15 +237,22 @@ button:active {
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/Card.css ***!
   \**************************************************************************************************************************************/
 .char-card {
+  --card-length: min(7vw, 120px);
+  --card-font-size: calc(var(--card-length) / 3);
   display: inline-grid;
   position: relative;
-  width: min(8vw, 150px);
-  height: min(8vw, 150px);
+  width: var(--card-length);
+  height: var(--card-length);
   perspective: 1000px;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
 }
+@media screen and (max-width: 800px) {
+  .char-card {
+    --card-length: min(14vw, 150px);
+}
+  }
 .char-card:hover .card-front{
       transform: rotateY(180deg);
       opacity: 0.5;
@@ -257,7 +263,7 @@ button:active {
     }
 .char-card > div {
     display: grid;
-    font-size: 48px;
+    font-size: var(--card-font-size);
     transition: all 0.5s;
     place-content: center;
     width: 100%;
@@ -282,6 +288,10 @@ button:active {
 ul {
   display: flex;
   gap: 10px;
+  padding: 0;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 0 auto;
 }
 ul li {
     list-style: none;
