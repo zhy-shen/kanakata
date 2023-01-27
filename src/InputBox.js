@@ -20,11 +20,16 @@ function InputBox() {
     enFlatten.push(char)
   }))
 
+  const firstTime = true;
   function autoTranslate() {
     const inputTR = document.querySelector("#input-translate")
-    const inputTRBox = document.querySelector(".input-wrapper.translate")    
+    const inputTRBox = document.querySelector(".input-wrapper.translate")
+    const input = document.querySelector("#input-box")
     
-    inputTRBox.addEventListener('change', () => {  
+    inputTRBox.addEventListener('change', () => {
+      input.innerHTML = input.innerHTML.substring(5);
+    }, {once : true})
+    inputTRBox.addEventListener('change', () => {
       inputTR.innerHTML = checkString();
     })
   }
@@ -77,11 +82,13 @@ function InputBox() {
 
   return (
     <div class="header">
+      <div class="input-boxes">
       <div class="input-wrapper">
         <h2 id="input-box">インプット</h2>
       </div>
       <div class="input-wrapper translate">
-        <h2 id="input-translate"></h2>
+        <h2 id="input-translate">inputto</h2>
+      </div>
       </div>
       <div class="control-box">
         <Button char="ッ"/>

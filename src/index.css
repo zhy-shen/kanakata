@@ -14,10 +14,9 @@ html * {
 
 body {
   background: var(--background-color);
-  margin: 0 5vw;
 
-  & .main {
-    & > *:not(:first-child) {
+  & .content {
+    & > * {
       margin-bottom: 30px;
     }
   }

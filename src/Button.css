@@ -1,22 +1,25 @@
 .button-wrap {
-  display: inline-grid;
+  display: flex;
 }
 
 button {
   color: var(--button-text-color);
-  padding: 10px 20px;
-  border: none;
+  min-width: 60px;
   font-size: 20px;
   border-radius: 25px;
-  cursor: pointer;
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
-  user-select: none;
+  padding: 10px 20px;
+  border: none;
   margin: auto;
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  flex: 1 0 17%;
+
+  animation-fill-mode: forwards;
   background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--button-color) 50%);
   background-size: 210% 210%;
   background-color: var(--button-color);
   background-position: bottom right;
-  animation-fill-mode: forwards;
   transition: background 0.2s, transform 0.2s;
 
   &:hover {

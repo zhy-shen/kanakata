@@ -1,0 +1,14 @@
+ul {
+  display: flex;
+  gap: 10px;
+
+  & li {
+    list-style: none;
+    padding: 10px 20px;
+    cursor: pointer;
+
+    & span {
+      color: white;
+    }
+  }
+}

@@ -2,23 +2,41 @@
   display: flex;
   gap: 20px;
   height: 150px;
+  width: 60vw;
+  margin: 30px auto;
+  background: var(--button-color);
+  padding: 10px 15vw;
+  border-radius: 100px;
+  position: sticky;
+  top: 10px;
+  z-index: 1;
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
 
   & .control-box {
     margin: auto 0;
     display: flex;
     gap: 10px;
+
+    & .button-wrap button {
+      background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+    }
+  }
+
+  & .input-boxes {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
     
   & .input-wrapper {
     color: white;
-    background-color: var(--button-color);
+    background-color: var(--background-color);
     filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
     border-radius: 30px;
     padding: 12px 15px;
     display: flex;
     margin: auto 0;
     height: 35px;
-    width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
     -ms-overflow-style: none;  /* IE and Edge */

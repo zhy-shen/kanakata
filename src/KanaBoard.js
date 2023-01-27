@@ -1,7 +1,5 @@
-import React from "react";
-import Button from "./Button";
-import katagana from "./katagana";
-import hiragana from "./hiragana";
+import React, { useState, useEffect } from "react";
+import KanaBoardPart from "./KanaBoardPart";
 import "./KanaBoard.css";
 
 //key: JP value: EN\
@@ -14,73 +12,53 @@ const placeholder = {
 */
 
 function KanaBoard() {
-  let kanaFlatten = []
-  let hiraFlatten = []
-  let kanaEnFlatten = []
-  let hiraEnFlatten = []
-  
-  Object.values(katagana).map((type) => Object.keys(type).map((char) => {
-    kanaFlatten.push(char)
-  }))
-  Object.values(hiragana).map((type) => Object.keys(type).map((char) => {
-    hiraFlatten.push(char)
-  }))
-  Object.values(katagana).map((type) => Object.values(type).map((char) => {
-    kanaEnFlatten.push(char)
-  }))
-  Object.values(hiragana).map((type) => Object.values(type).map((char) => {
-    hiraEnFlatten.push(char)
-  }))
+  const [charSet1, setCharSet1] = useState("hiragana");
+  const [charSet2, setCharSet2] = useState("katagana");
+  const [buttonSet1, setButtonSet1] = useState("mono");
+  const [buttonSet2, setButtonSet2] = useState("mono");
 
-  function printKana(set, type) {
-    if (set === "kana") {
-      if (type === "EN") {
-        return Object.values(katagana).map((type, index) => Object.values(type).map((char, index2) => {
-          return <Button char={char + katagana[index][index2]}/>
-        }))
-      }
-      if (type === "JPEN") {
-        return Object.values(katagana).map((type) => Object.keys(type).map((char, index2) => {
-          return <Button char={char + ' ' + Object.values(type)[index2]}/>
-        }))
-      }
-      if (type === "JP") {
-        return Object.values(katagana).map((type) => Object.keys(type).map((char) => {
-          return <Button char={char}/>
-        }))
-      }
-    }
-
-    if (set === "hira") {
-      if (type === "EN") {
-        return Object.values(hiragana).map((type) => Object.values(type).map((char) => {
-          return <Button char={char}/>
-        }))
-      }
-      if (type === "JPEN") {
-        return Object.values(hiragana).map((type) => Object.keys(type).map((char, index2) => {
-          return <Button char={char + ' ' + Object.values(type)[index2]}/>
-        }))
-      }
-      if (type === "JP") {
-        return Object.values(hiragana).map((type) => Object.keys(type).map((char) => {
-          return <Button char={char}/>
-        }))
-      }
-    }
-    else {
-      return
+  function switchParts(part) {
+    switch (part) {
+      case "hira-full":
+        setPart("hiragana", "mono", "hiragana", "else")
+        break
+      case "kata-full":
+        setPart("katagana", "mono", "katagana", "else")
+        break
+      case "kata":
+        setPart("hiragana", "mono", "hiragana", "else")
+        break
+      case "kata-full":
+        setPart("katagana", "mono", "katagana", "else")
+        break
+      case "mono-full":
+        setPart("hiragana", "mono", "katagana", "mono")
+        break
     }
   }
 
+  function setPart(char1, button1, char2, button2) {
+    setCharSet1(char1)
+    setButtonSet1(button1)
+    setCharSet2(char2)
+    setButtonSet2(button2)
+  }
+  
   return (
     <div class="kana-buttons">
-      <div>
-        {printKana("hira", "JP")}
+      <div class="kana-button-control">
+        <button onClick={() => switchParts("hira-full")}>
+          <span>Hira Full</span>
+        </button>
+        <button onClick={() => switchParts("kata-full")}>
+          <span>Kata Full</span>
+        </button>
+        <button onClick={() => switchParts("mono-full")}>
+          <span>Basic Both</span>
+        </button>
       </div>
-      <div>
-        {printKana("kana", "JP")}
-      </div>
+      <KanaBoardPart charSet={charSet1} buttonSet={buttonSet1} />
+      <KanaBoardPart charSet={charSet2} buttonSet={buttonSet2} />
     </div>
   )
 }

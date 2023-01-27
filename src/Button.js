@@ -31,7 +31,11 @@ function Button({ char }) {
 
   return (
     <div class="button-wrap">
-      <button key={char} onClick={addChar}>{char}</button>
+      <button key={char} onClick={addChar}>
+        <span>
+          {char}
+        </span>
+      </button>
     </div>
   )
 }

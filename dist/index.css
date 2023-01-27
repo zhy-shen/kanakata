@@ -1,6 +1,6 @@
-/*!****************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/styles.css ***!
-  \****************************************************************************************************************************************/
+/*!***************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/index.css ***!
+  \***************************************************************************************************************************************/
 body {
   --button-color: #2a2a2a;
   --button-highlight-color: #d9d9d9;
@@ -17,10 +17,9 @@ html * {
 
 body {
   background: var(--background-color);
-  margin: 0 5vw;
 }
 
-body .main > *:not(:first-child) {
+body .content > * {
       margin-bottom: 30px;
     }
 
@@ -31,26 +30,29 @@ body .kana-buttons > div {
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/Button.css ***!
   \****************************************************************************************************************************************/
 .button-wrap {
-  display: inline-grid;
+  display: flex;
 }
 
 button {
   color: var(--button-text-color);
-  padding: 10px 20px;
-  border: none;
+  min-width: 60px;
   font-size: 20px;
   border-radius: 25px;
+  padding: 10px 20px;
+  border: none;
+  margin: auto;
   cursor: pointer;
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  margin: auto;
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  flex: 1 0 17%;
+
+  animation-fill-mode: forwards;
   background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--button-color) 50%);
   background-size: 210% 210%;
   background-color: var(--button-color);
   background-position: bottom right;
-  animation-fill-mode: forwards;
   transition: background 0.2s, transform 0.2s;
 }
 
@@ -71,28 +73,117 @@ button:active {
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaBoard.css ***!
   \*******************************************************************************************************************************************/
 .kana-buttons {
+  width: -moz-fit-content;
+  width: fit-content;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5vw;
+  margin-left: auto;
+  margin-right: auto;
 }
+.kana-buttons .kana-button-control {
+    grid-area: 1 / 1 / 2 / 3;
+    grid-template-columns: repeat(7, 1fr);
+    position: sticky;
+    top: 190px;
+    z-index: 1;
+    background: var(--button-color);
+    padding: 10px 5px;
+    border-radius: 50px;
+  }
+.kana-buttons .kana-button-control button {
+      background-color: var(--background-color);
+      background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+    }
+.kana-buttons .kana-button-control button:active {
+        background: var(--button-click-color);
+      }
 .kana-buttons > div {
-    display: flex;
-    flex-wrap: wrap;
+    width: -moz-fit-content;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     row-gap: 15px;
     -moz-column-gap: 10px;
          column-gap: 10px;
     place-content: space-between;
+    margin-bottom: auto;
   }
 
 
+/*!******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/InputBox.css ***!
+  \******************************************************************************************************************************************/
+.header {
+  display: flex;
+  gap: 20px;
+  height: 150px;
+  width: 60vw;
+  margin: 30px auto;
+  background: var(--button-color);
+  padding: 10px 15vw;
+  border-radius: 100px;
+  position: sticky;
+  top: 10px;
+  z-index: 1;
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+}
+.header .control-box {
+    margin: auto 0;
+    display: flex;
+    gap: 10px;
+  }
+.header .control-box .button-wrap button {
+      background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+    }
+.header .input-boxes {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+.header .input-wrapper {
+    color: white;
+    background-color: var(--background-color);
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+    border-radius: 30px;
+    padding: 12px 15px;
+    display: flex;
+    margin: auto 0;
+    height: 35px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+  }
+.header .input-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+.header .input-wrapper > * {
+      margin: auto 0 auto 8px;
+      display: block;
+      white-space: nowrap;
+    }
 /*!*******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/CardBoard.css ***!
   \*******************************************************************************************************************************************/
+.kana-cards-page {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .kana-cards {
-  display: flex;
-  flex-wrap: wrap;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 15px;
-  place-content: center;
+  place-content: space-between;
+  margin-bottom: auto;
 }
 /*!**************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/Card.css ***!
@@ -117,7 +208,7 @@ button:active {
     }
 .char-card > div {
     display: grid;
-    font-size: 24px;
+    font-size: 48px;
     transition: all 0.5s;
     place-content: center;
     width: 100%;
@@ -136,39 +227,18 @@ button:active {
     position:absolute;
     transform: rotateY(-180deg);
   }
-/*!******************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/InputBox.css ***!
-  \******************************************************************************************************************************************/
-.header {
+/*!************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/MainNavigation.css ***!
+  \************************************************************************************************************************************************/
+ul {
   display: flex;
-  gap: 20px;
-  height: 150px;
+  gap: 10px;
 }
-.header .control-box {
-    margin: auto 0;
-    display: flex;
-    gap: 10px;
+ul li {
+    list-style: none;
+    padding: 10px 20px;
+    cursor: pointer;
   }
-.header .input-wrapper {
-    color: white;
-    background-color: var(--button-color);
-    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
-    border-radius: 30px;
-    padding: 12px 15px;
-    display: flex;
-    margin: auto 0;
-    height: 35px;
-    width: 100%;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;
-  }
-.header .input-wrapper::-webkit-scrollbar {
-      display: none;
-    }
-.header .input-wrapper > * {
-      margin: auto 0 auto 8px;
-      display: block;
-      white-space: nowrap;
+ul li span {
+      color: white;
     }

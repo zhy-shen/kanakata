@@ -4,21 +4,100 @@ import CharCard from "./Card";
 import katagana from "./katagana";
 import hiragana from "./hiragana";
 
-function CardBoard({ char }) {
-  function printKanaEng() {
-    const kana = Object.keys(katagana.monographs)
-    const kanaEng = Object.values(hiragana.monographs)
+function CardBoard({ set, type }) {
+  let kataFlatten = []
+  let hiraFlatten = []
+  let enFlatten = []
+  
+  Object.values(katagana).map((type) => Object.values(type).map((char) => {
+    enFlatten.push(char)
+  }))
 
-    return kanaEng.map((eng, index) => {
+  const num = 107;
+
+  function printCards(set, type) {
+    let mainSet
+    let chars
+
+    if (set === "hiragana") {
+      mainSet = hiragana
+    }
+    else if (set === "katagana") {
+      mainSet = katagana
+    }
+
+    if (mainSet) {
+      if (type === "mono") {
+        chars = Object.keys(mainSet.monographs)
+      }
+      else if (type === "else") {
+        chars = Object.keys(mainSet.diacritics).concat(Object.keys(mainSet.digraphs))
+      }
+
+      return chars.map((char, index) => {
+        let trueIndex = index
+        if (type === "else") trueIndex += 46
+        return cardMarkup(char, enFlatten[trueIndex])
+      })
+    }
+  }
+
+  function printHira() {
+    return kataFlatten.map((char, index) => {
       return (
-        <CharCard front={kana[index]} back={kanaEng[index]} />
+        <CharCard front={kataFlatten[index]} back={enFlatten[index]} />
       )
     })
   }
 
+  function printKata() {
+    return hiraFlatten.map((char, index) => {
+      return (
+        <CharCard front={hiraFlatten[index]} back={enFlatten[index]} />
+      )
+    })
+  }
+
+  function cardMarkup(front, back) {
+    if (front === "ん" || front === "ン") {
+      return (
+        <>
+          <CharCard front={front} back={back} />
+          <CharCard front=" " back=" " />
+          <CharCard front=" " back=" " />
+          <CharCard front=" " back=" " />
+          <CharCard front=" " back=" " />
+        </>
+      )
+    }
+    if (front === "わ" || front === "ワ") {
+      return (
+        <>
+          <CharCard front={front} back={back} />
+          <CharCard front=" " back=" " />
+          <CharCard front=" " back=" " />
+          <CharCard front=" " back=" " />
+        </>
+      )
+    }
+    else if (front === "や" || front === "ゆ" || front === "ヤ" || front === "ユ") {
+      return (
+        <>
+          <CharCard front={front} back={back} />
+          <CharCard front=" " back=" " />
+        </>
+      )
+    }
+    else {
+      return (
+        <CharCard front={front} back={back} />
+      )
+    }
+  }
+
   return (
     <div class="kana-cards">
-      {printKanaEng()}
+      {printCards(set, type)}
     </div>
   )
 }
