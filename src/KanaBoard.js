@@ -54,7 +54,7 @@ function KanaBoard() {
           <span>Kata Full</span>
         </button>
         <button onClick={() => switchParts("mono-full")}>
-          <span>Basic Both</span>
+          <span>Mono Both</span>
         </button>
       </div>
       <KanaBoardPart charSet={charSet1} buttonSet={buttonSet1} />

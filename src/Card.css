@@ -1,8 +1,8 @@
 .char-card {
   display: inline-grid;
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: min(8vw, 150px);
+  height: min(8vw, 150px);
   perspective: 1000px;
   user-select: none;
   

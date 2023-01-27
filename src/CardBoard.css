@@ -5,6 +5,15 @@
   gap: 5vw;
   margin-left: auto;
   margin-right: auto;
+
+  & .kana-button-control {
+    width: fit-content;
+    margin: auto;
+    top: 30px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 10px;
+  }
 }
 
 .kana-cards {
