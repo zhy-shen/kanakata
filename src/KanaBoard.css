@@ -2,9 +2,14 @@
   width: fit-content;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 5vw;
+  row-gap: 35px;
+  column-gap: 20px;
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 
   & > div {
     width: fit-content;
@@ -18,16 +23,25 @@
 }
 
 .kana-button-control {
-  grid-area: 1 / 1 / 2 / 3;
-  grid-template-columns: repeat(7, 1fr);
+
+  grid-template-columns: repeat(5, 1fr);
   position: sticky;
-  top: 190px;
+  top: 280px;
   z-index: 1;
   background: var(--button-color);
   padding: 10px 5px;
   border-radius: 50px;
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
   margin: auto;
+
+  @media screen and (min-width: 1000px) {
+    top: 200px;
+  }
+
+  @media screen and (min-width: 800px) {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+
 
   & button {
     background-color: var(--background-color);

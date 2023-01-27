@@ -5,6 +5,7 @@ body {
   --button-click-color: #e3e3e3;
   --button-click-text-color: #252525;
   --background-color: #191919;
+  margin: 20px;
 }
 
 html * {

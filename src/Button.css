@@ -14,6 +14,7 @@ button {
   user-select: none;
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
   flex: 1 0 17%;
+  white-space: nowrap;
 
   animation-fill-mode: forwards;
   background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--button-color) 50%);
