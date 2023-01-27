@@ -9,7 +9,7 @@
   position: sticky;
   top: 10px;
   z-index: 1;
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  filter: var(--drop-shadow);
 
   & .control-box {
     margin: auto 0;
@@ -19,6 +19,13 @@
 
     & .button-wrap button {
       background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+
+      &:active {
+        transition: transform 0.03s;
+        background: var(--button-click-color);
+        transform: scale(95%);
+        color: var(--button-click-text-color);
+      }
     }
   }
 
@@ -45,7 +52,7 @@
   & .input-wrapper {
     color: white;
     background-color: var(--background-color);
-    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+    filter: var(--drop-shadow);
     border-radius: 30px;
     padding: 12px 15px;
     display: flex;
@@ -63,6 +70,7 @@
     & > * {
       margin: auto 0 auto 8px;
       display: block;
+      color: var(--button-text-color);
       white-space: nowrap;
     }
   }

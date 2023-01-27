@@ -21,4 +21,13 @@
     place-content: space-between;
     margin-bottom: auto;
   }
+
+  @media screen and (max-width: 380px) {
+    & .kana-input-buttons {
+      max-width: calc(100vw - 40px);
+      margin-right: -8px;
+      overflow-y: scroll;
+    }
+  }
+
 }

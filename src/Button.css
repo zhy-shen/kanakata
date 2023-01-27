@@ -12,9 +12,13 @@ button {
   margin: auto;
   cursor: pointer;
   user-select: none;
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  filter: var(--drop-shadow);
   flex: 1 0 17%;
   white-space: nowrap;
+
+  &.two-char {
+    padding: 10px;
+  }
 
   animation-fill-mode: forwards;
   background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--button-color) 50%);

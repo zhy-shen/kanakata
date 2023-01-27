@@ -6,13 +6,18 @@ ul {
   max-width: 500px;
   margin: 0 auto;
 
+  @media screen and (max-width: 300px) {
+    max-width: calc(100vw - 40px);
+    flex-direction: column;
+  }
+
   & li {
     list-style: none;
     padding: 10px 20px;
     cursor: pointer;
 
     & span {
-      color: white;
+      color: var(--button-text-color);
     }
   }
 }

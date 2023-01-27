@@ -2,14 +2,25 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/index.css ***!
   \***************************************************************************************************************************************/
 body {
-  --button-color: #2a2a2a;
-  --button-highlight-color: #d9d9d9;
-  --button-text-color: #e3e3e3;
-  --button-click-color: #e3e3e3;
-  --button-click-text-color: #252525;
-  --background-color: #191919;
   margin: 20px;
+  --button-color: #f2f2f2;
+  --button-highlight-color: #252525;
+  --button-text-color: #2a2a2a;
+  --button-click-color: #2a2a2a;
+  --button-click-text-color: #fefefe;
+  --background-color: #fefefe;
+  --drop-shadow: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.1));
 }
+
+body.night-mode {
+    --button-color: #2a2a2a;
+    --button-highlight-color: #d9d9d9;
+    --button-text-color: #e3e3e3;
+    --button-click-color: #e3e3e3;
+    --button-click-text-color: #252525;
+    --background-color: #191919;
+    --drop-shadow: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  }
 
 html * {
   font-family: 'Zen Kaku Gothic New', sans-serif;
@@ -24,44 +35,12 @@ body .content > * {
       margin-bottom: 30px;
     }
 
-body .kana-buttons > div {
-    }
-
-/*!*********************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaControl.css ***!
-  \*********************************************************************************************************************************************/
-.kana-button-control {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  grid-template-columns: repeat(5, 1fr);
-  position: sticky;
-  top: 270px;
-  z-index: 1;
-  background: var(--button-color);
-  padding: 10px 12px;
-  border-radius: 50px;
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
-  margin: auto;
-}
-@media screen and (min-width: 1000px) {
-  .kana-button-control {
-    top: 200px;
-}
+body .mode-toggle {
+    filter: invert(1);
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
   }
-@media screen and (min-width: 800px) {
-  .kana-button-control {
-    grid-area: 1 / 1 / 2 / 3;
-}
-  }
-.kana-button-control button {
-    background-color: var(--background-color);
-    background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
-  }
-.kana-button-control button:active {
-      background: var(--button-click-color);
-    }
-
 
 /*!****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/Button.css ***!
@@ -82,9 +61,16 @@ button {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  filter: var(--drop-shadow);
   flex: 1 0 17%;
   white-space: nowrap;
+}
+
+button.two-char {
+    padding: 10px;
+  }
+
+button {
 
   animation-fill-mode: forwards;
   background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--button-color) 50%);
@@ -107,6 +93,42 @@ button:active {
     transform: scale(95%);
     color: var(--button-click-text-color);
   }
+/*!*********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaControl.css ***!
+  \*********************************************************************************************************************************************/
+.kana-button-control {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(5, 1fr);
+  position: sticky;
+  top: 270px;
+  z-index: 1;
+  background: var(--button-color);
+  padding: 10px 12px;
+  border-radius: 50px;
+  filter: var(--drop-shadow);
+  margin: auto;
+}
+@media screen and (min-width: 1000px) {
+  .kana-button-control {
+    top: 200px;
+}
+  }
+@media screen and (min-width: 800px) {
+  .kana-button-control {
+    grid-area: 1 / 1 / 2 / 3;
+}
+  }
+.kana-button-control button {
+    background-color: var(--background-color);
+    background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+  }
+.kana-button-control button:active {
+      background: var(--button-click-color);
+    }
+
+
 /*!*******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaBoard.css ***!
   \*******************************************************************************************************************************************/
@@ -121,10 +143,12 @@ button:active {
   margin-left: auto;
   margin-right: auto;
   place-items: flex-end;
+
 }
 @media screen and (max-width: 800px) {
   .kana-two-column {
     grid-template-columns: 1fr;
+
 }
   }
 .kana-two-column .kana-input-buttons {
@@ -137,6 +161,13 @@ button:active {
          column-gap: 10px;
     place-content: space-between;
     margin-bottom: auto;
+  }
+@media screen and (max-width: 380px) {
+    .kana-two-column .kana-input-buttons {
+      max-width: calc(100vw - 40px);
+      margin-right: -8px;
+      overflow-y: scroll;
+    }
   }
 /*!******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/InputBox.css ***!
@@ -152,7 +183,7 @@ button:active {
   position: sticky;
   top: 10px;
   z-index: 1;
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  filter: var(--drop-shadow);
 }
 
 .header .control-box {
@@ -165,6 +196,13 @@ button:active {
 .header .control-box .button-wrap button {
       background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
     }
+
+.header .control-box .button-wrap button:active {
+        transition: transform 0.03s;
+        background: var(--button-click-color);
+        transform: scale(95%);
+        color: var(--button-click-text-color);
+      }
 
 .header .input-boxes {
     display: flex;
@@ -192,7 +230,7 @@ button:active {
 .header .input-wrapper {
     color: white;
     background-color: var(--background-color);
-    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+    filter: var(--drop-shadow);
     border-radius: 30px;
     padding: 12px 15px;
     display: flex;
@@ -211,6 +249,7 @@ button:active {
 .header .input-wrapper > * {
       margin: auto 0 auto 8px;
       display: block;
+      color: var(--button-text-color);
       white-space: nowrap;
     }
 /*!*******************************************************************************************************************************************!*\
@@ -272,7 +311,7 @@ button:active {
             backface-visibility: hidden;
     background: var(--button-color);
     color: var(--button-text-color);
-    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+    filter: var(--drop-shadow);
   }
 .char-card .card-front {
     position:absolute;
@@ -293,11 +332,17 @@ ul {
   max-width: 500px;
   margin: 0 auto;
 }
+@media screen and (max-width: 300px) {
+  ul {
+    max-width: calc(100vw - 40px);
+    flex-direction: column;
+}
+  }
 ul li {
     list-style: none;
     padding: 10px 20px;
     cursor: pointer;
   }
 ul li span {
-      color: white;
+      color: var(--button-text-color);
     }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./Button";
 import KanaInput from "./KanaInput";
 import CardBoard from "./CardBoard";
 import MainNavigation from "./MainNavigation";
@@ -13,6 +14,7 @@ function App() {
         { (page === 0) && <KanaInput /> }
         { (page === 1) && <CardBoard /> }
       </div>
+      <div className="mode-toggle"><Button char="Mode"/></div>
     </div>
   )
 }

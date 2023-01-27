@@ -48,8 +48,10 @@ function InputBox() {
       else if (i < string.length - 1) {
         let twoChar = string.substring(i, i + 2)
         
-        if (twoChar.charAt(0) === "ッ" && string.charAt(i + 1) !== ' ') {
-          engTrans += jpToEn(string.charAt(i + 1)).charAt(0)
+        if (twoChar.charAt(0) === "ッ") {
+          if (string.charAt(i + 1) !== ' ') {
+            engTrans += jpToEn(string.charAt(i + 1)).charAt(0)
+          }
         }
 
         else if (jpFlatten.indexOf(twoChar) !== -1) {

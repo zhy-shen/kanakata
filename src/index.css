@@ -1,11 +1,22 @@
 body {
-  --button-color: #2a2a2a;
-  --button-highlight-color: #d9d9d9;
-  --button-text-color: #e3e3e3;
-  --button-click-color: #e3e3e3;
-  --button-click-text-color: #252525;
-  --background-color: #191919;
   margin: 20px;
+  --button-color: #f2f2f2;
+  --button-highlight-color: #252525;
+  --button-text-color: #2a2a2a;
+  --button-click-color: #2a2a2a;
+  --button-click-text-color: #fefefe;
+  --background-color: #fefefe;
+  --drop-shadow: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.1));
+
+  &.night-mode {
+    --button-color: #2a2a2a;
+    --button-highlight-color: #d9d9d9;
+    --button-text-color: #e3e3e3;
+    --button-click-color: #e3e3e3;
+    --button-click-text-color: #252525;
+    --background-color: #191919;
+    --drop-shadow: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  }
 }
 
 html * {
@@ -22,8 +33,10 @@ body {
     }
   }
 
-  & .kana-buttons {
-    & > div {
-    }
+  & .mode-toggle {
+    filter: invert(1);
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
   }
 }

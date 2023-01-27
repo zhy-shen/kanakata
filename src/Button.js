@@ -2,6 +2,8 @@ import React from "react";
 import "./Button.css"
 
 function Button({ char }) {
+  let lengthClass;
+  if (char.length === 2) lengthClass = "two-char"
 
   function addChar() {
     
@@ -14,6 +16,10 @@ function Button({ char }) {
 
     else if (char === "Delete") {
       input.innerHTML = input.innerHTML.slice(0, -1);
+    }
+
+    else if (char === "Mode") {
+      document.querySelector("body").classList.toggle('night-mode');
     }
 
     else {
@@ -31,7 +37,7 @@ function Button({ char }) {
 
   return (
     <div className="button-wrap">
-      <button key={char} onClick={addChar}>
+      <button key={char} className={lengthClass} onClick={addChar}>
         <span>
           {char}
         </span>
