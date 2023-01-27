@@ -104,6 +104,7 @@ button:active {
   padding: 10px 5px;
   border-radius: 50px;
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  margin: auto;
 }
 
 .kana-button-control button {
@@ -184,7 +185,6 @@ button:active {
 .kana-cards-page .kana-button-control {
     width: -moz-fit-content;
     width: fit-content;
-    margin: auto;
     top: 30px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
