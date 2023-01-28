@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Button from "./Button";
-import KanaInput from "./KanaInput";
-import CardBoard from "./CardBoard";
+import Button from "./common/Button";
+import KanaInput from "./KanaInput/KanaInput";
+import CardBoard from "./CardBoard/CardBoard";
 import MainNavigation from "./MainNavigation";
 
 function App() {

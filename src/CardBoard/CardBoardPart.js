@@ -1,8 +1,8 @@
 import React from "react";
 import "./CardBoard.css"
-import CharCard from "./Card";
-import katagana from "./katagana";
-import hiragana from "./hiragana";
+import CharCard from "../common/Card";
+import katagana from "../constants/katagana";
+import hiragana from "../constants/hiragana";
 
 function CardBoard({ set, type }) {
   

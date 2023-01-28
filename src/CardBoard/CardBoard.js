@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import KanaControl from "./KanaControl";
+import KanaControl from "../common/KanaControl";
 import CardBoardPart from "./CardBoardPart";
 import "./CardBoard.css"
 

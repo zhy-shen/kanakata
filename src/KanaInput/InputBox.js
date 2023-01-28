@@ -1,29 +1,15 @@
 import React, { useEffect } from "react";
-import katagana from "./katagana";
-import hiragana from "./hiragana";
-import Button from "./Button"
+import katagana from "../constants/katagana";
+import hiragana from "../constants/hiragana";
+import jpEnMap from "../constants/jpEnMap";
+import Button from "../common/Button"
 import "./InputBox.css"
 
 function InputBox( {
   text, 
   setText
 } ) {
-  let jpFlatten = []
-  let enFlatten = []
   let engTrans = "inputto";
-
-  const num = 107;
-  
-  Object.values(katagana).map((type) => Object.keys(type).map((char) => {
-    jpFlatten.push(char)
-  }))
-  Object.values(hiragana).map((type) => Object.keys(type).map((char) => {
-    jpFlatten.push(char)
-  }))
-  Object.values(katagana).map((type) => Object.values(type).map((char) => {
-    enFlatten.push(char)
-  }))
-
 
   const firstTime = true;
   function autoTranslate() {
@@ -49,12 +35,12 @@ function InputBox( {
         let twoChar = string.substring(i, i + 2)
         
         if (twoChar.charAt(0) === "ッ") {
-          if (string.charAt(i + 1) !== ' ') {
+          if (Object.hasOwn(jpEnMap, string.charAt(i + 1))) {
             engTemp += jpToEn(string.charAt(i + 1)).charAt(0)
           }
         }
 
-        else if (jpFlatten.indexOf(twoChar) !== -1) {
+        else if (Object.hasOwn(jpEnMap, twoChar)) {
           engTemp += jpToEn(twoChar)
           i++
         }
@@ -65,7 +51,7 @@ function InputBox( {
       }
 
       else {
-        if (string.charAt(i) !== "ッ") {
+        if (Object.hasOwn(jpEnMap, string.charAt(i))) {
           engTemp += jpToEn(string.charAt(i))
         }
       }
@@ -75,7 +61,7 @@ function InputBox( {
   }
 
   function jpToEn(char) {
-    return enFlatten[jpFlatten.indexOf(char) % num];
+    return jpEnMap[char];
   }
 
   useEffect(() => {

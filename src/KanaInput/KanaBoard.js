@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import KanaControl from "./KanaControl";
+import React, { useState } from "react";
+import KanaControl from "../common/KanaControl";
 import KanaBoardPart from "./KanaBoardPart";
 import "./KanaBoard.css";
 
