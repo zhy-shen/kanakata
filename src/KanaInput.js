@@ -3,10 +3,12 @@ import KanaBoard from "./KanaBoard";
 import InputBox from "./InputBox";
 
 function KanaInput() {
+  const [inputText, setInputText] = React.useState("インプット");
+  
   return(
     <>
-      <InputBox />
-      <KanaBoard />
+      <InputBox text={inputText} setText={setInputText}/>
+      <KanaBoard text={inputText} setText={setInputText}/>
     </>
   )
 }

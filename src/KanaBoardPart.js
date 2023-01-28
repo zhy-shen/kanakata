@@ -14,6 +14,8 @@ const placeholder = {
 */
 
 function KanaBoardPart({
+  text, 
+  setText,
   charSet,
   buttonSet
 }) {
@@ -107,34 +109,34 @@ function KanaBoardPart({
     if (char === "ん" || char === "ン") {
       return (
         <>
-          <Button char={char}/>
-          <Button char=" "/>
-          <Button char=" "/>
-          <Button char=" "/>
-          <Button char=" "/>
+          <Button text={text} setText={setText} char={char}/>
+          <Button text={text} setText={setText} char=" "/>
+          <Button text={text} setText={setText} char=" "/>
+          <Button text={text} setText={setText} char=" "/>
+          <Button text={text} setText={setText} char=" "/>
         </>
       )
     }
     if (char === "わ" || char === "ワ") {
       return (
         <>
-          <Button char={char}/>
-          <Button char=" "/>
-          <Button char=" "/>
-          <Button char=" "/>
+          <Button text={text} setText={setText} char={char}/>
+          <Button text={text} setText={setText} char=" "/>
+          <Button text={text} setText={setText} char=" "/>
+          <Button text={text} setText={setText} char=" "/>
         </>
       )
     }
     else if (char === "や" || char === "ゆ" || char === "ヤ" || char === "ユ") {
       return (
         <>
-          <Button char={char}/>
-          <Button char=" "/>
+          <Button text={text} setText={setText} char={char}/>
+          <Button text={text} setText={setText} char=" "/>
         </>
       )
     }
     else {
-      return <Button char={char}/>
+      return <Button text={text} setText={setText} char={char}/>
     }
   }
 

@@ -1,21 +1,23 @@
 import React from "react";
 import "./Button.css"
 
-function Button({ char }) {
+function Button({
+  text, 
+  setText,
+  char 
+}) {
   let lengthClass;
   if (char.length === 2) lengthClass = "two-char"
 
   function addChar() {
-    
     const inputTRBox = document.querySelector(".input-wrapper.translate")
-    const input = document.querySelector("#input-box");
-
+    
     if (char === "Space") {
-      input.innerHTML += ' ';
+      setText(text + ' ')
     }
 
     else if (char === "Delete") {
-      input.innerHTML = input.innerHTML.slice(0, -1);
+      setText(text.slice(0, -1))
     }
 
     else if (char === "Mode") {
@@ -23,17 +25,14 @@ function Button({ char }) {
     }
 
     else {
-      input.innerHTML += char
+      setText(text + char)
+      triggerEvent(inputTRBox, char, 'change')
     }
 
-    if (char !== "Mode") {
-      triggerEvent(inputTRBox, 'change')
-    }
   }
   
-  function triggerEvent(element, eventName) {
-    const event = document.createEvent('HTMLEvents')
-    event.initEvent(eventName, false, true)
+  function triggerEvent(element, char, eventName) {
+    const event = new CustomEvent(eventName, { 'detail': char })
     element.dispatchEvent(event)
   }
 

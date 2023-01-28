@@ -12,7 +12,10 @@ const placeholder = {
 }
 */
 
-function KanaBoard() {
+function KanaBoard( {
+  text, 
+  setText
+} ) {
   const [charSet1, setCharSet1] = useState("hiragana");
   const [charSet2, setCharSet2] = useState("katagana");
   const [buttonSet1, setButtonSet1] = useState("mono");
@@ -21,8 +24,8 @@ function KanaBoard() {
   return (
     <div className="kana-two-column">
       <KanaControl sc1={setCharSet1} sb1={setButtonSet1} sc2={setCharSet2} sb2={setButtonSet2} />
-      <KanaBoardPart charSet={charSet1} buttonSet={buttonSet1} />
-      <KanaBoardPart charSet={charSet2} buttonSet={buttonSet2} />
+      <KanaBoardPart text={text} setText={setText} charSet={charSet1} buttonSet={buttonSet1} />
+      <KanaBoardPart text={text} setText={setText} charSet={charSet2} buttonSet={buttonSet2} />
     </div>
   )
 }
