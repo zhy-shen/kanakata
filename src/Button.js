@@ -26,7 +26,9 @@ function Button({ char }) {
       input.innerHTML += char
     }
 
-    triggerEvent(inputTRBox, 'change')
+    if (char !== "Mode") {
+      triggerEvent(inputTRBox, 'change')
+    }
   }
   
   function triggerEvent(element, eventName) {
