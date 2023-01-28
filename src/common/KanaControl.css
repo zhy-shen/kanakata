@@ -28,6 +28,15 @@
     &:active {
       background: var(--button-click-color);
     }
+
+    &.active {
+      --button-text-color: var(--button-click-text-color);
+      --background-color: var(--button-highlight-color);
+
+      &:active {
+        background: var(--button-click-color);
+      }
+    }
   }
 }
 

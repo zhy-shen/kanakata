@@ -168,10 +168,25 @@ const digraphs = {
   ピョ: 'pyo',
 };
 
+const small = {
+  ァ: 'a',
+  ィ: 'i',
+  ゥ: 'o',
+  ェ: 'e',
+  ォ: 'o',
+  ャ: 'ya',
+  ュ: 'yu',
+  ョ: 'yo',
+  ヵ: 'ka',
+  ヶ: 'ke',
+  ッ: 'tsu',
+}
+
 const katagana = {
   "monographs": monographs,
   "diacritics": diacritics,
-  "digraphs": digraphs
+  "digraphs": digraphs,
+  "small" : small,
 }
 
 export default katagana;

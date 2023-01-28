@@ -36,7 +36,7 @@ function KanaBoardPart({
         chars = Object.keys(mainSet.monographs)
       }
       else if (type === "else") {
-        chars = Object.keys(mainSet.diacritics).concat(Object.keys(mainSet.digraphs))
+        chars = Object.keys(mainSet.diacritics).concat(Object.keys(mainSet.small))
       }
 
       return chars.map((char) => {
@@ -45,89 +45,38 @@ function KanaBoardPart({
     }
 
     return <></>
+  }
 
-    if (set === "katagana") {
-      if (type === "EN") {
-        return Object.values(katagana).map((type, index) => Object.values(type).map((char, index2) => {
-          return <Button char={char + katagana[index][index2]}/>
-        }))
-      }
-      if (type === "JPEN") {
-        return Object.values(katagana).map((type) => Object.keys(type).map((char, index2) => {
-          return <Button char={char + ' ' + Object.values(type)[index2]}/>
-        }))
-      }
-      if (type === "JP") {
-        return Object.values(katagana).map((type) => Object.keys(type).map((char) => {
-          return charMarkup(char)
-        }))
-      }
-    }
+  const specialChars = {
+    single: ["や", "ゆ", "ヤ", "ユ", "ゃ", "ゅ", "ャ", "ュ"],
+    triple: ["わ", "ワ"],
+    n: ["ん", "ン"],
 
-    if (set === "hira") {
-      if (type === "EN") {
-        return Object.values(hiragana).map((type) => Object.values(type).map((char) => {
-          return <Button char={char}/>
-        }))
-      }
-      if (type === "JPEN") {
-        return Object.values(hiragana).map((type) => Object.keys(type).map((char, index2) => {
-          return <Button char={char + ' ' + Object.values(type)[index2]}/>
-        }))
-      }
-      if (type === "JP") {
-        return Object.values(hiragana).map((type) => Object.keys(type).map((char) => {
-          return charMarkup(char);
-        }))
-      }
-    }
-
-    if (set === "kana") {
-      if (type === "EN") {
-        return Object.values(katagana).map((type, index) => Object.values(type).map((char, index2) => {
-          return <Button char={char + katagana[index][index2]}/>
-        }))
-      }
-      if (type === "JPEN") {
-        return Object.values(katagana).map((type) => Object.keys(type).map((char, index2) => {
-          return <Button char={char + ' ' + Object.values(type)[index2]}/>
-        }))
-      }
-      if (type === "JP") {
-        return Object.values(katagana).map((type) => Object.keys(type).map((char) => {
-          return charMarkup(char)
-        }))
-      }
-    }
-
-    else {
-      return
-    }
   }
 
   function charMarkup(char) {
-    if (char === "ん" || char === "ン") {
+    if (specialChars.n.includes(char)) {
+      return (
+        <>
+          <Button text={text} setText={setText} char={char}/>
+          <Button text={text} setText={setText} char=" "/>
+          <Button text={text} setText={setText} char={(char === "ん") ? "っ" : "ッ"}/>
+          <Button text={text} setText={setText} char=" "/>
+          <Button text={text} setText={setText} char={(char === "ン") ? "ー" : " "}/>
+        </>
+      )
+    }
+    if (specialChars.triple.includes(char)) {
       return (
         <>
           <Button text={text} setText={setText} char={char}/>
           <Button text={text} setText={setText} char=" "/>
           <Button text={text} setText={setText} char=" "/>
           <Button text={text} setText={setText} char=" "/>
-          <Button text={text} setText={setText} char=" "/>
         </>
       )
     }
-    if (char === "わ" || char === "ワ") {
-      return (
-        <>
-          <Button text={text} setText={setText} char={char}/>
-          <Button text={text} setText={setText} char=" "/>
-          <Button text={text} setText={setText} char=" "/>
-          <Button text={text} setText={setText} char=" "/>
-        </>
-      )
-    }
-    else if (char === "や" || char === "ゆ" || char === "ヤ" || char === "ユ") {
+    else if (specialChars.single.includes(char)) {
       return (
         <>
           <Button text={text} setText={setText} char={char}/>

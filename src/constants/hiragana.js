@@ -168,10 +168,23 @@ const digraphs = {
   ぴょ: 'pyo',
 };
 
+const small = {
+  ぁ: 'a',
+  ぃ: 'i',
+  ぅ: 'o',
+  ぇ: 'e',
+  ぉ: 'o',
+  ゃ: 'ya',
+  ゅ: 'yu',
+  ょ: 'yo',
+  っ: 'tsu',
+}
+
 const hiragana = {
   "monographs": monographs,
   "diacritics": diacritics,
-  "digraphs": digraphs
+  "digraphs": digraphs,
+  "small": small,
 }
 
 export default hiragana;

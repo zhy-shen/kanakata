@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import katagana from "../constants/katagana";
-import hiragana from "../constants/hiragana";
-import jpEnMap from "../constants/jpEnMap";
+import React, { useEffect } from "react"
+import jpEnMap from "../constants/jpEnMap"
+import small from "../constants/jpEnmap/jpEnMapSmall"
 import Button from "../common/Button"
 import "./InputBox.css"
 
@@ -24,44 +23,77 @@ function InputBox( {
   function checkString() {
     const string = text
     let engTemp = '';
+    let current, next
 
     for (var i = 0; i < string.length; i++) {
+      current = string.charAt(i);
+      next = string.charAt(i + 1);
 
-      if (string.charAt(i) === ' ') {
+      if (current === ' ') {
         engTemp += ' '
       }
 
       else if (i < string.length - 1) {
         let twoChar = string.substring(i, i + 2)
         
-        if (twoChar.charAt(0) === "ッ") {
-          if (Object.hasOwn(jpEnMap, string.charAt(i + 1))) {
-            engTemp += jpToEn(string.charAt(i + 1)).charAt(0)
+        //check for doubling next syllable
+        if (twoChar.charAt(0) === "ッ" || twoChar.charAt(0) === "っ") {
+          if (hasChar(next)) {
+            engTemp += jpToEn(next).charAt(0)
           }
         }
 
-        else if (Object.hasOwn(jpEnMap, twoChar)) {
+        //check if pre calculated diatric exists
+        else if (hasChar(twoChar)) {
           engTemp += jpToEn(twoChar)
           i++
         }
 
-        else {
-          engTemp += jpToEn(string.charAt(i))
+        //check for small kana
+        else if (Object.hasOwn(small, current)) {
+          if (jpToEn(current).length === 1) {
+            engTemp += "~" + jpToEn(current)
+          }
+          else {
+            engTemp = engTemp.slice(0,-1) + jpToEn(current)
+          }
+        }
+
+        else if (hasChar(current)) {
+          engTemp += jpToEn(current)
         }
       }
 
       else {
-        if (Object.hasOwn(jpEnMap, string.charAt(i))) {
-          engTemp += jpToEn(string.charAt(i))
+        //check for small kana
+        if (Object.hasOwn(small, current)) {
+          if (jpToEn(current).length === 1) {
+            engTemp += "~" + jpToEn(current)
+          }
+          else {
+            engTemp = engTemp.slice(0,-1) + jpToEn(current)
+          }
         }
+
+        else if (hasChar(current)) {
+          engTemp += jpToEn(current)
+        }
+      }
+
+      if (i > 0 && string.charAt(i) === 'ー') {
+        engTemp += engTemp.slice(-1)
       }
     }
 
     engTrans = engTemp
   }
 
+  function hasChar(char) {
+    return Object.hasOwn(jpEnMap, char)
+  }
+
   function jpToEn(char) {
-    return jpEnMap[char];
+    return jpEnMap[char]
   }
 
   useEffect(() => {
@@ -79,7 +111,6 @@ function InputBox( {
       </div>
       </div>
       <div className="control-box">
-        <Button text={text} setText={setText} char="ッ"/>
         <Button text={text} setText={setText} char="Space"/>
         <Button text={text} setText={setText} char="Delete"/>
       </div>
