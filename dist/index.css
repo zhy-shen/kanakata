@@ -2,6 +2,7 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/index.css ***!
   \***************************************************************************************************************************************/
 body {
+  overscroll-behavior: none;
   margin: 20px;
   --button-color: #f2f2f2;
   --button-highlight-color: #252525;
@@ -38,7 +39,7 @@ body .content > * {
 body .mode-toggle button {
       background-color: var(--background-color);
       background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
-      
+
       --button-text-color: var(--button-click-text-color);
       --background-color: var(--button-highlight-color);
     }
