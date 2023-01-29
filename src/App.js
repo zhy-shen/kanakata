@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import Button from "./common/Button";
-import KanaInput from "./KanaInput/KanaInput";
-import CardBoard from "./CardBoard/CardBoard";
-import MainNavigation from "./MainNavigation";
+import React, { useState } from "react"
+import Button from "./common/Button"
+import KanaInput from "./KanaInput/KanaInput"
+import CardBoard from "./CardBoard/CardBoard"
+import MainNavigation from "./MainNavigation"
+import svg from "./common/svgs"
 
 function App() {
   const [page, setPage] = useState(0);
@@ -14,7 +15,7 @@ function App() {
         { (page === 0) && <KanaInput /> }
         { (page === 1) && <CardBoard /> }
       </div>
-      <div className="mode-toggle"><Button char="Mode"/></div>
+      <div className="mode-toggle"><Button char="Mode" display={svg.sunMoon}/></div>
     </div>
   )
 }

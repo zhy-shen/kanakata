@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import jpEnMap from "../constants/jpEnMap"
 import small from "../constants/jpEnmap/jpEnMapSmall"
+import svgs from "../common/svgs"
 import Button from "../common/Button"
 import "./InputBox.css"
 
@@ -18,6 +19,7 @@ function InputBox( {
       setText(e.detail);
     }, {once : true})
   }
+
 
   checkString()
   function checkString() {
@@ -111,8 +113,9 @@ function InputBox( {
       </div>
       </div>
       <div className="control-box">
-        <Button text={text} setText={setText} char="Space"/>
-        <Button text={text} setText={setText} char="Delete"/>
+        <Button text={text} setText={setText} char="Copy" display={svgs.copy}/>
+        <Button text={text} setText={setText} char="Space" display={svgs.space}/>
+        <Button text={text} setText={setText} char="Del" display={svgs.backspace}/>
       </div>
     </div>
   )

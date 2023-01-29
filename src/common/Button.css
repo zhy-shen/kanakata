@@ -30,7 +30,7 @@ button {
   &:hover {
     transform: translate(-1px, -1px);
     background-position: top left;
-    color: var(--button-click-text-color);
+    --button-text-color: var(--button-click-text-color);
     background-color: var(--button-click-color);
   }
 
@@ -39,5 +39,14 @@ button {
     background: var(--button-click-color);
     transform: scale(95%);
     color: var(--button-click-text-color);
+  }
+
+  & svg {
+    transform: scale(1.15);
+    margin-bottom: -1px;
+
+    &.space {
+      transform: scale(1.2);
+    }
   }
 }

@@ -4,7 +4,8 @@ import "./Button.css"
 function Button({
   text, 
   setText,
-  char 
+  char,
+  display
 }) {
   let lengthClass;
   if (char.length === 2) lengthClass = "two-char"
@@ -16,12 +17,25 @@ function Button({
       setText(text + ' ')
     }
 
-    else if (char === "Delete") {
+    else if (char === "Del") {
       setText(text.slice(0, -1))
     }
 
+    else if (char === "Copy") {
+      navigator.clipboard.writeText(text)
+    }
+
     else if (char === "Mode") {
-      document.querySelector("body").classList.toggle('night-mode');
+      document.querySelector("body").classList.toggle('night-mode')
+      
+      if (parseFloat(window.getComputedStyle(document.body).getPropertyValue('--l')) > 60 ) {
+        document.querySelector("body").classList.add('light');
+      }
+      else {
+        document.querySelector("body").classList.remove('light');
+      }
+
+      setText(text + 1)
     }
 
     else {
@@ -40,7 +54,7 @@ function Button({
     <div className="button-wrap">
       <button key={char} className={lengthClass} onClick={addChar}>
         <span>
-          {char}
+          {(display) ? display : char}
         </span>
       </button>
     </div>
