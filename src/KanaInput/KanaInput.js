@@ -7,8 +7,8 @@ function KanaInput() {
   
   return(
     <>
-      <InputBox text={inputText} setText={setInputText}/>
-      <KanaBoard text={inputText} setText={setInputText}/>
+      <InputBox key="inputBox" text={inputText} setText={setInputText}/>
+      <KanaBoard key="board" text={inputText} setText={setInputText}/>
     </>
   );
 }

@@ -244,26 +244,6 @@ button svg.space {
     visibility: hidden;
   }
 }
-/*!*****************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/CardBoard/CardBoard.css ***!
-  \*****************************************************************************************************************************************************/
-.kana-two-column:has(.kana-cards) {
-  margin-top: 30px;
-}
-
-.kana-two-column:has(.kana-cards) .kana-button-control {
-    top: 30px;
-  }
-
-.kana-cards {
-  width: -moz-fit-content;
-  width: fit-content;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px;
-  place-content: space-between;
-  margin-bottom: auto;
-}
 /*!*********************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/common/Card.css ***!
   \*********************************************************************************************************************************************/
@@ -313,6 +293,26 @@ button svg.space {
     position:absolute;
     transform: rotateY(-180deg);
   }
+/*!*****************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/CardBoard/CardBoard.css ***!
+  \*****************************************************************************************************************************************************/
+.kana-two-column:has(.kana-cards) {
+  margin-top: 30px;
+}
+
+.kana-two-column:has(.kana-cards) .kana-button-control {
+    top: 30px;
+  }
+
+.kana-cards {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  place-content: space-between;
+  margin-bottom: auto;
+}
 /*!**********************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/ColorControl.css ***!
   \**********************************************************************************************************************************************/

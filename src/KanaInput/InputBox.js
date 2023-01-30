@@ -112,9 +112,9 @@ function InputBox( {
       </div>
       </div>
       <div className="control-box">
-        <Button text={text} setText={setText} char="Copy" display={svgs.copy}/>
-        <Button text={text} setText={setText} char="Space" display={svgs.space}/>
-        <Button text={text} setText={setText} char="Del" display={svgs.backspace}/>
+        <Button key="copy" text={text} setText={setText} char="Copy" display={svgs.copy}/>
+        <Button key="space" text={text} setText={setText} char="Space" display={svgs.space}/>
+        <Button key="delete" text={text} setText={setText} char="Del" display={svgs.backspace}/>
       </div>
     </div>
   );

@@ -42,7 +42,7 @@ function Button({
   }
 
   return (
-    <div className="button-wrap">
+    <div className="button-wrap"> 
       <button className={lengthClass} onClick={(onClick) ? onClick : addChar}>
         <span>
           {(display) ? display : char}

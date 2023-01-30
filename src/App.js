@@ -9,12 +9,12 @@ function App() {
 
   return(
     <div className="main">
-      <MainNavigation changePage={setPage} />
+      <MainNavigation key="nav" changePage={setPage} />
       <div className="content">
-        { (page === 0) && <KanaInput /> }
-        { (page === 1) && <CardBoard /> }
+        { (page === 0) && <KanaInput key="kanaInput" /> }
+        { (page === 1) && <CardBoard key="cardBoard" /> }
       </div>
-      <ColorControl />
+      <ColorControl key="clor" />
     </div>
   )
 }

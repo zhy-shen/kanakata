@@ -11,9 +11,9 @@ function CardBoard() {
 
   return (
     <div className="kana-two-column">
-      <KanaControl sc1={setCharSet1} sb1={setButtonSet1} sc2={setCharSet2} sb2={setButtonSet2} />
-      <CardBoardPart set={charSet1} type={buttonSet1}/>
-      <CardBoardPart set={charSet2} type={buttonSet2}/>
+      <KanaControl key={"cardControl"} sc1={setCharSet1} sb1={setButtonSet1} sc2={setCharSet2} sb2={setButtonSet2} />
+      <CardBoardPart key={charSet1 + buttonSet1 + "1"}  set={charSet1} type={buttonSet1}/>
+      <CardBoardPart key={charSet2 + buttonSet2 + "2"}  set={charSet2} type={buttonSet2}/>
     </div>
   )
 }
