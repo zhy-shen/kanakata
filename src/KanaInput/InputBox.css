@@ -73,7 +73,27 @@
       margin: auto 0 auto 8px;
       display: block;
       color: var(--button-text-color);
-      white-space: nowrap;
+      white-space: pre;
+      padding-right: 2px;
+      position: relative;
     }
+
+    &:first-child > *:first-child::after {
+      content: " ";
+      width: 2px;
+      background: var(--button-text-color);
+      right: -5px;
+      margin: 6px 0;
+      position: absolute;
+      height: calc(100% - 10px);
+      animation: blink-animation 1.2s steps(2, start) infinite;
+      opacity: 0.8;
+    }
+  }
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
   }
 }
