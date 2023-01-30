@@ -1,7 +1,7 @@
 body {
   --main-color: 71, 61%;
   --l: 71%;
-  --l-t: 88%;
+  --l-t: 90%;
   --l-dark: calc(var(--l) - 50%);
   --hsl-main: var(--main-color), var(--l);
   --hsl-dark: var(--main-color), var(--l-t);
@@ -24,7 +24,7 @@ body {
   }
 
   &.light {
-    --l-t: 12%;
+    --l-t: 10%;
   }
 }
 

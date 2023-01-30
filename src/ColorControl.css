@@ -30,10 +30,17 @@
     }
   }
 
-  &.light.custom {
+  &.custom {
     & label,
     & input {
-      color: white;
+      color: black;
+    }
+
+    &.light {
+      & label,
+      & input {
+        color: white;
+      }
     }
   }
 

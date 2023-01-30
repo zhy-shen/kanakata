@@ -5,6 +5,7 @@ import "./ColorControl.css"
 
 function ColorControl() {
   let input, inputWrapper, body
+  const colorThreshold = 60
 
   function hexToHSL(hex, set) {
     if (hex.length === 3) {
@@ -44,7 +45,7 @@ function ColorControl() {
       document.querySelector('body').style.setProperty('--main-color', h + ', ' + s + '%')
       document.querySelector('body').style.setProperty('--l', l + '%')
 
-      if (l > 50 ) {
+      if (l > colorThreshold ) {
         body.classList.add('light');
       }
       else {
@@ -70,11 +71,11 @@ function ColorControl() {
       inputWrapper.classList.add('custom')
       inputWrapper.style.setProperty('--color-input-background', '#' + value);
       (set === "true") ? hexToHSL(value, "true") : hexToHSL(value);
-      (hexToHSL(value) < 50) ? inputWrapper.classList.add('light') : inputWrapper.classList.remove('light');
+      (hexToHSL(value) > colorThreshold) ? inputWrapper.classList.remove('light') : inputWrapper.classList.add('light');
     }
     else {
       inputWrapper.classList.remove('custom')
-      inputWrapper.style.setProperty('--color-input-background', bgInitial)
+      inputWrapper.style.removeProperty('--color-input-background')
     }
   }
 
@@ -83,10 +84,8 @@ function ColorControl() {
     body.classList.toggle('night-mode')
 
     removeCustomColor()
-
-    bgInitial = window.getComputedStyle(inputWrapper).getPropertyValue('--button-color')
       
-    if (parseFloat(window.getComputedStyle(document.body).getPropertyValue('--l')) > 60 ) {
+    if (parseFloat(window.getComputedStyle(body).getPropertyValue('--l')) > colorThreshold ) {
       body.classList.add('light');
     }
     else {
@@ -101,13 +100,10 @@ function ColorControl() {
     body.style.removeProperty('--l');
   }
 
-  let bgInitial
-
   useEffect(() => {
     inputWrapper = document.querySelector('.color-input')
     input = document.querySelector('#color')
     body = document.querySelector("body")
-    bgInitial = window.getComputedStyle(inputWrapper).getPropertyValue('--button-color')
     
     input.addEventListener('keyup', checkColor)
     input.addEventListener("keyup", ({key}) => {

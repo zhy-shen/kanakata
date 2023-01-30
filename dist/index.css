@@ -4,7 +4,7 @@
 body {
   --main-color: 71, 61%;
   --l: 71%;
-  --l-t: 88%;
+  --l-t: 90%;
   --l-dark: calc(var(--l) - 50%);
   --hsl-main: var(--main-color), var(--l);
   --hsl-dark: var(--main-color), var(--l-t);
@@ -28,7 +28,7 @@ body.night-mode {
   }
 
 body.light {
-    --l-t: 12%;
+    --l-t: 10%;
   }
 
 html * {
@@ -375,10 +375,15 @@ button svg.space {
       color: white;
     }
 
-.color-input.light.custom label,
-    .color-input.light.custom input {
-      color: white;
+.color-input.custom label,
+    .color-input.custom input {
+      color: black;
     }
+
+.color-input.custom.light label,
+      .color-input.custom.light input {
+        color: white;
+      }
 
 .color-input input {
     height: 25px;
