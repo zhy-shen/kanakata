@@ -8,7 +8,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 }
       
 if (parseFloat(window.getComputedStyle(document.body).getPropertyValue('--l')) > 60 ) {
-  document.querySelector("body").classList.add('light');
+  document.querySelector("body").classList.add('light')
 }
 
 ReactDOM.render(

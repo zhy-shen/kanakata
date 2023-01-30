@@ -11,7 +11,6 @@ function InputBox( {
 } ) {
   let engTrans = "inputto";
 
-  const firstTime = true;
   function autoTranslate() {
     const inputTRBox = document.querySelector(".input-wrapper.translate")
     
@@ -72,7 +71,7 @@ function InputBox( {
           if (jpToEn(current).length === 1) {
             engTemp += "~" + jpToEn(current)
           }
-          else {
+          else if (current !== "ッ" && current !== "っ") {
             engTemp = engTemp.slice(0,-1) + jpToEn(current)
           }
         }

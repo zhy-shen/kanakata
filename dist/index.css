@@ -2,9 +2,9 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/index.css ***!
   \***************************************************************************************************************************************/
 body {
-  --main-color: 212, 67%;
+  --main-color: 71, 61%;
   --l: 71%;
-  --l-t: 85%;
+  --l-t: 88%;
   --l-dark: calc(var(--l) - 50%);
   --hsl-main: var(--main-color), var(--l);
   --hsl-dark: var(--main-color), var(--l-t);
@@ -28,7 +28,7 @@ body.night-mode {
   }
 
 body.light {
-    --l-t: 15%;
+    --l-t: 12%;
   }
 
 html * {
@@ -58,6 +58,8 @@ body .mode-toggle button {
 
       --button-text-color: var(--button-click-text-color);
       --background-color: var(--button-highlight-color);
+      height: 60px;
+      border-radius: 40px;
     }
 
 body .mode-toggle button:active {
@@ -365,6 +367,50 @@ button svg.space {
     opacity: 0.5;
     position:absolute;
     transform: rotateY(-180deg);
+  }
+/*!********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/ColorInput.css ***!
+  \********************************************************************************************************************************************/
+.color-input {
+  --color-input-background: var(--button-color);
+  padding: 5px 15px;
+  position: fixed;
+  left: 25px;
+  bottom: 25px;
+  background: var(--color-input-background);
+  transition: background 0.5s, font 0.3s;
+  display: flex;
+  place-content: center;
+  border-radius: 40px;
+  filter: var(--drop-shadow);
+}
+.color-input label {
+    align-self: center;
+  }
+.color-input label,
+  .color-input input {
+    color: var(--button-text-color);
+  }
+.color-input:has(input:invalid) {
+    background: red;
+  }
+.color-input:has(input:invalid) label,
+    .color-input:has(input:invalid) input {
+      color: white;
+    }
+.color-input.light.custom label,
+    .color-input.light.custom input {
+      color: black;
+    }
+.color-input input {
+    height: 25px;
+    outline: none;
+    border: none;
+    padding: 5px;
+    font-size: 20px;
+    background: none;
+    transition: font 0.3s;
+    width: 6ch;
   }
 /*!************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/MainNavigation.css ***!

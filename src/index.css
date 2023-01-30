@@ -1,7 +1,7 @@
 body {
-  --main-color: 212, 67%;
+  --main-color: 71, 61%;
   --l: 71%;
-  --l-t: 85%;
+  --l-t: 88%;
   --l-dark: calc(var(--l) - 50%);
   --hsl-main: var(--main-color), var(--l);
   --hsl-dark: var(--main-color), var(--l-t);
@@ -24,7 +24,7 @@ body {
   }
 
   &.light {
-    --l-t: 15%;
+    --l-t: 12%;
   }
 }
 
@@ -45,11 +45,9 @@ body {
   &.light .sun {
     display: none;
   }
-
   &.night-mode .moon {
     display: none;
   }
-
 
   & .mode-toggle {
     & button {
@@ -58,6 +56,8 @@ body {
 
       --button-text-color: var(--button-click-text-color);
       --background-color: var(--button-highlight-color);
+      height: 60px;
+      border-radius: 40px;
   
       &:active {
         background: var(--button-click-color);

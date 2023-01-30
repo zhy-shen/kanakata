@@ -34,8 +34,6 @@ function Button({
       else {
         document.querySelector("body").classList.remove('light');
       }
-
-      setText(text + 1)
     }
 
     else {
