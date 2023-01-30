@@ -1,5 +1,5 @@
-import hiragana from "../hiragana"
-import katagana from "../katagana"
+import hiragana from "../hiragana";
+import katagana from "../katagana";
 
 const jpEnMapMono = {
   ...hiragana.monographs,

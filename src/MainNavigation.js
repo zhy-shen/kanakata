@@ -16,6 +16,6 @@ function MainNavigation({ changePage }) {
         </li>
       </ul>
     </div>
-  )
+  );
 }
 export default MainNavigation;

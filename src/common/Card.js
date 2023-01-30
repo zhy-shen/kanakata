@@ -1,5 +1,5 @@
 import React from "react";
-import "./Card.css"
+import "./Card.css";
 
 function Card({ front, back }) {
   return (
@@ -7,7 +7,7 @@ function Card({ front, back }) {
       <div className="card-front">{front}</div>
       <div className="card-back">{back}</div>
     </div>
-  )
+  );
 }
 
 export default Card;

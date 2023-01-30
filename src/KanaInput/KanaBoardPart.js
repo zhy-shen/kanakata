@@ -17,30 +17,29 @@ function KanaBoardPart({
   text, 
   setText,
   charSet,
-  buttonSet
+  buttonSet,
 }) {
 
   function printKana(set, type) {
-    let mainSet
-    let chars
+    let mainSet, chars;
 
     if (set === "hiragana") {
-      mainSet = hiragana
+      mainSet = hiragana;
     }
     else if (set === "katagana") {
-      mainSet = katagana
+      mainSet = katagana;
     }
 
     if (mainSet) {
       if (type === "mono") {
-        chars = Object.keys(mainSet.monographs)
+        chars = Object.keys(mainSet.monographs);
       }
       else if (type === "else") {
-        chars = Object.keys(mainSet.diacritics).concat(Object.keys(mainSet.small))
+        chars = Object.keys(mainSet.diacritics).concat(Object.keys(mainSet.small));
       }
 
       return chars.map((char) => {
-        return charMarkup(char)
+        return charMarkup(char);
       })
     }
 
@@ -51,7 +50,6 @@ function KanaBoardPart({
     single: ["や", "ゆ", "ヤ", "ユ", "ゃ", "ゅ", "ャ", "ュ"],
     triple: ["わ", "ワ"],
     n: ["ん", "ン"],
-
   }
 
   function charMarkup(char) {
@@ -64,7 +62,7 @@ function KanaBoardPart({
           <Button text={text} setText={setText} char=" "/>
           <Button text={text} setText={setText} char={(char === "ン") ? "ー" : " "}/>
         </>
-      )
+      );
     }
     if (specialChars.triple.includes(char)) {
       return (
@@ -74,7 +72,7 @@ function KanaBoardPart({
           <Button text={text} setText={setText} char=" "/>
           <Button text={text} setText={setText} char=" "/>
         </>
-      )
+      );
     }
     else if (specialChars.single.includes(char)) {
       return (
@@ -82,7 +80,7 @@ function KanaBoardPart({
           <Button text={text} setText={setText} char={char}/>
           <Button text={text} setText={setText} char=" "/>
         </>
-      )
+      );
     }
     else {
       return <Button text={text} setText={setText} char={char}/>
@@ -93,7 +91,7 @@ function KanaBoardPart({
     <div className="kana-input-buttons">
       {printKana(charSet, buttonSet)}
     </div>
-  )
+  );
 }
 
 export default KanaBoardPart;

@@ -1,6 +1,6 @@
-import mono from "./jpEnMap/jpEnMapMono"
-import dual from "./jpEnMap/jpEnMapDual"
-import small from "./jpEnMap/jpEnMapSmall"
+import mono from "./jpEnMap/jpEnMapMono";
+import dual from "./jpEnMap/jpEnMapDual";
+import small from "./jpEnMap/jpEnMapSmall";
 
 const jpEnMap = {
   ...mono,

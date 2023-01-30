@@ -1,44 +1,44 @@
 import React from "react";
-import "./Button.css"
+import "./Button.css";
 
 function Button({
   text, 
   setText,
   char,
   display,
-  onClick
+  onClick,
 }) {
   let lengthClass;
-  if (char.length === 2) lengthClass = "two-char"
+  if (char.length === 2) lengthClass = "two-char";
 
   function addChar() {
-    const inputTRBox = document.querySelector(".input-wrapper.translate")
+    const inputTRBox = document.querySelector(".input-wrapper.translate");
     
     if (char === "Space") {
-      setText(text + ' ')
+      setText(text + ' ');
     }
 
     else if (char === "Del") {
-      setText(text.slice(0, -1))
+      setText(text.slice(0, -1));
     }
 
     else if (char === "Copy") {
-      navigator.clipboard.writeText(text)
+      navigator.clipboard.writeText(text);
     }
 
     else if (char === "Mode") {
     }
 
     else {
-      setText(text + char)
-      triggerEvent(inputTRBox, char, 'change')
+      setText(text + char);
+      triggerEvent(inputTRBox, char, 'change');
     }
 
   }
   
   function triggerEvent(element, char, eventName) {
-    const event = new CustomEvent(eventName, { 'detail': char })
-    element.dispatchEvent(event)
+    const event = new CustomEvent(eventName, { 'detail': char });
+    element.dispatchEvent(event);
   }
 
   return (
@@ -49,7 +49,7 @@ function Button({
         </span>
       </button>
     </div>
-  )
+  );
 }
 
 export default Button;

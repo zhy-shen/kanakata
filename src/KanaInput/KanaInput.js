@@ -10,6 +10,6 @@ function KanaInput() {
       <InputBox text={inputText} setText={setInputText}/>
       <KanaBoard text={inputText} setText={setInputText}/>
     </>
-  )
+  );
 }
 export default KanaInput;

@@ -14,7 +14,7 @@ const placeholder = {
 
 function KanaBoard( {
   text, 
-  setText
+  setText,
 } ) {
   const [charSet1, setCharSet1] = useState("hiragana");
   const [charSet2, setCharSet2] = useState("katagana");

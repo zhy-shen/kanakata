@@ -15,7 +15,7 @@ function KanaBoard() {
     <div className="match-widget">
       <div></div>
     </div>
-  )
+  );
 }
 
 export default KanaBoard;

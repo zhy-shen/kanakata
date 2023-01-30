@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const copy = 
   <svg className="icon copy" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ContentCopyIcon">
@@ -44,4 +44,4 @@ const svgs = {
   sunMoon: sunMoon,
 }
 
-export default svgs
+export default svgs;
