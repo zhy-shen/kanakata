@@ -5,7 +5,8 @@ function Button({
   text, 
   setText,
   char,
-  display
+  display,
+  onClick
 }) {
   let lengthClass;
   if (char.length === 2) lengthClass = "two-char"
@@ -26,14 +27,6 @@ function Button({
     }
 
     else if (char === "Mode") {
-      document.querySelector("body").classList.toggle('night-mode')
-      
-      if (parseFloat(window.getComputedStyle(document.body).getPropertyValue('--l')) > 60 ) {
-        document.querySelector("body").classList.add('light');
-      }
-      else {
-        document.querySelector("body").classList.remove('light');
-      }
     }
 
     else {
@@ -50,7 +43,7 @@ function Button({
 
   return (
     <div className="button-wrap">
-      <button key={char} className={lengthClass} onClick={addChar}>
+      <button key={char} className={lengthClass} onClick={(onClick) ? onClick : addChar}>
         <span>
           {(display) ? display : char}
         </span>

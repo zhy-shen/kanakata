@@ -1,7 +1,10 @@
 import React, { useEffect } from "react"
-import "./ColorInput.css"
+import Button from "./common/Button"
+import svg from "./common/svgs"
+import "./ColorControl.css"
 
-function ColorInput() {
+function ColorControl() {
+  let input, inputWrapper, body
 
   function hexToHSL(hex, set) {
     if (hex.length === 3) {
@@ -42,10 +45,10 @@ function ColorInput() {
       document.querySelector('body').style.setProperty('--l', l + '%')
 
       if (l > 50 ) {
-        document.querySelector("body").classList.add('light');
+        body.classList.add('light');
       }
       else {
-        document.querySelector("body").classList.remove('light');
+        body.classList.remove('light');
       }
     }
 
@@ -61,30 +64,50 @@ function ColorInput() {
   }
 
   function checkColor(set) {
-    const inputWrapper = document.querySelector('.color-input')
-    const input = document.querySelector('#color')
-    
     let value = input.value
 
     if (testColor(value)) {
       inputWrapper.classList.add('custom')
       inputWrapper.style.setProperty('--color-input-background', '#' + value);
-      (set === "true") ? hexToHSL(value, "true") : hexToHSL(value)
+      (set === "true") ? hexToHSL(value, "true") : hexToHSL(value);
       (hexToHSL(value) < 50) ? inputWrapper.classList.add('light') : inputWrapper.classList.remove('light');
     }
     else {
       inputWrapper.classList.remove('custom')
       inputWrapper.style.setProperty('--color-input-background', bgInitial)
-      (hexToHSL(value) < 50) ? inputWrapper.classList.add('light') : inputWrapper.classList.remove('light');
     }
+  }
+
+  function modeClick() {
+
+    body.classList.toggle('night-mode')
+
+    removeCustomColor()
+
+    bgInitial = window.getComputedStyle(inputWrapper).getPropertyValue('--button-color')
+      
+    if (parseFloat(window.getComputedStyle(document.body).getPropertyValue('--l')) > 60 ) {
+      body.classList.add('light');
+    }
+    else {
+      body.classList.remove('light');
+    }
+
+    checkColor();
+  }
+
+  function removeCustomColor() {
+    body.style.removeProperty('--main-color');
+    body.style.removeProperty('--l');
   }
 
   let bgInitial
 
   useEffect(() => {
-    const inputWrapper = document.querySelector('.color-input')
-    const input = document.querySelector('#color')
-    bgInitial = window.getComputedStyle(inputWrapper).getPropertyValue('--color-input-background')
+    inputWrapper = document.querySelector('.color-input')
+    input = document.querySelector('#color')
+    body = document.querySelector("body")
+    bgInitial = window.getComputedStyle(inputWrapper).getPropertyValue('--button-color')
     
     input.addEventListener('keyup', checkColor)
     input.addEventListener("keyup", ({key}) => {
@@ -95,10 +118,15 @@ function ColorInput() {
   }, []);
   
   return(
-    <div className="color-input">
-        <label>HEX: #</label>
-        <input id="color" type="text" className="input-box" placeholder="123456" pattern="[a-fA-F\d]+" maxLength="6" spellcheck="false" />
-    </div>
+    <>
+      <div className="mode-toggle">
+        <Button char="Mode" display={svg.sunMoon} onClick={modeClick}/>
+      </div>
+      <div className="color-input">
+          <label>HEX: #</label>
+          <input id="color" type="text" className="input-box" placeholder="123456" pattern="[a-fA-F\d]+" maxLength="6" spellCheck="false" />
+      </div>
+    </>
   )
 }
-export default ColorInput;
+export default ColorControl;

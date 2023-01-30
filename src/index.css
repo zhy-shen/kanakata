@@ -41,31 +41,4 @@ body {
       margin-bottom: 30px;
     }
   }
-
-  &.light .sun {
-    display: none;
-  }
-  &.night-mode .moon {
-    display: none;
-  }
-
-  & .mode-toggle {
-    & button {
-      background-color: var(--background-color);
-      background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
-
-      --button-text-color: var(--button-click-text-color);
-      --background-color: var(--button-highlight-color);
-      height: 60px;
-      border-radius: 40px;
-  
-      &:active {
-        background: var(--button-click-color);
-      }
-    }
-
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-  }
 }

@@ -44,34 +44,48 @@ body .content > * {
       margin-bottom: 30px;
     }
 
-body.light .sun {
-    display: none;
+/*!****************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/common/KanaControl.css ***!
+  \****************************************************************************************************************************************************/
+.kana-button-control {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(5, 1fr);
+  position: sticky;
+  top: 270px;
+  z-index: 1;
+  background: var(--button-color);
+  padding: 10px 12px;
+  border-radius: 50px;
+  filter: var(--drop-shadow);
+  margin: auto;
+}
+@media screen and (min-width: 1000px) {
+  .kana-button-control {
+    top: 200px;
+}
   }
-
-body.night-mode .moon {
-    display: none;
+@media screen and (min-width: 800px) {
+  .kana-button-control {
+    grid-area: 1 / 1 / 2 / 3;
+}
   }
-
-body .mode-toggle button {
-      background-color: var(--background-color);
-      background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
-
+.kana-button-control button {
+    background-color: var(--background-color);
+    background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+  }
+.kana-button-control button:active {
+      background: var(--button-click-color);
+    }
+.kana-button-control button.active {
       --button-text-color: var(--button-click-text-color);
       --background-color: var(--button-highlight-color);
-      height: 60px;
-      border-radius: 40px;
     }
-
-body .mode-toggle button:active {
+.kana-button-control button.active:active {
         background: var(--button-click-color);
       }
 
-body .mode-toggle {
-
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-  }
 
 /*!***********************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/common/Button.css ***!
@@ -133,49 +147,6 @@ button svg {
 button svg.space {
       transform: scale(1.2);
     }
-/*!****************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/common/KanaControl.css ***!
-  \****************************************************************************************************************************************************/
-.kana-button-control {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  grid-template-columns: repeat(5, 1fr);
-  position: sticky;
-  top: 270px;
-  z-index: 1;
-  background: var(--button-color);
-  padding: 10px 12px;
-  border-radius: 50px;
-  filter: var(--drop-shadow);
-  margin: auto;
-}
-@media screen and (min-width: 1000px) {
-  .kana-button-control {
-    top: 200px;
-}
-  }
-@media screen and (min-width: 800px) {
-  .kana-button-control {
-    grid-area: 1 / 1 / 2 / 3;
-}
-  }
-.kana-button-control button {
-    background-color: var(--background-color);
-    background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
-  }
-.kana-button-control button:active {
-      background: var(--button-click-color);
-    }
-.kana-button-control button.active {
-      --button-text-color: var(--button-click-text-color);
-      --background-color: var(--button-highlight-color);
-    }
-.kana-button-control button.active:active {
-        background: var(--button-click-color);
-      }
-
-
 /*!*****************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaInput/KanaBoard.css ***!
   \*****************************************************************************************************************************************************/
@@ -368,9 +339,9 @@ button svg.space {
     position:absolute;
     transform: rotateY(-180deg);
   }
-/*!********************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/ColorInput.css ***!
-  \********************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/ColorControl.css ***!
+  \**********************************************************************************************************************************************/
 .color-input {
   --color-input-background: var(--button-color);
   padding: 5px 15px;
@@ -378,30 +349,37 @@ button svg.space {
   left: 25px;
   bottom: 25px;
   background: var(--color-input-background);
-  transition: background 0.5s, font 0.3s;
+  transition: background 0.3s, color 0.3s;
   display: flex;
   place-content: center;
   border-radius: 40px;
   filter: var(--drop-shadow);
 }
+
 .color-input label {
     align-self: center;
   }
+
 .color-input label,
   .color-input input {
     color: var(--button-text-color);
+    transition: background 0.3s, color 0.3s;
   }
+
 .color-input:has(input:invalid) {
     background: red;
   }
+
 .color-input:has(input:invalid) label,
     .color-input:has(input:invalid) input {
       color: white;
     }
+
 .color-input.light.custom label,
     .color-input.light.custom input {
-      color: black;
+      color: white;
     }
+
 .color-input input {
     height: 25px;
     outline: none;
@@ -412,6 +390,43 @@ button svg.space {
     transition: font 0.3s;
     width: 6ch;
   }
+
+.mode-toggle button {
+    background-color: var(--background-color);
+    background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+
+    --button-text-color: var(--button-click-text-color);
+    --background-color: var(--button-highlight-color);
+    height: 60px;
+    border-radius: 40px;
+  }
+
+.mode-toggle button:active {
+      background: var(--button-click-color);
+    }
+
+.mode-toggle {
+
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
+
+body .sun {
+    display: none;
+  }
+
+body .moon {
+    display: block;
+  }
+
+body.night-mode .moon {
+      display: none;
+    }
+
+body.night-mode .sun {
+      display: block;
+    }
 /*!************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/MainNavigation.css ***!
   \************************************************************************************************************************************************/
