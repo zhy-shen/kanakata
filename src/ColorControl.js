@@ -5,7 +5,7 @@ import "./ColorControl.css"
 
 function ColorControl() {
   let input, inputWrapper, body
-  const colorThreshold = 60
+  const colorThreshold = 65
 
   function hexToHSL(hex, set) {
     if (hex.length === 3) {
