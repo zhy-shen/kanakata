@@ -23,9 +23,9 @@ function KanaBoard( {
   
   return (
     <div className="kana-two-column">
-      <KanaControl sc1={setCharSet1} sb1={setButtonSet1} sc2={setCharSet2} sb2={setButtonSet2} />
-      <KanaBoardPart text={text} setText={setText} charSet={charSet1} buttonSet={buttonSet1} />
-      <KanaBoardPart text={text} setText={setText} charSet={charSet2} buttonSet={buttonSet2} />
+      <KanaControl key={"control"} sc1={setCharSet1} sb1={setButtonSet1} sc2={setCharSet2} sb2={setButtonSet2} />
+      <KanaBoardPart key={charSet1 + buttonSet1 + "1"} text={text} setText={setText} charSet={charSet1} buttonSet={buttonSet1} />
+      <KanaBoardPart key={charSet2 + buttonSet2 + "1"} text={text} setText={setText} charSet={charSet2} buttonSet={buttonSet2} />
     </div>
   )
 }

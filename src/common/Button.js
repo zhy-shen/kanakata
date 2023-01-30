@@ -43,7 +43,7 @@ function Button({
 
   return (
     <div className="button-wrap">
-      <button key={char} className={lengthClass} onClick={(onClick) ? onClick : addChar}>
+      <button className={lengthClass} onClick={(onClick) ? onClick : addChar}>
         <span>
           {(display) ? display : char}
         </span>

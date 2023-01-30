@@ -56,34 +56,34 @@ function KanaBoardPart({
     if (specialChars.n.includes(char)) {
       return (
         <>
-          <Button text={text} setText={setText} char={char}/>
-          <Button text={text} setText={setText} char=" "/>
-          <Button text={text} setText={setText} char={(char === "ん") ? "っ" : "ッ"}/>
-          <Button text={text} setText={setText} char=" "/>
-          <Button text={text} setText={setText} char={(char === "ン") ? "ー" : " "}/>
+          <Button key={char} text={text} setText={setText} char={char}/>
+          <Button key={char + "1"} text={text} setText={setText} char=" "/>
+          <Button key={char + "2"} text={text} setText={setText} char={(char === "ん") ? "っ" : "ッ"}/>
+          <Button key={char + "3"} text={text} setText={setText} char=" "/>
+          <Button key={char + "4"} text={text} setText={setText} char={(char === "ン") ? "ー" : " "}/>
         </>
       );
     }
     if (specialChars.triple.includes(char)) {
       return (
         <>
-          <Button text={text} setText={setText} char={char}/>
-          <Button text={text} setText={setText} char=" "/>
-          <Button text={text} setText={setText} char=" "/>
-          <Button text={text} setText={setText} char=" "/>
+          <Button key={char} text={text} setText={setText} char={char}/>
+          <Button key={char + "1"} text={text} setText={setText} char=" "/>
+          <Button key={char + "2"} text={text} setText={setText} char=" "/>
+          <Button key={char + "3"} text={text} setText={setText} char=" "/>
         </>
       );
     }
     else if (specialChars.single.includes(char)) {
       return (
         <>
-          <Button text={text} setText={setText} char={char}/>
-          <Button text={text} setText={setText} char=" "/>
+          <Button key={char} text={text} setText={setText} char={char}/>
+          <Button key={char + "1"} text={text} setText={setText} char=" "/>
         </>
       );
     }
     else {
-      return <Button text={text} setText={setText} char={char}/>
+      return <Button key={char} text={text} setText={setText} char={char}/>
     }
   }
 
