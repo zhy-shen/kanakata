@@ -11,29 +11,45 @@ function Button({
   let lengthClass;
   if (char.length === 2) lengthClass = "two-char";
 
+  const specialChars = [
+    "Space",
+    "Del",
+    "Copy",
+    "Mode",
+    "Translate"
+  ]
+
   function addChar() {
     const inputTRBox = document.querySelector(".input-wrapper.translate");
-    
-    if (char === "Space") {
-      setText(text + ' ');
-    }
 
-    else if (char === "Del") {
-      setText(text.slice(0, -1));
-    }
-
-    else if (char === "Copy") {
-      navigator.clipboard.writeText(text);
-    }
-
-    else if (char === "Mode") {
-    }
-
-    else {
+    if (! specialChars.includes(char)) {
       setText(text + char);
       triggerEvent(inputTRBox, char, 'change');
     }
+    else {
+      doSpecialChar(char);
+    }
+  }
 
+  function doSpecialChar(spChar) {    
+    if (spChar === "Space") {
+      setText(text + ' ');
+    }
+
+    else if (spChar === "Del") {
+      setText(text.slice(0, -1));
+    }
+
+    else if (spChar === "Copy") {
+      navigator.clipboard.writeText(text);
+    }
+
+    else if (spChar === "Mode") {
+    }
+
+    else if (spChar === "Translate") {
+      window.open("https://translate.google.com/?sl=ja&tl=en&text=" + text + "&op=translate", "_blank");
+    }
   }
   
   function triggerEvent(element, char, eventName) {

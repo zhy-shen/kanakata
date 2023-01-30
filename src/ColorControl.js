@@ -4,8 +4,9 @@ import svg from "./common/svgs"
 import "./ColorControl.css"
 
 function ColorControl() {
-  let input, inputWrapper, body
-  const colorThreshold = 65
+  const colorThreshold = 65;
+  const [originalColor, setOriginalColor] = React.useState(123456);
+  let input, inputWrapper, body;
 
   function hexToHSL(hex, set) {
     if (hex.length === 3) {
@@ -80,10 +81,10 @@ function ColorControl() {
   }
 
   function modeClick() {
-
-    body.classList.toggle('night-mode')
-
-    removeCustomColor()
+    reselect();
+    body.classList.toggle('night-mode');
+    setOriginalColor(hslToHex(window.getComputedStyle(body).getPropertyValue('--button-color')));
+    removeCustomColor();
       
     if (parseFloat(window.getComputedStyle(body).getPropertyValue('--l')) > colorThreshold ) {
       body.classList.add('light');
@@ -100,15 +101,39 @@ function ColorControl() {
     body.style.removeProperty('--l');
   }
 
+  function hslToHex(color) {
+    const regexp = /hsl\(\s*(\d+)\s*,\s*(\d+(?:\.\d+)?%)\s*,\s*(\d+(?:\.\d+)?%)\)/g;
+    const res = regexp.exec(color).slice(1);
+
+    let h = res[0];
+    let s = res[1].slice(0, -1);
+    let l = res[2].slice(0, -1);
+
+    l /= 100;
+
+    const a = s * Math.min(l, 1 - l) / 100;
+    const f = n => {
+      const k = (n + h / 30) % 12;
+      const calcColor = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+      return Math.round(255 * calcColor).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+    };
+    return `${f(0)}${f(8)}${f(4)}`;
+  }
+
+  function reselect() {
+    inputWrapper = document.querySelector('.color-input');
+    input = document.querySelector('#color');
+    body = document.querySelector("body");
+  }
+
   useEffect(() => {
-    inputWrapper = document.querySelector('.color-input')
-    input = document.querySelector('#color')
-    body = document.querySelector("body")
+    reselect();
+    setOriginalColor(hslToHex(window.getComputedStyle(body).getPropertyValue('--button-color')));
     
-    input.addEventListener('keyup', checkColor)
+    input.addEventListener('keyup', checkColor);
     input.addEventListener("keyup", ({key}) => {
       if (key === "Enter") {
-        checkColor("true")
+        checkColor("true");
       }
     })
   }, []);
@@ -120,7 +145,7 @@ function ColorControl() {
       </div>
       <div className="color-input">
           <label>HEX: #</label>
-          <input id="color" type="text" className="input-box" placeholder="123456" pattern="[a-fA-F\d]+" maxLength="6" spellCheck="false" />
+          <input id="color" type="text" className="input-box" placeholder={originalColor} pattern="[a-fA-F\d]+" maxLength="6" spellCheck="false" />
       </div>
     </>
   )

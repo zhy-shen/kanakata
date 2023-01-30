@@ -19,7 +19,6 @@ function InputBox( {
     }, {once : true} );
   }
 
-
   checkString();
   function checkString() {
     const string = text;
@@ -113,6 +112,7 @@ function InputBox( {
       </div>
       <div className="control-box">
         <Button key="copy" text={text} setText={setText} char="Copy" display={svgs.copy}/>
+        <Button key="translate" text={text} setText={setText} char="Translate" display={svgs.translate}/>
         <Button key="space" text={text} setText={setText} char="Space" display={svgs.space}/>
         <Button key="delete" text={text} setText={setText} char="Del" display={svgs.backspace}/>
       </div>
