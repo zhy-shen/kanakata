@@ -47,8 +47,8 @@ function KanaBoardPart({
   }
 
   const specialChars = {
-    single: ["や", "ゆ", "ヤ", "ユ", "ゃ", "ゅ", "ャ", "ュ"],
-    triple: ["わ", "ワ"],
+    single: ["や", "ゆ", "ヤ", "ユ", "ワ", "ヴ", "ゃ", "ゅ", "ャ", "ュ"],
+    triple: ["わ"],
     n: ["ん", "ン"],
   }
 

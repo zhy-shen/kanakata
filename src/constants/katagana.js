@@ -62,6 +62,7 @@ const monographs = {
   // W
   ワ: 'wa',
   // ヰ: 'wi',
+  ヴ: 'vu',
   // ヱ: 'we',
   ヲ: 'wo',
 
