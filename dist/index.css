@@ -88,9 +88,7 @@ button:hover {
 
 button:active {
     transition: transform 0.03s;
-    background: var(--button-click-color);
     transform: scale(95%);
-    color: var(--button-click-text-color);
   }
 
 button svg {
@@ -158,6 +156,10 @@ button svg.space {
   filter: var(--drop-shadow);
 }
 
+.header * {
+    --drop-shadow: drop-shadow(1px 1px 1px hsla(var(--main-color), var(--l-dark), 0.35));
+  }
+
 .header .control-box {
     margin: auto 0;
     display: flex;
@@ -171,9 +173,7 @@ button svg.space {
 
 .header .control-box .button-wrap button:active {
         transition: transform 0.03s;
-        background: var(--button-click-color);
         transform: scale(95%);
-        color: var(--button-click-text-color);
       }
 
 .header .input-boxes {
@@ -312,6 +312,9 @@ button svg.space {
 
 .color-input label {
     align-self: center;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
   }
 
 .color-input label,

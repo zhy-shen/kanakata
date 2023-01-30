@@ -11,6 +11,10 @@
   z-index: 1;
   filter: var(--drop-shadow);
 
+  & * {
+    --drop-shadow: drop-shadow(1px 1px 1px hsla(var(--main-color), var(--l-dark), 0.35));
+  }
+
   & .control-box {
     margin: auto 0;
     display: flex;
@@ -22,9 +26,7 @@
 
       &:active {
         transition: transform 0.03s;
-        background: var(--button-click-color);
         transform: scale(95%);
-        color: var(--button-click-text-color);
       }
     }
   }

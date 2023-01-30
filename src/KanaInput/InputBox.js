@@ -39,7 +39,7 @@ function InputBox( {
         
         //check for doubling next syllable
         if (twoChar.charAt(0) === "ッ" || twoChar.charAt(0) === "っ") {
-          if (hasChar(next)) {
+          if (hasChar(next) && !Object.hasOwn(small, next)) {
             engTemp += jpToEn(next).charAt(0);
           }
         }

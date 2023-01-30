@@ -36,9 +36,7 @@ button {
 
   &:active {
     transition: transform 0.03s;
-    background: var(--button-click-color);
     transform: scale(95%);
-    color: var(--button-click-text-color);
   }
 
   & svg {
