@@ -343,6 +343,16 @@ button svg.space {
     transition: background 0.3s, color 0.3s;
   }
 
+.color-input label::-moz-placeholder, .color-input input::-moz-placeholder {
+      color: var(--button-text-color);
+      opacity: 0.75;
+    }
+
+.color-input label::placeholder, .color-input input::placeholder {
+      color: var(--button-text-color);
+      opacity: 0.75;
+    }
+
 .color-input:has(input:invalid) {
     background: red;
   }
@@ -357,10 +367,30 @@ button svg.space {
       color: black;
     }
 
+.color-input.custom label::-moz-placeholder, .color-input.custom input::-moz-placeholder {
+        color: black;
+        opacity: 0.7;
+      }
+
+.color-input.custom label::placeholder, .color-input.custom input::placeholder {
+        color: black;
+        opacity: 0.7;
+      }
+
 .color-input.custom.light label,
       .color-input.custom.light input {
         color: white;
       }
+
+.color-input.custom.light label::-moz-placeholder, .color-input.custom.light input::-moz-placeholder {
+          color: white;
+          opacity: 0.7;
+        }
+
+.color-input.custom.light label::placeholder, .color-input.custom.light input::placeholder {
+          color: white;
+          opacity: 0.7;
+        }
 
 .color-input input {
     height: 25px;
