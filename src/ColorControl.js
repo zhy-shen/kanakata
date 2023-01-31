@@ -78,6 +78,9 @@ function ColorControl() {
       inputWrapper.classList.remove('custom')
       inputWrapper.style.removeProperty('--color-input-background')
     }
+
+    reselect();
+    setOriginalColor(hslToHex(window.getComputedStyle(body).getPropertyValue('--button-color')));
   }
 
   function modeClick() {
