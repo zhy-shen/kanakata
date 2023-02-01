@@ -11,9 +11,10 @@ const config = {
     path: path.resolve(__dirname, "dist"),
     filename: 'main.js',
   },
-  plugins: [new MiniCssExtractPlugin({
-    filename: '[name].css'
-  })],
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    })],
   module: {
     rules: [
       {
