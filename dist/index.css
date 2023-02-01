@@ -29,16 +29,10 @@
     background-color: var(--background-color);
     background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
   }
-.kana-button-control button:active {
-      background: var(--button-click-color);
-    }
 .kana-button-control button.active {
       --button-text-color: var(--button-click-text-color);
       --background-color: var(--button-highlight-color);
     }
-.kana-button-control button.active:active {
-        background: var(--button-click-color);
-      }
 
 
 /*!***********************************************************************************************************************************************!*\
@@ -484,6 +478,8 @@ body {
   --button-click-text-color: hsl(var(--hsl-main));
   --background-color: hsl(var(--main-color), calc(var(--l) - 10%));
   --drop-shadow: drop-shadow(1px 1px 2px hsla(var(--main-color), var(--l-dark), 0.2));
+  
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.night-mode {

@@ -15,6 +15,8 @@ body {
   --button-click-text-color: hsl(var(--hsl-main));
   --background-color: hsl(var(--main-color), calc(var(--l) - 10%));
   --drop-shadow: drop-shadow(1px 1px 2px hsla(var(--main-color), var(--l-dark), 0.2));
+  
+  -webkit-tap-highlight-color: transparent;
 
   &.night-mode {
     --main-color: 0, 0%;
