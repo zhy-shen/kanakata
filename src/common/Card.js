@@ -4,8 +4,8 @@ import "./Card.css";
 function Card({ front, back }) {
   return (
     <div className="char-card">
-      <div className="card-front">{front}</div>
-      <div className="card-back">{back}</div>
+      <div className={(front === " ") ? "card-front empty" : "card-front"}>{front}</div>
+      <div className={(back === " ") ? "card-back empty" : "card-back"}>{back}</div>
     </div>
   );
 }

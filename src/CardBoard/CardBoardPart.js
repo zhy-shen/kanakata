@@ -32,8 +32,14 @@ function CardBoard({ set, type }) {
     }
   }
 
+  const specialChars = {
+    single: ["や", "ゆ", "ヤ", "ユ", "ワ", "ヴ"],
+    triple: ["わ"],
+    n: ["ん", "ン"],
+  }
+
   function cardMarkup(front, back) {
-    if (front === "ん" || front === "ン") {
+    if (specialChars.n.includes(front)) {
       return (
         <React.Fragment key={front + "fragment"}>
           <CharCard front={front} back={back} />
@@ -44,7 +50,7 @@ function CardBoard({ set, type }) {
         </React.Fragment>
       );
     }
-    if (front === "わ" || front === "ワ") {
+    if (specialChars.triple.includes(front)) {
       return (
         <React.Fragment key={front + "fragment"}>
           <CharCard front={front} back={back} />
@@ -54,7 +60,7 @@ function CardBoard({ set, type }) {
         </React.Fragment>
       );
     }
-    else if (front === "や" || front === "ゆ" || front === "ヤ" || front === "ユ") {
+    else if (specialChars.single.includes(front)) {
       return (
         <React.Fragment key={front + "fragment"}>
           <CharCard front={front} back={back} />
