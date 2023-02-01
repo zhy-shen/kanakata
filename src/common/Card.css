@@ -45,8 +45,4 @@
     position:absolute;
     transform: rotateY(-180deg);
   }
-
-  & .empty {
-    opacity: 0.25;
-  }
 }

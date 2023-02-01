@@ -40,5 +40,11 @@ body {
     & > * {
       margin-bottom: 30px;
     }
+
+    & .empty {
+      opacity: 0.5;
+      filter: none;
+      pointer-events: none;
+    }
   }
 }

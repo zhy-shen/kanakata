@@ -10,6 +10,7 @@ function Button({
 }) {
   let lengthClass;
   if (char.length === 2) lengthClass = "two-char";
+  else if (char === " ") lengthClass = "empty";
 
   const specialChars = [
     "Space",

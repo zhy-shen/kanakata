@@ -27,14 +27,14 @@ button {
   background-position: bottom right;
   transition: background 0.2s, transform 0.2s;
 
-  &:hover {
+  &:hover:not(.empty) {
     transform: translate(-1px, -1px);
     background-position: top left;
     --button-text-color: var(--button-click-text-color);
     background-color: var(--button-click-color);
   }
 
-  &:active {
+  &:active:not(.empty) {
     transition: transform 0.03s;
     transform: scale(95%);
   }

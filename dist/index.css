@@ -79,14 +79,14 @@ button {
   transition: background 0.2s, transform 0.2s;
 }
 
-button:hover {
+button:hover:not(.empty) {
     transform: translate(-1px, -1px);
     background-position: top left;
     --button-text-color: var(--button-click-text-color);
     background-color: var(--button-click-color);
   }
 
-button:active {
+button:active:not(.empty) {
     transition: transform 0.03s;
     transform: scale(95%);
   }
@@ -292,9 +292,6 @@ button svg.space {
     opacity: 0.5;
     position:absolute;
     transform: rotateY(-180deg);
-  }
-.char-card .empty {
-    opacity: 0.25;
   }
 /*!*****************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/CardBoard/CardBoard.css ***!
@@ -511,5 +508,11 @@ body {
 
 body .content > * {
       margin-bottom: 30px;
+    }
+
+body .content .empty {
+      opacity: 0.5;
+      filter: none;
+      pointer-events: none;
     }
 
