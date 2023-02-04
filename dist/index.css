@@ -208,6 +208,18 @@ button svg.space {
     scrollbar-width: none;
   }
 
+.header .input-wrapper.ruby {
+      font-size: 24px;
+      place-items: center;
+      padding: 12px 15px 12px 23px;
+    }
+
+.header .input-wrapper.ruby:has(ruby) {
+        font-size: 20px;
+        place-items: flex-end;
+        padding: 14px 15px 10px 23px;
+      }
+
 .header .input-wrapper::-webkit-scrollbar {
       display: none;
     }

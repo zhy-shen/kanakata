@@ -33,6 +33,11 @@
   },
   "dependencies": {
     "babel-plugin-postcss": "^1.1.0",
+    "html-react-parser": "^3.0.8",
+    "kuromoji": "^0.1.2",
+    "kuroshiro": "~1.1.0",
+    "kuroshiro-analyzer-kuromoji": "^1.1.0",
+    "path-browserify": "^1.0.1",
     "postcss-import": "^15.1.0",
     "postcss-preset-env": "^8.0.0",
     "react": "^18.2.0",

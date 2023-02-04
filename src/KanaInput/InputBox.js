@@ -1,22 +1,97 @@
 import React, { useEffect } from "react";
-import jpEnMap from "../constants/jpEnMap";
-import small from "../constants/jpEnmap/jpEnMapSmall";
 import svgs from "../common/svgs";
 import Button from "../common/Button";
 import "./InputBox.css";
+
+import parse from 'html-react-parser';
+
+//Kuroshiro
+import Kuroshiro from "kuroshiro";
+import KuromojiAnalyzer from "kuroshiro-analyzer-kuromoji";
+const mode = "furigana";
+const translateTo = "hiragana";
 
 function InputBox( {
   text, 
   setText,
 } ) {
-  let engTrans = "inputto";
+  let textTemp = text;
+  const [engTrans, setEngTrans] = React.useState("inputto");
+  const kuroshiro = new Kuroshiro();
 
   function autoTranslate() {
     const inputTRBox = document.querySelector(".input-wrapper.translate");
     
     inputTRBox.addEventListener('change', function(e) {
-      setText(e.detail);
+      textTemp = e.detail;
     }, {once : true} );
+  }
+
+  useEffect(() => {
+    kuroInit();
+    async function kuroInit() {
+      await kuroshiro.init(
+        new KuromojiAnalyzer({
+          dictPath: '/dist/dict'
+        }));
+      const engTemp = await kuroshiro.convert(text, {mode: mode, to: translateTo});
+
+      if (engTrans != engTemp) {
+        setEngTrans(engTemp);
+      }
+    }
+    autoTranslate();
+  }, []);
+
+  useEffect(() => {
+    kuroInit();
+    async function kuroInit() {
+      await kuroshiro.init(
+        new KuromojiAnalyzer({
+          dictPath: '/dist/dict'
+        }));
+      const engTemp = await kuroshiro.convert(text, {mode: mode, to: translateTo});
+
+      if (engTrans != engTemp) {
+        setEngTrans(engTemp);
+      }
+    }
+  }, [text]);
+
+  return (
+    <div className="header">
+      <div className="input-boxes">
+      <div className="input-wrapper">
+        <h2 id="input-box">{textTemp}</h2>
+      </div>
+      <div className={"input-wrapper translate" + ((mode === "furigana") ? " ruby" : "")}>
+        { (mode === "furigana") ? parse(engTrans) : <h2 id="input-translate">engTrans</h2> }
+      </div>
+      </div>
+      <div className="control-box">
+        <Button key="copy" text={text} setText={setText} char="Copy" display={svgs.copy}/>
+        <Button key="paste" text={text} setText={setText} char="Paste" display={svgs.paste}/>
+        <Button key="translate" text={text} setText={setText} char="Translate" display={svgs.translate}/>
+        <Button key="space" text={text} setText={setText} char="Space" display={svgs.space}/>
+        <Button key="delete" text={text} setText={setText} char="Del" display={svgs.backspace}/>
+      </div>
+    </div>
+  );
+}
+
+export default InputBox;
+
+/*
+import jpEnMap from "../constants/jpEnMap";
+import small from "../constants/jpEnmap/jpEnMapSmall";
+
+
+  function hasChar(char) {
+    return Object.hasOwn(jpEnMap, char);
+  }
+
+  function jpToEn(char) {
+    return jpEnMap[char];
   }
 
   checkString();
@@ -84,41 +159,6 @@ function InputBox( {
         engTemp += engTemp.slice(-1);
       }
     }
-
-    engTrans = engTemp;
   }
 
-  function hasChar(char) {
-    return Object.hasOwn(jpEnMap, char);
-  }
-
-  function jpToEn(char) {
-    return jpEnMap[char];
-  }
-
-  useEffect(() => {
-    autoTranslate();
-  }, []);
-
-  return (
-    <div className="header">
-      <div className="input-boxes">
-      <div className="input-wrapper">
-        <h2 id="input-box">{text}</h2>
-      </div>
-      <div className="input-wrapper translate">
-        <h2 id="input-translate">{engTrans}</h2>
-      </div>
-      </div>
-      <div className="control-box">
-        <Button key="copy" text={text} setText={setText} char="Copy" display={svgs.copy}/>
-        <Button key="paste" text={text} setText={setText} char="Paste" display={svgs.paste}/>
-        <Button key="translate" text={text} setText={setText} char="Translate" display={svgs.translate}/>
-        <Button key="space" text={text} setText={setText} char="Space" display={svgs.space}/>
-        <Button key="delete" text={text} setText={setText} char="Del" display={svgs.backspace}/>
-      </div>
-    </div>
-  );
-}
-
-export default InputBox;
+  */

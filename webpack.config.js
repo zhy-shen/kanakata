@@ -1,8 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
+  resolve: {
+    fallback: {
+      "path": require.resolve('path-browserify'),
+    } 
+  },
   watch: true,
   entry: {
     index: './src/index.js',
@@ -15,6 +20,9 @@ const config = {
     new MiniCssExtractPlugin({
       filename: '[name].css'
     })],
+  experiments: {
+    topLevelAwait: true
+  },
   module: {
     rules: [
       {
