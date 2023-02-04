@@ -9,8 +9,7 @@ function Button({
   onClick,
 }) {
   let lengthClass;
-  if (char.length === 2) lengthClass = "two-char";
-  else if (char === " ") lengthClass = "empty";
+  if (char === " ") lengthClass = "empty";
 
   const specialChars = [
     "Space",
@@ -22,7 +21,7 @@ function Button({
   ]
 
   function addChar() {
-    const inputTRBox = document.querySelector(".input-wrapper.translate");
+    const inputTRBox = document.querySelector(".header");
 
     if (! specialChars.includes(char)) {
       setText(text + char);

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import svgs from "../common/svgs";
 import Button from "../common/Button";
 import "./InputBox.css";
@@ -6,66 +6,58 @@ import "./InputBox.css";
 import parse from 'html-react-parser';
 
 //Kuroshiro
-import Kuroshiro from "kuroshiro";
 import KuromojiAnalyzer from "kuroshiro-analyzer-kuromoji";
-const mode = "furigana";
-const translateTo = "hiragana";
+const mode = "normal"; // [normal, spaced, okurigana, furigana]
+const translateTo = "romaji"; //[hiragana, katakana, romaji]
+const romanjiSystem = "nippon"; //[nippon, passport, hepburn]
 
 function InputBox( {
   text, 
   setText,
+  kuroshiro,
+  ready,
+  setReady,
 } ) {
-  let textTemp = text;
-  const [engTrans, setEngTrans] = React.useState("inputto");
-  const kuroshiro = new Kuroshiro();
+  
+  const [engTrans, setEngTrans] = React.useState("Translator Not Yet Ready");
 
-  function autoTranslate() {
-    const inputTRBox = document.querySelector(".input-wrapper.translate");
-    
+  function textReset() {
+    const inputTRBox = document.querySelector(".header");
     inputTRBox.addEventListener('change', function(e) {
-      textTemp = e.detail;
+      setText(e.detail);
     }, {once : true} );
   }
 
-  useEffect(() => {
-    kuroInit();
-    async function kuroInit() {
-      await kuroshiro.init(
-        new KuromojiAnalyzer({
-          dictPath: '/dist/dict'
-        }));
-      const engTemp = await kuroshiro.convert(text, {mode: mode, to: translateTo});
+  async function kuroTranslate() {
+    const engTemp = await kuroshiro.convert(text, {mode: mode, to: translateTo});
+    if (engTrans != engTemp) setEngTrans(engTemp);
+  }
 
-      if (engTrans != engTemp) {
-        setEngTrans(engTemp);
-      }
-    }
-    autoTranslate();
-  }, []);
+  //initialize kuroshiro with translator
+  async function kuroInit() {
+    await kuroshiro.init( new KuromojiAnalyzer({ dictPath: '/dist/dict' }));
+    setReady(true);
+    kuroTranslate();
+  }
 
   useEffect(() => {
-    kuroInit();
-    async function kuroInit() {
-      await kuroshiro.init(
-        new KuromojiAnalyzer({
-          dictPath: '/dist/dict'
-        }));
-      const engTemp = await kuroshiro.convert(text, {mode: mode, to: translateTo});
-
-      if (engTrans != engTemp) {
-        setEngTrans(engTemp);
-      }
-    }
+    //only translate when kuroshiro is ready
+    if (ready) kuroTranslate();
   }, [text]);
+
+  useEffect(() => {
+    textReset();
+    kuroInit();
+  }, []);
 
   return (
     <div className="header">
       <div className="input-boxes">
       <div className="input-wrapper">
-        <h2 id="input-box">{textTemp}</h2>
+        <h2 id="input-box">{text}</h2>
       </div>
       <div className={"input-wrapper translate" + ((mode === "furigana") ? " ruby" : "")}>
-        { (mode === "furigana") ? parse(engTrans) : <h2 id="input-translate">engTrans</h2> }
+        { (mode === "furigana") ? parse(engTrans) : <h2 id="input-translate">{engTrans}</h2> }
       </div>
       </div>
       <div className="control-box">
