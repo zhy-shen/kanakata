@@ -16,6 +16,7 @@ function Button({
     "Space",
     "Del",
     "Copy",
+    "Paste",
     "Mode",
     "Translate"
   ]
@@ -43,6 +44,10 @@ function Button({
 
     else if (spChar === "Copy") {
       navigator.clipboard.writeText(text);
+    }
+
+    else if (spChar === "Paste") {
+      navigator.clipboard.readText().then((clipText) => setText(clipText));
     }
 
     else if (spChar === "Mode") {
