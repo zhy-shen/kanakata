@@ -35,7 +35,7 @@ function InputBox( {
 
   //initialize kuroshiro with translator
   async function kuroInit() {
-    await kuroshiro.init( new KuromojiAnalyzer({ dictPath: '/kanakata/dist/dict' }));
+    await kuroshiro.init( new KuromojiAnalyzer({ dictPath: '/kanakata/dict' }));
     setReady(true);
     kuroTranslate();
   }
