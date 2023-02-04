@@ -7,7 +7,7 @@ import parse from 'html-react-parser';
 
 //Kuroshiro
 import KuromojiAnalyzer from "kuroshiro-analyzer-kuromoji";
-const mode = "normal"; // [normal, spaced, okurigana, furigana]
+const mode = "furigana"; // [normal, spaced, okurigana, furigana]
 const translateTo = "romaji"; //[hiragana, katakana, romaji]
 const romanjiSystem = "nippon"; //[nippon, passport, hepburn]
 
@@ -35,7 +35,7 @@ function InputBox( {
 
   //initialize kuroshiro with translator
   async function kuroInit() {
-    await kuroshiro.init( new KuromojiAnalyzer({ dictPath: '/dist/dict' }));
+    await kuroshiro.init( new KuromojiAnalyzer({ dictPath: '/kanakata/dist/dict' }));
     setReady(true);
     kuroTranslate();
   }
