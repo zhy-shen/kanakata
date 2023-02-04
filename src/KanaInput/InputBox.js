@@ -7,7 +7,7 @@ import parse from 'html-react-parser';
 
 //Kuroshiro
 import KuromojiAnalyzer from "kuroshiro-analyzer-kuromoji";
-const mode = "furigana"; // [normal, spaced, okurigana, furigana]
+const mode = "normal"; // [normal, spaced, okurigana, furigana]
 const translateTo = "romaji"; //[hiragana, katakana, romaji]
 const romanjiSystem = "nippon"; //[nippon, passport, hepburn]
 
