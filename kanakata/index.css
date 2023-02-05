@@ -137,7 +137,7 @@ button svg.space {
   display: flex;
   gap: 20px;
   width: max(750px, 60vw);
-  margin-top: 10px;
+  margin: 10px auto auto auto;
   background: var(--button-color);
   padding: 20px calc(((90vw - 80px) - max(600px, 60vw) )/ 2);
   border-radius: 100px;
@@ -464,7 +464,7 @@ ul {
   justify-content: space-between;
   max-width: 500px;
   margin: 0 auto;
-  overflow-y: scroll;
+  overflow-x: auto;
 }
 @media screen and (max-width: 300px) {
   ul {
