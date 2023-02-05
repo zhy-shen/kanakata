@@ -72,13 +72,6 @@ body {
       height: 100%;
       flex-grow: 1;
 
-      &:has(.noboard) {
-        & .navigation {
-            margin-bottom: -60px;
-            z-index: 1;
-          }
-      }
-
       @media screen and (max-width: 460px) {
         &:has(.noboard) {
           & .navigation {
@@ -90,6 +83,15 @@ body {
       & .navigation {
         & ul {
           flex-flow: wrap;
+        }
+      }
+
+      @media screen and (max-width: 1399px) {
+        &:has(.noboard) {
+          & .navigation {
+              margin-bottom: -60px;
+              z-index: 1;
+            }
         }
       }
 
