@@ -1,10 +1,666 @@
-.content .kana-button-control{background:var(--button-color);border-radius:50px;display:flex;filter:var(--drop-shadow);flex-wrap:wrap;gap:10px;grid-template-columns:repeat(5,1fr);margin:auto auto 20px;padding:10px 12px;position:sticky;top:270px;z-index:1}@media screen and (min-width:1000px){.content .kana-button-control{top:200px}}@media screen and (min-width:800px){.content .kana-button-control{grid-area:1/1/2/3}}.content .kana-button-control button{background-color:var(--background-color);background-image:linear-gradient(to bottom right,var(--button-highlight-color) 49.5%,var(--background-color) 50%)}.content .kana-button-control button.active{--button-text-color:var(--button-click-text-color);--background-color:var(--button-highlight-color)}
-.button-wrap{display:flex}button{border:none;border-radius:25px;color:var(--button-text-color);cursor:pointer;filter:var(--drop-shadow);flex:1 0 17%;font-size:20px;margin:auto;min-width:60px;padding:10px 20px;-webkit-user-select:none;-moz-user-select:none;user-select:none;white-space:nowrap}button.two-char{padding:10px}button{animation-fill-mode:forwards;background-color:var(--button-color);background-image:linear-gradient(to bottom right,var(--button-highlight-color) 49.5%,var(--button-color) 50%);background-position:100% 100%;background-size:210% 210%;transition:background .2s,transform .2s}button:hover:not(.empty){--button-text-color:var(--button-click-text-color);background-color:var(--button-click-color);background-position:0 0;transform:translate(-1px,-1px)}button:active:not(.empty){transform:scale(95%);transition:transform .03s}button svg{margin-bottom:-1px;transform:scale(1.15)}button svg.space{transform:scale(1.2)}
-.kana-two-column{-moz-column-gap:min(75px,5vw);column-gap:min(75px,5vw);display:grid;grid-template-columns:repeat(2,1fr);margin-left:auto;margin-right:auto;place-items:flex-end;row-gap:35px;width:-moz-fit-content;width:fit-content}@media screen and (max-width:800px){.kana-two-column{grid-template-columns:1fr}}.kana-two-column .kana-input-buttons{-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-columns:repeat(5,1fr);margin-bottom:auto;place-content:space-between;row-gap:15px;width:-moz-fit-content;width:fit-content}@media screen and (max-width:380px){.kana-two-column .kana-input-buttons{margin-right:-8px;max-width:calc(100vw - 40px);overflow-y:scroll}}
-.kana-button-control.kuro{width:-moz-fit-content;width:fit-content}.kana-button-control.kuro button.ruby{padding-bottom:7px;padding-top:7px}
-.header{background:var(--button-color);border-radius:100px;display:flex;filter:var(--drop-shadow);gap:20px;margin:10px auto auto;padding:20px calc(((90vw - 80px) - max(600px, 60vw))/2);position:sticky;top:10px;width:max(750px,60vw);z-index:1}.header *{--drop-shadow:drop-shadow(1px 1px 1px hsla(var(--main-color),var(--l-dark),0.35))}.header .control-box{display:flex;gap:10px;justify-content:space-around;margin:auto 0}.header .control-box .button-wrap button{background-image:linear-gradient(to bottom right,var(--button-highlight-color) 49.5%,var(--background-color) 50%)}.header .control-box .button-wrap button:active{transform:scale(95%);transition:transform .03s}.header .input-boxes{display:flex;flex-direction:column;flex-grow:1;gap:20px;justify-content:space-between}@media screen and (max-width:1000px){.header{border-radius:60px;flex-direction:column;padding:25px;width:calc(100vw - 90px)}.header,.header .input-boxes{gap:15px}}.header .input-wrapper{-ms-overflow-style:none;background-color:var(--background-color);border-radius:30px;color:#fff;display:flex;filter:var(--drop-shadow);height:35px;margin:auto 0;overflow-x:scroll;overflow-y:hidden;padding:12px 15px;scrollbar-width:none}.header .input-wrapper.ruby:not(.prepare){font-size:24px;padding:12px 15px 12px 32px;place-items:center}.header .input-wrapper.ruby:not(.prepare):has(ruby){font-size:20px;padding:12px 15px 12px 23px;place-items:flex-end}.header .input-wrapper.ruby:not(.prepare)>*{color:var(--button-text-color)}.header .input-wrapper.translate.prepare h2{animation:blink-animation 1s steps(2,start) infinite}.header .input-wrapper::-webkit-scrollbar{display:none}.header .input-wrapper h2,.header .input-wrapper input{color:var(--button-text-color);display:block;margin:auto 0 auto 8px;padding-right:2px;position:relative;white-space:pre}.header .input-wrapper input{background:none;border:none;font-size:24px;margin-left:4px;margin-top:-1px;outline:none;width:100%}.header .input-wrapper:first-child>h2:first-child:after{animation:blink-animation 1.2s steps(2,start) infinite;background:var(--button-text-color);content:" ";height:calc(100% - 10px);margin:6px 0;opacity:.8;position:absolute;right:-5px;width:2px}@keyframes blink-animation{to{visibility:hidden}}@keyframes shimmer{0%{background-position:100%}to{background-position:0}}
-.char-card{--card-length:min(7vw,120px);--card-font-size:calc(var(--card-length)/3);display:inline-grid;height:var(--card-length);perspective:1000px;position:relative;-webkit-user-select:none;-moz-user-select:none;user-select:none;width:var(--card-length)}@media screen and (max-width:800px){.char-card{--card-length:min(14vw,150px)}}.char-card:hover .card-front:not(.empty){opacity:.5;transform:rotateY(180deg)}.char-card:hover .card-back:not(.empty){opacity:1;transform:rotateY(0)}.char-card>div{-webkit-backface-visibility:hidden;backface-visibility:hidden;background:var(--button-color);color:var(--button-text-color);display:grid;filter:var(--drop-shadow);font-size:var(--card-font-size);height:100%;place-content:center;transition:transform .4s,opacity .4s;width:100%}.char-card .card-front{position:absolute}.char-card .card-back{opacity:.5;position:absolute;transform:rotateY(-180deg)}
-.kana-two-column:has(.kana-cards){margin-top:30px}.kana-two-column:has(.kana-cards) .kana-button-control{top:30px}.kana-cards{display:grid;gap:15px;grid-template-columns:repeat(5,1fr);margin-bottom:auto;place-content:space-between;width:-moz-fit-content;width:fit-content}
-.color-input{--color-input-background:var(--button-color);background:var(--color-input-background);border-radius:40px;bottom:25px;display:flex;filter:var(--drop-shadow);left:25px;padding:5px 15px;place-content:center;position:fixed;transition:background .3s,color .3s}.color-input label{align-self:center;-webkit-user-select:none;-moz-user-select:none;user-select:none}.color-input input,.color-input label{color:var(--button-text-color);transition:background .3s,color .3s}.color-input input::-moz-placeholder,.color-input label::-moz-placeholder{color:var(--button-text-color);opacity:.75}.color-input input::placeholder,.color-input label::placeholder{color:var(--button-text-color);opacity:.75}.color-input:has(input:invalid){background:red}.color-input:has(input:invalid) input,.color-input:has(input:invalid) label{color:#fff}.color-input.custom input,.color-input.custom label{color:#000}.color-input.custom input::-moz-placeholder,.color-input.custom label::-moz-placeholder{color:#000;opacity:.7}.color-input.custom input::placeholder,.color-input.custom label::placeholder{color:#000;opacity:.7}.color-input.custom.light input,.color-input.custom.light label{color:#fff}.color-input.custom.light input::-moz-placeholder,.color-input.custom.light label::-moz-placeholder{color:#fff;opacity:.7}.color-input.custom.light input::placeholder,.color-input.custom.light label::placeholder{color:#fff;opacity:.7}.color-input input{background:none;border:none;font-size:20px;height:25px;outline:none;padding:5px;transition:font .3s;width:6ch}.mode-toggle button{--button-text-color:var(--button-click-text-color);--background-color:var(--button-highlight-color);background-color:var(--background-color);background-image:linear-gradient(to bottom right,var(--button-highlight-color) 49.5%,var(--background-color) 50%);border-radius:40px;height:60px}.mode-toggle button:active{background:var(--button-click-color)}.mode-toggle{bottom:25px;position:fixed;right:25px}body .sun{display:none}body .moon{display:block}body.night-mode .moon{display:none}body.night-mode .sun{display:block}
-ul{display:flex;gap:10px;justify-content:space-between;margin:0 auto;max-width:500px;overflow-x:auto;padding:0}@media screen and (max-width:300px){ul{flex-direction:column;max-width:calc(100vw - 40px)}}ul li{cursor:pointer;list-style:none;padding:10px 12px 20px;-webkit-user-select:none;-moz-user-select:none;user-select:none}ul li span{color:var(--button-text-color)}
-body{--main-color:71,61%;--l:71%;--l-t:90%;--l-dark:calc(var(--l) - 50%);--hsl-main:var(--main-color),var(--l);--hsl-dark:var(--main-color),var(--l-t);--button-color:hsl(var(--hsl-main));--button-highlight-color:hsl(var(--hsl-dark));--button-text-color:hsl(var(--hsl-dark));--button-click-color:#e3e3e3;--button-click-text-color:hsl(var(--hsl-main));--text-color-half-opacity:hsl(var(--hsl-dark),0.5);--background-color:hsl(var(--main-color),calc(var(--l) - 10%));--drop-shadow:drop-shadow(1px 1px 2px hsla(var(--main-color),var(--l-dark),0.2));-webkit-tap-highlight-color:transparent;margin:20px;overscroll-behavior-x:none;overscroll-behavior-y:none}body.night-mode{--main-color:0,0%;--l:21%;--hsl-main:var(--main-color),var(--l);--hsl-dark:var(--main-color),var(--l-t)}body.light{--l-t:10%}html *{font-family:Zen Kaku Gothic New,sans-serif;font-weight:500}body{background:var(--background-color)}body .content>*{margin-bottom:30px}body .content .empty{filter:none;opacity:.5;pointer-events:none}
+/*!****************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/common/KanaControl.css ***!
+  \****************************************************************************************************************************************************/
+.content .kana-button-control {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(5, 1fr);
+  position: sticky;
+  top: 270px;
+  z-index: 1;
+  background: var(--button-color);
+  padding: 10px 12px;
+  border-radius: 50px;
+  filter: var(--drop-shadow);
+  margin: auto;
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 1000px) {
+  .content .kana-button-control {
+    top: 200px;
+}
+  }
+@media screen and (min-width: 800px) {
+  .content .kana-button-control {
+    grid-area: 1 / 1 / 2 / 3;
+}
+  }
+.content .kana-button-control button {
+    background-color: var(--background-color);
+    background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+  }
+.content .kana-button-control button.active {
+      --button-text-color: var(--button-click-text-color);
+      --background-color: var(--button-highlight-color);
+    }
+
+
+/*!***********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/common/Button.css ***!
+  \***********************************************************************************************************************************************/
+.button-wrap {
+  display: flex;
+}
+
+button {
+  color: var(--button-text-color);
+  min-width: 60px;
+  font-size: 20px;
+  border-radius: 25px;
+  padding: 10px 20px;
+  border: none;
+  margin: auto;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  filter: var(--drop-shadow);
+  flex: 1 0 17%;
+  white-space: nowrap;
+}
+
+button.two-char {
+    padding: 10px;
+  }
+
+button {
+
+  animation-fill-mode: forwards;
+  background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--button-color) 50%);
+  background-size: 210% 210%;
+  background-color: var(--button-color);
+  background-position: bottom right;
+  transition: background 0.2s, transform 0.2s;
+}
+
+button:hover:not(.empty) {
+    transform: translate(-1px, -1px);
+    background-position: top left;
+    --button-text-color: var(--button-click-text-color);
+    background-color: var(--button-click-color);
+  }
+
+button:active:not(.empty) {
+    transition: transform 0.03s;
+    transform: scale(95%);
+  }
+
+button svg {
+    transform: scale(1.15);
+    margin-bottom: -1px;
+  }
+
+button svg.space {
+      transform: scale(1.2);
+    }
+/*!*****************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaInput/KanaBoard.css ***!
+  \*****************************************************************************************************************************************************/
+.kana-two-column {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 35px;
+  -moz-column-gap: min(75px, 5vw);
+       column-gap: min(75px, 5vw);
+  margin-left: auto;
+  margin-right: auto;
+  place-items: flex-end;
+
+}
+@media screen and (max-width: 800px) {
+  .kana-two-column {
+    grid-template-columns: 1fr;
+
+}
+  }
+.kana-two-column .kana-input-buttons {
+    width: -moz-fit-content;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 15px;
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+    place-content: space-between;
+    margin-bottom: auto;
+  }
+@media screen and (max-width: 380px) {
+    .kana-two-column .kana-input-buttons {
+      max-width: calc(100vw - 40px);
+      margin-right: -8px;
+      overflow-y: scroll;
+    }
+  }
+/*!*******************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaInput/KuroControl.css ***!
+  \*******************************************************************************************************************************************************/
+.kuro-button-wrapper {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 15px;
+  align-self: center;
+  flex-flow: wrap;
+  place-content: space-evenly;
+}
+
+.kana-button-control.kuro {
+  margin: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: opacity 0.3s, filter 0.3s;
+}
+
+.kana-button-control.kuro.inactive {
+    opacity: 0.5;
+    filter: none;
+  }
+
+.kana-button-control.kuro button.ruby {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+/*!****************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaInput/InputBox.css ***!
+  \****************************************************************************************************************************************************/
+.header {
+  display: flex;
+  gap: 20px;
+  width: max(750px, 60vw);
+  margin: 10px auto auto auto;
+  background: var(--button-color);
+  padding: 20px calc(((90vw - 80px) - max(600px, 60vw) )/ 2);
+  border-radius: 100px;
+  position: sticky;
+  top: 10px;
+  z-index: 2;
+  filter: var(--drop-shadow);
+}
+
+.header * {
+    --drop-shadow: drop-shadow(1px 1px 1px hsla(var(--main-color), var(--l-dark), 0.35));
+  }
+
+.header .control-box {
+    margin: auto 0;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+  }
+
+.header .control-box .button-wrap button {
+      background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+    }
+
+.header .control-box .button-wrap button:active {
+        transition: transform 0.03s;
+        transform: scale(95%);
+      }
+
+.header .input-boxes {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+@media screen and (max-width: 1000px) {
+
+.header {
+    flex-direction: column;
+    padding: 25px 25px 20px;
+    width: calc(100vw - 90px);
+    border-radius: 60px;
+    gap: 15px;
+}
+
+    .header .input-boxes {
+      gap: 15px;
+    }
+  }
+
+.header .input-wrapper {
+    color: var(--button-text-color);
+    background-color: var(--background-color);
+    filter: var(--drop-shadow);
+    border-radius: 30px;
+    padding: 12px 15px;
+    display: flex;
+    margin: auto 0;
+    height: 35px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+  }
+
+.header .input-wrapper.ruby:not(.prepare) {
+      font-size: 24px;
+      place-items: center;
+      padding: 12px 15px 12px 32px;
+    }
+
+.header .input-wrapper.ruby:not(.prepare):has(ruby) {
+        padding: 12px 15px 12px 23px;
+        font-size: 20px;
+        place-items: flex-end;
+      }
+
+.header .input-wrapper.ruby:not(.prepare) > * {
+        color: var(--button-text-color);
+      }
+
+.header .input-wrapper.translate.prepare h2 {
+        animation: blink-animation 1s steps(2, start) infinite;
+      }
+
+.header .input-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+.header .input-wrapper input,
+    .header .input-wrapper h2 {
+      margin: auto 0 auto 8px;
+      display: block;
+      color: var(--button-text-color);
+      white-space: pre;
+      padding-right: 2px;
+      position: relative;
+    }
+
+.header .input-wrapper input {
+      width: 100%;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 24px;
+      margin-top: -1px;
+      margin-left: 4px;
+    }
+
+.header .input-wrapper:first-child > h2:first-child::after {
+      content: " ";
+      width: 2px;
+      background: var(--button-text-color);
+      right: -5px;
+      margin: 6px 0;
+      position: absolute;
+      height: calc(100% - 10px);
+      animation: blink-animation 1.2s steps(2, start) infinite;
+      opacity: 0.8;
+    }
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+    
+@keyframes shimmer {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+/*!*********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/common/Card.css ***!
+  \*********************************************************************************************************************************************/
+.char-card {
+  --card-length: min(7vw, 120px);
+  --card-font-size: calc(var(--card-length) / 3);
+  display: inline-grid;
+  position: relative;
+  width: var(--card-length);
+  height: var(--card-length);
+  perspective: 1000px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+@media screen and (max-width: 800px) {
+  .char-card {
+    --card-length: min(14vw, 150px);
+}
+  }
+.char-card:hover .card-front:not(.empty) {
+      transform: rotateY(180deg);
+      opacity: 0.5;
+    }
+.char-card:hover .card-back:not(.empty) {
+      transform: rotateY(0);
+      opacity: 1;
+    }
+.char-card > div {
+    display: grid;
+    font-size: var(--card-font-size);
+    transition: transform 0.4s, opacity 0.4s;
+    place-content: center;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    background: var(--button-color);
+    color: var(--button-text-color);
+    filter: var(--drop-shadow);
+  }
+.char-card .card-front {
+    position:absolute;
+  }
+.char-card .card-back {
+    opacity: 0.5;
+    position:absolute;
+    transform: rotateY(-180deg);
+  }
+/*!*****************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/CardBoard/CardBoard.css ***!
+  \*****************************************************************************************************************************************************/
+.kana-two-column:has(.kana-cards) {
+  margin-top: 30px;
+}
+
+.kana-two-column:has(.kana-cards) .kana-button-control {
+    top: 30px;
+  }
+
+.kana-cards {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  place-content: space-between;
+  margin-bottom: auto;
+}
+/*!**********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/ColorControl.css ***!
+  \**********************************************************************************************************************************************/
+.color-input {
+  --color-input-background: var(--button-color);
+  padding: 5px 15px;
+  position: fixed;
+  left: 25px;
+  bottom: 25px;
+  background: var(--color-input-background);
+  transition: background 0.3s, color 0.3s;
+  display: flex;
+  place-content: center;
+  border-radius: 40px;
+  filter: var(--drop-shadow);
+}
+
+.color-input label {
+    align-self: center;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+  }
+
+.color-input label,
+  .color-input input {
+    color: var(--button-text-color);
+    transition: background 0.3s, color 0.3s;
+  }
+
+.color-input label::-moz-placeholder, .color-input input::-moz-placeholder {
+      color: var(--button-text-color);
+      opacity: 0.75;
+    }
+
+.color-input label::placeholder, .color-input input::placeholder {
+      color: var(--button-text-color);
+      opacity: 0.75;
+    }
+
+.color-input:has(input:invalid) {
+    background: red;
+  }
+
+.color-input:has(input:invalid) label,
+    .color-input:has(input:invalid) input {
+      color: white;
+    }
+
+.color-input.custom label,
+    .color-input.custom input {
+      color: black;
+    }
+
+.color-input.custom label::-moz-placeholder, .color-input.custom input::-moz-placeholder {
+        color: black;
+        opacity: 0.7;
+      }
+
+.color-input.custom label::placeholder, .color-input.custom input::placeholder {
+        color: black;
+        opacity: 0.7;
+      }
+
+.color-input.custom.light label,
+      .color-input.custom.light input {
+        color: white;
+      }
+
+.color-input.custom.light label::-moz-placeholder, .color-input.custom.light input::-moz-placeholder {
+          color: white;
+          opacity: 0.7;
+        }
+
+.color-input.custom.light label::placeholder, .color-input.custom.light input::placeholder {
+          color: white;
+          opacity: 0.7;
+        }
+
+.color-input input {
+    height: 25px;
+    outline: none;
+    border: none;
+    padding: 5px;
+    font-size: 20px;
+    background: none;
+    transition: font 0.3s;
+    width: 6ch;
+  }
+
+.mode-toggle button {
+    background-color: var(--background-color);
+    background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+
+    --button-text-color: var(--button-click-text-color);
+    --background-color: var(--button-highlight-color);
+    height: 60px;
+    border-radius: 40px;
+  }
+
+.mode-toggle button:active {
+      background: var(--button-click-color);
+    }
+
+.mode-toggle {
+
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
+
+body .sun {
+    display: none;
+  }
+
+body .moon {
+    display: block;
+  }
+
+body.night-mode .moon {
+      display: none;
+    }
+
+body.night-mode .sun {
+      display: block;
+    }
+/*!************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/MainNavigation.css ***!
+  \************************************************************************************************************************************************/
+ul {
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 0 auto;
+  overflow-x: auto;
+  z-index: 3;
+}
+@media screen and (max-width: 300px) {
+  ul {
+    max-width: calc(100vw - 40px);
+    flex-direction: column;
+}
+  }
+ul li {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+    list-style: none;
+    padding: 10px 12px 20px;
+    cursor: pointer;
+  }
+ul li span {
+      color: var(--button-text-color);
+    }
+/*!***************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/index.css ***!
+  \***************************************************************************************************************************************/
+body {
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
+  height: 100vh;
+  display: flex;
+  background: var(--background-color);
+  margin: 0;
+
+  /* color components */
+  --main-color: 71, 61%;
+  --l: 71%;
+  --l-t: 90%;
+  --l-dark: calc(var(--l) - 50%);
+  --hsl-main: var(--main-color), var(--l);
+  --hsl-dark: var(--main-color), var(--l-t);
+  
+  /* premade colors */
+  --button-color: hsl(var(--hsl-main));
+  --button-highlight-color: hsl(var(--hsl-dark));
+  --button-text-color: hsl(var(--hsl-dark));
+  --button-click-color: #e3e3e3;
+  --button-click-text-color: hsl(var(--hsl-main));
+
+  --text-color-half-opacity: hsl(var(--hsl-dark), 0.5);
+
+  --background-color: hsl(var(--main-color), calc(var(--l) - 10%));
+  --drop-shadow: drop-shadow(1px 1px 2px hsla(var(--main-color), var(--l-dark), 0.2));
+  
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.night-mode {
+    --main-color: 0, 0%;
+    --l: 21%;
+    --hsl-main: var(--main-color), var(--l);
+    --hsl-dark: var(--main-color), var(--l-t);
+  }
+
+body.light {
+    --l-t: 10%;
+  }
+
+html * {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 500;
+}
+
+body .content > * {
+      margin-bottom: 30px;
+    }
+
+body .content .empty {
+      opacity: 0.5;
+      filter: none;
+      pointer-events: none;
+    }
+
+body #app {
+    margin: 20px;
+    display: flex;
+    flex-grow: 1;
+    align-content: center;
+    justify-content: center;
+  }
+
+body #app .main {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      flex-grow: 1;
+    }
+
+body #app .main:has(.noboard) .navigation {
+            margin-bottom: -60px;
+            z-index: 1;
+          }
+
+@media screen and (max-width: 460px) {
+          body #app .main:has(.noboard) .navigation {
+              margin-bottom: -130px;
+            }
+      }
+
+body #app .main .navigation ul {
+          flex-flow: wrap;
+        }
+
+@media screen and (min-width: 1400px) {
+        body #app .main:not(:has(.noboard)) .content {
+          margin-top: 20px;
+        }
+
+body #app .main {
+
+        flex-direction: row;
+    }
+      
+        body #app .main .navigation {
+          display: flex;
+          align-items: center;
+        }
+          body #app .main .navigation ul {
+            flex-direction: column;
+            position: sticky;
+            top: 20px;
+            height: -moz-fit-content;
+            height: fit-content;
+          }
+      }
+
+body #app .main .content {
+        height: -moz-fit-content;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+body #app .main .content.noboard {
+          align-self: center; 
+          place-content: center;
+        }
+
+body #app .main .content.noboard .kuro-button-wrapper {
+            margin-bottom: 0;
+          }
+
