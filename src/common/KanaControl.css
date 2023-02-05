@@ -1,4 +1,4 @@
-.kana-button-control {
+.content .kana-button-control {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -11,6 +11,7 @@
   border-radius: 50px;
   filter: var(--drop-shadow);
   margin: auto;
+  margin-bottom: 20px;
 
   @media screen and (min-width: 1000px) {
     top: 200px;
