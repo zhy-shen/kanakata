@@ -8,9 +8,6 @@ import parse from 'html-react-parser';
 
 //Kuroshiro
 import KuromojiAnalyzer from "kuroshiro-analyzer-kuromoji";
-const mode = "normal"; // [normal, spaced, okurigana, furigana]
-const translateTo = "romaji"; //[hiragana, katakana, romaji]
-const romanjiSystem = "passport"; //[nippon, passport, hepburn]
 
 function InputBox( {
   text, 
@@ -21,8 +18,9 @@ function InputBox( {
   board,
 } ) {
   const [engTrans, setEngTrans] = React.useState("Link Starting...");
-  const [output, setOutput] = React.useState("furigana"); //output format: [normal, spaced, okurigana, furigana]
+  const [output, setOutput] = React.useState("spaced"); //output format: [normal, spaced, okurigana, furigana]
   const [charSet, setCharSet] = React.useState("romaji"); //output set: [hiragana, katakana, romaji]
+  const [romaji, setRomaji] = React.useState("nippon"); //[nippon, passport, hepburn]
 
   function textReset() {
     const inputTRBox = document.querySelector(".header");
@@ -32,7 +30,7 @@ function InputBox( {
   }
 
   async function kuroTranslate() {
-    const engTemp = await kuroshiro.convert(text, {mode: output, to: charSet});
+    const engTemp = await kuroshiro.convert(text, {mode: output, to: charSet, romajiSystem: romaji});
     if (engTrans != engTemp) setEngTrans(engTemp);
   }
 
@@ -46,7 +44,7 @@ function InputBox( {
   useEffect(() => {
     //only translate when kuroshiro is ready
     if (ready) kuroTranslate();
-  }, [text, output, charSet]);
+  }, [text, output, charSet, romaji]);
 
   useEffect(() => {
     textReset();
@@ -88,7 +86,14 @@ function InputBox( {
           <Button key="delete" text={text} setText={setText} char="Del" display={svgs.backspace}/>
         </div>
       </div>
-      <KuroControl charSet={charSet} setCharSet={setCharSet} output={output} setOutput={setOutput} />
+      <KuroControl
+        charSet={charSet}
+        setCharSet={setCharSet}
+        output={output}
+        setOutput={setOutput} 
+        romaji={romaji}
+        setRomaji={setRomaji} 
+      />
     </>
   );
 }

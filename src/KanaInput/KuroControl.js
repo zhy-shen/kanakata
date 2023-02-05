@@ -2,77 +2,108 @@ import React from "react";
 import "../common/KanaControl.css";
 import "./KuroControl.css";
 
-const romanjiSystem = "nippon"; //[nippon, passport, hepburn]
+const romajiSystem = "nippon"; //[nippon, passport, hepburn]
 const ruby = <ruby>あ<rp>(</rp><rt>a</rt><rp>)</rp></ruby>;
 
 const charSets = ["hiragana", "katakana", "romaji"];
 const formats = ["normal", "spaced", "okurigana", "furigana"];
 const charSetShort = ["あ", "ア", "A"];
 const formatShort = ["N", "S", "()", ruby];
+const romajis = ["nippon", "passport", "hepburn"];
+const romajiShort = ["N", "P", "H"];
+
+const names = {
+  full: [
+    charSets,
+    formats,
+    romajis,
+  ],
+  short: [
+    charSetShort,
+    formatShort,
+    romajiShort,
+  ],
+}
 
 function KuroControl( {
   charSet,
   setCharSet,
   output,
   setOutput,
+  romaji,
+  setRomaji,
 } ) {
-  
+  console.log(romaji)
   const [activeSet, setActiveSet] = React.useState(charSet);
   const [activeMode, setActiveMode] = React.useState(output);
+  const [activeRomaji, setActiveRomaji] = React.useState(romaji);
 
-  function charSetMarkup() {
+  const states = {
+    valueActive: [
+      activeSet,
+      activeMode,
+      activeRomaji,
+    ],
+    setActive: [
+      setActiveSet,
+      setActiveMode,
+      setActiveRomaji,
+    ],
+    propVal: [
+      charSet,
+      output,
+      romaji,
+    ],
+    propSet: [ 
+      setCharSet,
+      setOutput,
+      setRomaji,
+    ],
+  }
+
+  function generateButtons(index) {
     return (
-      charSets.map((element, index) => {
-        return buttonMarkup(switchCharSet, charSets, activeSet, charSetShort, index);
+      names.full[index].map((element, subIndex) => {
+        return buttonMarkup(index, subIndex, element);
       })
     );
   }
 
-  function modeMarkup() {
-    return (
-      formats.map((element, index) => {
-          return buttonMarkup(switchFormat, formats, activeMode, formatShort, index);
-      })
-    );
-  }
-
-  function buttonMarkup(click, set, activeSet, short, index) {
+  function buttonMarkup(index, subIndex, element) {
     let markupClass = "";
-    if (activeSet === set[index]) {
+    if (states.valueActive[index] === element) {
       markupClass += "active";
     }
-    if (set[index] === "furigana") {
+    if (element === "furigana") {
       (markupClass.length > 0) ? markupClass += " ruby" : markupClass += "ruby";
     }
 
     return (
       <button
-        key={short[index]}
+        key={names.short[index][subIndex]}
         className={markupClass}
-        onClick={() => click(set[index], index)}
+        onClick={() => switchMode(index, element)}
       >
-        <span>{short[index]}</span>
+        <span>{names.short[index][subIndex]}</span>
       </button>
     );
   }
 
-  function switchCharSet(set, index) {
-    setCharSet(set);
-    setActiveSet(set);
-  }
-
-  function switchFormat(format, index) {
-    setOutput(format);
-    setActiveMode(format);
+  function switchMode(index, element) {
+    states.propSet[index](element);
+    states.setActive[index](element);
   }
 
   return (
     <>
-      <div className="kana-button-control kuro">
-        {charSetMarkup()}
+      <div className="kana-button-control kuro charset">
+        { generateButtons(0) }
       </div>
-      <div className="kana-button-control kuro">
-        {modeMarkup()}
+      <div className="kana-button-control kuro mode">
+        { generateButtons(1) }
+      </div>
+      <div className="kana-button-control kuro romaji">
+        { generateButtons(2) }
       </div>
     </>
   );
