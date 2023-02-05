@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import KanaInput from "./KanaInput/KanaInput"
 import CardBoard from "./CardBoard/CardBoard"
-import ColorControl from "./ColorControl"
 import MainNavigation from "./MainNavigation"
 
 function App() {
@@ -11,13 +10,12 @@ function App() {
   return(
     <div className="main">
       <MainNavigation key="nav" changePage={setPage} />
-      <div className="content">
+      <div className={"content" + ( (page === 0) ? " noboard" : "" )}>
         { (page === 0) && <KanaInput key="kanaInput" placeholder={text}/> }
         { (page === 1) && <KanaInput key="kanaBoard" board={true} /> }
         { (page === 2) && <KanaInput key="kanaInputLocal" local={true} board={true} /> }
         { (page === 3) && <CardBoard key="cardBoard" /> }
       </div>
-      <ColorControl key="clor" />
     </div>
   )
 }

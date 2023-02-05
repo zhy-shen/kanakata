@@ -94,17 +94,17 @@ function KuroControl( {
   }
 
   return (
-    <>
+    <div className="kuro-button-wrapper">
       <div className="kana-button-control kuro charset">
         { generateButtons(0) }
       </div>
       <div className="kana-button-control kuro mode">
         { generateButtons(1) }
       </div>
-      <div className="kana-button-control kuro romaji">
+      <div className={"kana-button-control kuro romaji" + (!(charSet === "romaji") ? " inactive" : "" ) }>
         { generateButtons(2) }
       </div>
-    </>
+    </div>
   );
 }
 

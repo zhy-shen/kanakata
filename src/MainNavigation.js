@@ -1,4 +1,5 @@
 import React from "react";
+import ColorControl from "./ColorControl"
 import "./MainNavigation.css";
 
 function MainNavigation({ changePage }) {
@@ -30,6 +31,7 @@ function MainNavigation({ changePage }) {
       <ul>
         {linkMarkup()}
       </ul>
+      <ColorControl key="color" />
     </div>
   );
 }

@@ -1,5 +1,21 @@
-.kana-button-control.kuro {
+.kuro-button-wrapper {
+  display: flex;
   width: fit-content;
+  gap: 15px;
+  align-self: center;
+  flex-flow: wrap;
+  place-content: space-evenly;
+}
+
+.kana-button-control.kuro {
+  margin: 0;
+  width: fit-content;
+  transition: opacity 0.3s, filter 0.3s;
+
+  &.inactive {
+    opacity: 0.5;
+    filter: none;
+  }
 
   & button.ruby {
     padding-top: 7px;
