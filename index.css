@@ -217,6 +217,10 @@ button svg.space {
         place-items: flex-end;
       }
 
+.header .input-wrapper.ruby:not(.prepare) > * {
+        color: var(--button-text-color);
+      }
+
 .header .input-wrapper.translate.prepare h2 {
         animation: blink-animation 1s steps(2, start) infinite;
       }
