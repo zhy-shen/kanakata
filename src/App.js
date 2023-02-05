@@ -14,7 +14,7 @@ function App() {
       <div className="content">
         { (page === 0) && <KanaInput key="kanaInput" placeholder={text}/> }
         { (page === 1) && <KanaInput key="kanaBoard" board={true} /> }
-        { (page === 2) && <KanaInput key="kanaInputLocal" local={true} /> }
+        { (page === 2) && <KanaInput key="kanaInputLocal" local={true} board={true} /> }
         { (page === 3) && <CardBoard key="cardBoard" /> }
       </div>
       <ColorControl key="clor" />
