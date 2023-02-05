@@ -33,7 +33,6 @@ function KuroControl( {
   romaji,
   setRomaji,
 } ) {
-  console.log(romaji)
   const [activeSet, setActiveSet] = React.useState(charSet);
   const [activeMode, setActiveMode] = React.useState(output);
   const [activeRomaji, setActiveRomaji] = React.useState(romaji);
