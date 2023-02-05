@@ -12,6 +12,7 @@ ul {
   }
 
   & li {
+    user-select: none;
     list-style: none;
     padding: 10px 20px;
     cursor: pointer;

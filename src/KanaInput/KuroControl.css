@@ -1,0 +1,8 @@
+.kana-button-control.kuro {
+  width: fit-content;
+
+  & button.ruby {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+}

@@ -65,15 +65,21 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
 
-    &.ruby {
+    &.ruby:not(.prepare) {
       font-size: 24px;
       place-items: center;
-      padding: 12px 15px 12px 23px;
+      padding: 12px 15px 12px 32px;
 
       &:has(ruby) {
+        padding: 12px 15px 12px 23px;
         font-size: 20px;
         place-items: flex-end;
-        padding: 14px 15px 10px 23px;
+      }
+    }
+
+    &.translate.prepare {
+      & h2 {
+        animation: blink-animation 1s steps(2, start) infinite;
       }
     }
 
@@ -81,7 +87,8 @@
       display: none;
     }
 
-    & > * {
+    & input,
+    & h2 {
       margin: auto 0 auto 8px;
       display: block;
       color: var(--button-text-color);
@@ -90,7 +97,17 @@
       position: relative;
     }
 
-    &:first-child > *:first-child::after {
+    & input {
+      width: 100%;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 24px;
+      margin-top: -1px;
+      margin-left: 4px;
+    }
+
+    &:first-child > h2:first-child::after {
       content: " ";
       width: 2px;
       background: var(--button-text-color);
@@ -107,5 +124,14 @@
 @keyframes blink-animation {
   to {
     visibility: hidden;
+  }
+}
+    
+@keyframes shimmer {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
   }
 }

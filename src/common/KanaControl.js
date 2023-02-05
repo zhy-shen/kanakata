@@ -1,7 +1,7 @@
 import React from "react";
 import "./KanaControl.css";
 
-function KanaBoard( {sc1, sb1, sc2, sb2} ) {
+function KanaControl( {sc1, sb1, sc2, sb2} ) {
   const [activeButton, setActiveButton] = React.useState("mono-full");
 
   const buttonNames = ["mono-full", "hira-full", "kata-full"];
@@ -44,4 +44,4 @@ function KanaBoard( {sc1, sb1, sc2, sb2} ) {
   );
 }
 
-export default KanaBoard;
+export default KanaControl;

@@ -6,13 +6,16 @@ import MainNavigation from "./MainNavigation"
 
 function App() {
   const [page, setPage] = useState(0);
+  const text = "とある科学の超電磁砲";
 
   return(
     <div className="main">
       <MainNavigation key="nav" changePage={setPage} />
       <div className="content">
-        { (page === 0) && <KanaInput key="kanaInput" /> }
-        { (page === 1) && <CardBoard key="cardBoard" /> }
+        { (page === 0) && <KanaInput key="kanaInput" placeholder={text}/> }
+        { (page === 1) && <KanaInput key="kanaBoard" board={true} /> }
+        { (page === 2) && <KanaInput key="kanaInputLocal" local={true} /> }
+        { (page === 3) && <CardBoard key="cardBoard" /> }
       </div>
       <ColorControl key="clor" />
     </div>
