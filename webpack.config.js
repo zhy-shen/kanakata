@@ -19,7 +19,14 @@ const config = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css'
-    })],
+    }),
+    new webpack.LoaderOptionsPlugin({
+      test: /postcss-loader$/, // only for this module
+      options: {
+        mode: process.env.NODE_ENV
+      }
+    }),
+  ],
   experiments: {
     topLevelAwait: true
   },
