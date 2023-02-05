@@ -1,6 +1,3 @@
-/*!****************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/common/KanaControl.css ***!
-  \****************************************************************************************************************************************************/
 .kana-button-control {
   display: flex;
   gap: 10px;
@@ -35,9 +32,6 @@
     }
 
 
-/*!***********************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/common/Button.css ***!
-  \***********************************************************************************************************************************************/
 .button-wrap {
   display: flex;
 }
@@ -93,9 +87,6 @@ button svg {
 button svg.space {
       transform: scale(1.2);
     }
-/*!*****************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaInput/KanaBoard.css ***!
-  \*****************************************************************************************************************************************************/
 .kana-two-column {
   width: -moz-fit-content;
   width: fit-content;
@@ -133,9 +124,6 @@ button svg.space {
       overflow-y: scroll;
     }
   }
-/*!*******************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaInput/KuroControl.css ***!
-  \*******************************************************************************************************************************************************/
 .kana-button-control.kuro {
   width: -moz-fit-content;
   width: fit-content;
@@ -144,9 +132,6 @@ button svg.space {
     padding-top: 7px;
     padding-bottom: 7px;
   }
-/*!****************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/KanaInput/InputBox.css ***!
-  \****************************************************************************************************************************************************/
 .header {
   display: flex;
   gap: 20px;
@@ -285,9 +270,6 @@ button svg.space {
     background-position: 0%;
   }
 }
-/*!*********************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/common/Card.css ***!
-  \*********************************************************************************************************************************************/
 .char-card {
   --card-length: min(7vw, 120px);
   --card-font-size: calc(var(--card-length) / 3);
@@ -334,9 +316,6 @@ button svg.space {
     position:absolute;
     transform: rotateY(-180deg);
   }
-/*!*****************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/CardBoard/CardBoard.css ***!
-  \*****************************************************************************************************************************************************/
 .kana-two-column:has(.kana-cards) {
   margin-top: 30px;
 }
@@ -354,9 +333,6 @@ button svg.space {
   place-content: space-between;
   margin-bottom: auto;
 }
-/*!**********************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/ColorControl.css ***!
-  \**********************************************************************************************************************************************/
 .color-input {
   --color-input-background: var(--button-color);
   padding: 5px 15px;
@@ -480,9 +456,6 @@ body.night-mode .moon {
 body.night-mode .sun {
       display: block;
     }
-/*!************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/MainNavigation.css ***!
-  \************************************************************************************************************************************************/
 ul {
   display: flex;
   gap: 10px;
@@ -508,9 +481,6 @@ ul li {
 ul li span {
       color: var(--button-text-color);
     }
-/*!***************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/index.css ***!
-  \***************************************************************************************************************************************/
 body {
   overscroll-behavior-y: none;
   margin: 20px;
