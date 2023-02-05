@@ -75,6 +75,10 @@
         font-size: 20px;
         place-items: flex-end;
       }
+
+      & > * {
+        color: var(--button-text-color);
+      }
     }
 
     &.translate.prepare {
