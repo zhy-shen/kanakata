@@ -1,0 +1,48 @@
+.char-card {
+  --card-length: min(7vw, 120px);
+  --card-font-size: calc(var(--card-length) / 3);
+  display: inline-grid;
+  position: relative;
+  width: var(--card-length);
+  height: var(--card-length);
+  perspective: 1000px;
+  user-select: none;
+
+  @media screen and (max-width: 800px) {
+    --card-length: min(14vw, 150px);
+  }
+  
+  &:hover {
+    & .card-front:not(.empty) {
+      transform: rotateY(180deg);
+      opacity: 0.5;
+    }
+    & .card-back:not(.empty) {
+      transform: rotateY(0);
+      opacity: 1;
+    }
+  } 
+
+  & > div {
+    display: grid;
+    font-size: var(--card-font-size);
+    transition: transform 0.4s, opacity 0.4s;
+    place-content: center;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: var(--button-color);
+    color: var(--button-text-color);
+    filter: var(--drop-shadow);
+  }
+
+  & .card-front {
+    position:absolute;
+  }
+
+  & .card-back {
+    opacity: 0.5;
+    position:absolute;
+    transform: rotateY(-180deg);
+  }
+}

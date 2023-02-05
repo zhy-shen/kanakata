@@ -1,0 +1,33 @@
+.kana-two-column {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 35px;
+  column-gap: min(75px, 5vw);
+  margin-left: auto;
+  margin-right: auto;
+  place-items: flex-end;
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+
+  & .kana-input-buttons {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 15px;
+    column-gap: 10px;
+    place-content: space-between;
+    margin-bottom: auto;
+  }
+
+  @media screen and (max-width: 380px) {
+    & .kana-input-buttons {
+      max-width: calc(100vw - 40px);
+      margin-right: -8px;
+      overflow-y: scroll;
+    }
+  }
+
+}
