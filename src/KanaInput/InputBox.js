@@ -20,7 +20,7 @@ function InputBox( {
   const [engTrans, setEngTrans] = React.useState("Link Starting...");
   const [output, setOutput] = React.useState("spaced"); //output format: [normal, spaced, okurigana, furigana]
   const [charSet, setCharSet] = React.useState("romaji"); //output set: [hiragana, katakana, romaji]
-  const [romaji, setRomaji] = React.useState("nippon"); //[nippon, passport, hepburn]
+  const [romaji, setRomaji] = React.useState("hepburn"); //[nippon, passport, hepburn]
 
   function textReset() {
     const inputTRBox = document.querySelector(".header");

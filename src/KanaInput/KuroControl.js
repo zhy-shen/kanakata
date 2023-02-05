@@ -2,15 +2,14 @@ import React from "react";
 import "../common/KanaControl.css";
 import "./KuroControl.css";
 
-const romajiSystem = "nippon"; //[nippon, passport, hepburn]
 const ruby = <ruby>あ<rp>(</rp><rt>a</rt><rp>)</rp></ruby>;
 
 const charSets = ["hiragana", "katakana", "romaji"];
 const formats = ["normal", "spaced", "okurigana", "furigana"];
 const charSetShort = ["あ", "ア", "A"];
 const formatShort = ["N", "S", "()", ruby];
-const romajis = ["nippon", "passport", "hepburn"];
-const romajiShort = ["N", "P", "H"];
+const romajis = ["hepburn", "passport", "nippon"];
+const romajiShort = ["H", "P", "N"];
 
 const names = {
   full: [

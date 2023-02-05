@@ -2,7 +2,7 @@ import React from "react";
 import KanaBoard from "./KanaBoard";
 import InputBox from "./InputBox";
 import InputBoxLocal from "./InputBoxLocal";
-import Kuroshiro from "kuroshiro";
+import Kuroshiro from "kuroshiro-zhyshen";
 
 function KanaInput( {
   local,
