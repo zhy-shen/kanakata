@@ -1,4 +1,4 @@
-.kana-button-control {
+.content .kana-button-control {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -11,22 +11,23 @@
   border-radius: 50px;
   filter: var(--drop-shadow);
   margin: auto;
+  margin-bottom: 20px;
 }
 @media screen and (min-width: 1000px) {
-  .kana-button-control {
+  .content .kana-button-control {
     top: 200px;
 }
   }
 @media screen and (min-width: 800px) {
-  .kana-button-control {
+  .content .kana-button-control {
     grid-area: 1 / 1 / 2 / 3;
 }
   }
-.kana-button-control button {
+.content .kana-button-control button {
     background-color: var(--background-color);
     background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
   }
-.kana-button-control button.active {
+.content .kana-button-control button.active {
       --button-text-color: var(--button-click-text-color);
       --background-color: var(--button-highlight-color);
     }
@@ -136,7 +137,7 @@ button svg.space {
   display: flex;
   gap: 20px;
   width: max(750px, 60vw);
-  margin: 25px auto;
+  margin-top: 10px;
   background: var(--button-color);
   padding: 20px calc(((90vw - 80px) - max(600px, 60vw) )/ 2);
   border-radius: 100px;
@@ -179,7 +180,7 @@ button svg.space {
 .header {
     flex-direction: column;
     padding: 25px;
-    width: calc(90vw - 40px);
+    width: calc(100vw - 90px);
     border-radius: 60px;
     gap: 15px;
 }
@@ -463,6 +464,7 @@ ul {
   justify-content: space-between;
   max-width: 500px;
   margin: 0 auto;
+  overflow-y: scroll;
 }
 @media screen and (max-width: 300px) {
   ul {
@@ -475,13 +477,14 @@ ul li {
        -moz-user-select: none;
             user-select: none;
     list-style: none;
-    padding: 10px 20px;
+    padding: 10px 12px 20px;
     cursor: pointer;
   }
 ul li span {
       color: var(--button-text-color);
     }
 body {
+  overscroll-behavior-x: none;
   overscroll-behavior-y: none;
   margin: 20px;
 
