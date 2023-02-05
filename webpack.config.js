@@ -27,8 +27,8 @@ const config = {
     splitChunks: {
       cacheGroups: {
         reactVendor: {
-          test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
-          name: 'vendor-react',
+          test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom|kuromoji|kuroshiro|html-react-parser)[\\/]/,
+          name: 'vendor',
           chunks: 'all',
         },
       },
