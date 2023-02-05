@@ -13,8 +13,8 @@ const config = {
     index: './src/index.js',
   },
   output: {
-    path: path.resolve(__dirname, "kanakata"),
-    filename: 'main.js',
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'kanakata'),
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -22,6 +22,17 @@ const config = {
     })],
   experiments: {
     topLevelAwait: true
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        reactVendor: {
+          test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
+          name: 'vendor-react',
+          chunks: 'all',
+        },
+      },
+    },
   },
   module: {
     rules: [
