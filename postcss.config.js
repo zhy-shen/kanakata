@@ -1,6 +1,11 @@
+const postcssCustomMedia = require('postcss-custom-media');
+
 module.exports = (ctx) => {
   const postcssConfig = {
-    plugins: [require('autoprefixer')],
+    plugins: [
+      require('autoprefixer'),
+      postcssCustomMedia(/* pluginOptions */)
+    ],
   };
 
 

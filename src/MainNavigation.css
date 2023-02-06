@@ -1,11 +1,9 @@
 .navigation-buttons {
-  max-width: var(--max-content-width);
   background: var(--button-color);
   border-radius: 40px;
   filter: var(--drop-shadow);
   display: flex;
   gap: 10px;
-  padding: 0;
   justify-content: space-between;
   margin: 0 auto;
   overflow-x: auto;
@@ -20,6 +18,7 @@
     cursor: pointer;
 
     & span {
+      filter: var(--drop-shadow);
       display: block;
       padding: 10px 15px;
       color: var(--button-text-color);

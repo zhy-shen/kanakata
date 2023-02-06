@@ -2,19 +2,19 @@
   & .control-box {
     @media screen and (max-width: 450px) {
       overflow: scroll;
-    }
-    
-    @media screen and (min-width: 450px) {
-      justify-content: space-around;
+      padding-bottom: 2px;
+      padding-right: 2px;
     }
   }
 }
 
+/*
 .content.noboard {
   & .control-box {
     justify-content: space-around;
   }
 }
+*/
 
 .header {
   display: flex;
@@ -34,9 +34,14 @@
   }
 
   & .control-box {
-    margin: auto 0;
     display: flex;
     gap: 10px;
+    margin: 0 auto;
+
+    @media screen and (min-width: 1000px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
 
     & .button-wrap button {
       background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
@@ -55,6 +60,8 @@
     flex-grow: 1;
     gap: 20px;
     justify-content: space-between;
+    padding-bottom: 2px;
+    padding-right: 2px;
   }
 
   @media screen and (max-width: 1000px) {

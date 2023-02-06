@@ -55,13 +55,8 @@ const config = {
 						options: {
 							postcssOptions: {
 								plugins: [
-									// Other plugins,
-									[
-										"postcss-nesting",
-										{
-											// Options
-										},
-									],
+									["postcss-nesting"],
+									["postcss-custom-media"],
 								],
 							},
 						},

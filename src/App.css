@@ -30,24 +30,22 @@
       }
     } */
 
-    @media screen and (max-width: 3000px) {
-      & .noboard {
-        flex-grow: 1;
-      }
-
-      &:has(.noboard) {
-        & .navigation {
-          position: absolute;
-          left: 0;
-          right: 0;
-        }
-      }
-        
-      & .navigation {
-        margin: 20px 0;
-      }
+    & .noboard {
+      flex-grow: 1;
     }
 
+    &:has(.noboard) {
+      & .navigation {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 5;
+      }
+    }
+      
+    & .navigation {
+      margin: 20px 0;
+    }
     & .content {
       height: fit-content;
       display: flex;
