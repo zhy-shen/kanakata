@@ -1,5 +1,7 @@
 .color-input {
   --color-input-background: var(--button-color);
+
+  z-index: 3;
   padding: 5px 15px;
   position: fixed;
   left: 25px;
@@ -73,6 +75,7 @@
 }
 
 .mode-toggle {
+  z-index: 3;
   & button {
     background-color: var(--background-color);
     background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);

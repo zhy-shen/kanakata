@@ -1,3 +1,21 @@
+.content:not(.noboard) {
+  & .control-box {
+    @media screen and (max-width: 450px) {
+      overflow: scroll;
+    }
+    
+    @media screen and (min-width: 450px) {
+      justify-content: space-around;
+    }
+  }
+}
+
+.content.noboard {
+  & .control-box {
+    justify-content: space-around;
+  }
+}
+
 .header {
   display: flex;
   gap: 20px;
@@ -19,7 +37,6 @@
     margin: auto 0;
     display: flex;
     gap: 10px;
-    justify-content: space-around;
 
     & .button-wrap button {
       background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);

@@ -1,10 +1,15 @@
+html, body {
+  display: flex;
+  height: 100%;
+  flex-grow: 1;
+}
+
 body {
   overscroll-behavior-x: none;
   overscroll-behavior-y: none;
-  height: 100vh;
-  display: flex;
   background: var(--background-color);
   margin: 0;
+  --max-content-width: calc(100vw - 40px);
 
   /* color components */
   --main-color: 71, 61%;
@@ -56,79 +61,6 @@ body {
       opacity: 0.5;
       filter: none;
       pointer-events: none;
-    }
-  }
-
-  & #app {
-    margin: 20px;
-    display: flex;
-    flex-grow: 1;
-    align-content: center;
-    justify-content: center;
-
-    & .main {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      flex-grow: 1;
-
-      @media screen and (max-width: 460px) {
-        &:has(.noboard) {
-          & .navigation {
-              margin-bottom: -130px;
-            }
-        }
-      }
-      
-      & .navigation {
-        & ul {
-          flex-flow: wrap;
-        }
-      }
-
-      @media screen and (max-width: 1399px) {
-        &:has(.noboard) {
-          & .navigation {
-              margin-bottom: -60px;
-              z-index: 1;
-            }
-        }
-      }
-
-      @media screen and (min-width: 1400px) {
-        &:not(:has(.noboard)) .content {
-          margin-top: 20px;
-        }
-
-        flex-direction: row;
-      
-        & .navigation {
-          display: flex;
-          align-items: center;
-          & ul {
-            flex-direction: column;
-            position: sticky;
-            top: 20px;
-            height: fit-content;
-          }
-        }
-      }
-
-      & .content {
-        height: fit-content;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-
-        &.noboard {
-          align-self: center; 
-          place-content: center;
-
-          & .kuro-button-wrapper {
-            margin-bottom: 0;
-          }
-        }
-      }
     }
   }
 }

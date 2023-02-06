@@ -1,26 +1,52 @@
-ul {
+.navigation-buttons {
+  max-width: var(--max-content-width);
+  background: var(--button-color);
+  border-radius: 40px;
+  filter: var(--drop-shadow);
   display: flex;
   gap: 10px;
   padding: 0;
   justify-content: space-between;
-  max-width: 500px;
   margin: 0 auto;
   overflow-x: auto;
   z-index: 3;
-
-  @media screen and (max-width: 300px) {
-    max-width: calc(100vw - 40px);
-    flex-direction: column;
-  }
+  padding: 15px;
+  width: fit-content;
+  max-width: calc(100vw - 60px);
 
   & li {
     user-select: none;
     list-style: none;
-    padding: 10px 12px 20px;
     cursor: pointer;
 
     & span {
+      display: block;
+      padding: 10px 15px;
       color: var(--button-text-color);
+      background-color: var(--background-color);
+      background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+      animation-fill-mode: forwards;
+      background-size: 210% 210%;
+      background-position: bottom right;
+      transition: background 0.2s, transform 0.2s;  
+      border-radius: 25px;
+
+      &.active {
+        --button-text-color: var(--button-click-text-color);
+        --background-color: var(--button-highlight-color);
+      }
+
+      &:hover:not(.empty) {
+        transform: translate(-1px, -1px);
+        background-position: top left;
+        --button-text-color: var(--button-click-text-color);
+        background-color: var(--button-click-color);
+      }
+
+      &:active:not(.empty) {
+        transition: transform 0.03s;
+        transform: scale(95%);
+      }
     }
   }
 }

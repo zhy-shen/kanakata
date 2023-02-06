@@ -2,7 +2,10 @@ import React from "react";
 import ColorControl from "./ColorControl"
 import "./MainNavigation.css";
 
-function MainNavigation({ changePage }) {
+function MainNavigation({
+  page,
+  changePage,
+}) {
   const links = [
     "KanaInput",
     "KanaBoard",
@@ -17,18 +20,23 @@ function MainNavigation({ changePage }) {
       })
     );
   }
-
+  
   function liMarkup(text, index) {
+    let markupClass = "";
+    if (page === index) {
+      markupClass += "active";
+    }
+
     return (
       <li key={text} onClick={() => changePage(index)}>
-        <span>{text}</span>
+        <span className={markupClass}>{text}</span>
       </li>
     );
   }
 
   return(
     <div className="navigation">
-      <ul>
+      <ul className="navigation-buttons">
         {linkMarkup()}
       </ul>
       <ColorControl key="color" />

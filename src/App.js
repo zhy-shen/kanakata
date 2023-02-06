@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import KanaInput from "./KanaInput/KanaInput"
 import CardBoard from "./CardBoard/CardBoard"
 import MainNavigation from "./MainNavigation"
+import "./App.css"
 
 function App() {
   const [page, setPage] = useState(0);
@@ -9,7 +10,7 @@ function App() {
 
   return(
     <div className="main">
-      <MainNavigation key="nav" changePage={setPage} />
+      <MainNavigation key="nav" page={page} changePage={setPage} />
       <div className={"content" + ( (page === 0) ? " noboard" : "" )}>
         { (page === 0) && <KanaInput key="kanaInput" placeholder={text}/> }
         { (page === 1) && <KanaInput key="kanaBoard" board={true} /> }
