@@ -36,9 +36,11 @@ function MainNavigation({
 
   return(
     <div className="navigation">
-      <ul className="navigation-buttons">
-        {linkMarkup()}
-      </ul>
+      <div className="button-wrapper">
+        <ul className="navigation-buttons">
+          {linkMarkup()}
+        </ul>
+      </div>
       <ColorControl key="color" />
     </div>
   );

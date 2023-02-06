@@ -1,15 +1,24 @@
-.navigation-buttons {
-  background: var(--button-color);
-  border-radius: 40px;
-  filter: var(--drop-shadow);
+.button-wrapper {
   display: flex;
-  gap: 10px;
-  justify-content: space-between;
-  margin: 0 auto;
-  overflow-x: auto;
-  z-index: 3;
   padding: 15px;
+  margin: 0 auto;
   width: fit-content;
+  background: var(--button-color);
+  filter: var(--drop-shadow);
+  border-radius: 40px;
+}
+
+
+.navigation-buttons {
+  border-radius: 40px;
+  display: flex;
+  margin: -4px -2px -2px;
+  padding: 4px 2px 2px;
+  gap: 10px;
+  z-index: 3;
+  overflow-x: auto;
+  width: fit-content;
+  justify-content: space-between;
   max-width: calc(100vw - 60px);
 
   & li {

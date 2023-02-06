@@ -2,19 +2,14 @@
   & .control-box {
     @media screen and (max-width: 450px) {
       overflow: scroll;
+      max-width: calc(100vw - 90px);
       padding-bottom: 2px;
       padding-right: 2px;
+      margin-bottom: -2px;
+      border-radius: 40px;
     }
   }
 }
-
-/*
-.content.noboard {
-  & .control-box {
-    justify-content: space-around;
-  }
-}
-*/
 
 .header {
   display: flex;
