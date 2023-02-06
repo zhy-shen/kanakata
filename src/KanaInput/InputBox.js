@@ -64,7 +64,7 @@ function InputBox({
               <input
                 label="self-input"
                 id="input-box"
-                defaultValue={text}
+                value={text}
                 onChange={e => setText(e.target.value)}
                 onBlur={e => setText(e.target.value)}
                 placeholder="input here (kanji / hiragana / katagana)"
