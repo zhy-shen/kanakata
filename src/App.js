@@ -2,11 +2,16 @@ import React, { useState } from "react"
 import KanaInput from "./KanaInput/KanaInput"
 import CardBoard from "./CardBoard/CardBoard"
 import MainNavigation from "./MainNavigation"
+import textArray from "./constants/defaultText"
 import "./App.css"
+
+Array.prototype.random = function () {
+  return this[Math.floor((Math.random()*this.length))];
+}
 
 function App() {
   const [page, setPage] = useState(0);
-  const text = "とある科学の超電磁砲";
+  const text = textArray.random();
 
   return(
     <div className="main">

@@ -14,10 +14,11 @@ function Button({
   const specialChars = [
     "Space",
     "Del",
+    "Empty",
     "Copy",
     "Paste",
     "Mode",
-    "Translate"
+    "Translate",
   ]
 
   function addChar() {
@@ -39,6 +40,10 @@ function Button({
 
     else if (spChar === "Del") {
       setText(text.slice(0, -1));
+    }
+
+    else if (spChar === "Empty") {
+      setText("");
     }
 
     else if (spChar === "Copy") {

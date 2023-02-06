@@ -60,6 +60,7 @@ body {
       margin-bottom: 30px;
     }
 
+    & .inactive,
     & .empty {
       opacity: 0.5;
       filter: none;
