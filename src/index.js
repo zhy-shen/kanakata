@@ -19,4 +19,4 @@ root.render(
   </React.StrictMode>
 );
 
-serviceWorkerRegistration.register();
+serviceWorkerRegistration.unregister();
