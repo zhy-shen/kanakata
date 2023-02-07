@@ -49,10 +49,10 @@ function InputBox({
   }, [text, output, charSet, romaji]);
 
   useEffect(() => {
-    textReset();
+    if (board) textReset();
     kuroInit();
   }, []);
-
+  
   return (
     <>
       <div className="header">
@@ -66,7 +66,6 @@ function InputBox({
                 id="input-box"
                 value={text}
                 onChange={e => setText(e.target.value)}
-                onBlur={e => setText(e.target.value)}
                 placeholder="input here (kanji / hiragana / katagana)"
                 spellCheck="false"
               />
