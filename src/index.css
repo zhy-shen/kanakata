@@ -67,4 +67,8 @@ body {
       pointer-events: none;
     }
   }
+
+  & ruby {
+    white-space: pre;
+  }
 }
