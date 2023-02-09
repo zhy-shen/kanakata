@@ -3,10 +3,12 @@ import Button from "./common/Button"
 import svg from "./common/svgs"
 import "./ColorControl.css"
 
+let input, inputWrapper, body;
+
 function ColorControl() {
   const colorThreshold = 65;
   const [originalColor, setOriginalColor] = React.useState(123456);
-  let input, inputWrapper, body;
+  const [color, setColor] = React.useState('');
 
   function hexToHSL(hex, set) {
     if (hex.length === 3) {
@@ -23,30 +25,30 @@ function ColorControl() {
     var max = Math.max(r, g, b), min = Math.min(r, g, b);
     var h, s, l = (max + min) / 2;
 
-    if(max == min){
-        h = s = 0; // achromatic
+    if (max == min) {
+      h = s = 0; // achromatic
     } else {
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch(max) {
-            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / d + 2; break;
-            case b: h = (r - g) / d + 4; break;
-        }
-        h /= 6;
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
     }
 
-    s = s*100;
+    s = s * 100;
     s = Math.round(s);
-    l = l*100;
+    l = l * 100;
     l = Math.round(l);
-    h = Math.round(360*h);
+    h = Math.round(360 * h);
 
     if (set === "true") {
       document.querySelector('body').style.setProperty('--main-color', h + ', ' + s + '%')
       document.querySelector('body').style.setProperty('--l', l + '%')
 
-      if (l > colorThreshold ) {
+      if (l > colorThreshold) {
         body.classList.add('light');
       }
       else {
@@ -65,9 +67,9 @@ function ColorControl() {
     }
   }
 
-  function checkColor(set) {
-    let value = input.value
-
+  function checkColor(set, setColor) {
+    let value = setColor || color;
+    
     if (testColor(value)) {
       inputWrapper.classList.add('custom')
       inputWrapper.style.setProperty('--color-input-background', '#' + value);
@@ -79,24 +81,22 @@ function ColorControl() {
       inputWrapper.style.removeProperty('--color-input-background')
     }
 
-    reselect();
     setOriginalColor(hslToHex(window.getComputedStyle(body).getPropertyValue('--button-color')));
   }
 
   function modeClick() {
-    reselect();
     body.classList.toggle('night-mode');
     setOriginalColor(hslToHex(window.getComputedStyle(body).getPropertyValue('--button-color')));
     removeCustomColor();
-      
-    if (parseFloat(window.getComputedStyle(body).getPropertyValue('--l')) > colorThreshold ) {
+
+    if (parseFloat(window.getComputedStyle(body).getPropertyValue('--l')) > colorThreshold) {
       body.classList.add('light');
     }
     else {
       body.classList.remove('light');
     }
 
-    checkColor();
+    checkColor("false");
   }
 
   function removeCustomColor() {
@@ -129,26 +129,40 @@ function ColorControl() {
     body = document.querySelector("body");
   }
 
+  function handleColor(e) {
+    setColor(e.target.value);
+    
+    if(e.nativeEvent.inputType === "insertLineBreak" || e.key === "Enter") {
+      checkColor("true");
+      return
+    };
+
+    checkColor("false", e.target.value);
+  }
+
   useEffect(() => {
     reselect();
     setOriginalColor(hslToHex(window.getComputedStyle(body).getPropertyValue('--button-color')));
-    
-    input.addEventListener('keyup', checkColor);
-    input.addEventListener("keyup", ({key}) => {
-      if (key === "Enter") {
-        checkColor("true");
-      }
-    })
   }, []);
-  
-  return(
+
+  return (
     <>
       <div className="mode-toggle">
-        <Button char="Mode" display={svg.sunMoon} onClick={modeClick}/>
+        <Button char="Mode" display={svg.sunMoon} onClick={modeClick} />
       </div>
       <div className="color-input">
-          <label>HEX: #</label>
-          <input id="color" type="text" className="input-box" placeholder={originalColor} pattern="[a-fA-F\d]+" maxLength="6" spellCheck="false" />
+        <label>HEX: #</label>
+        <input
+          id="color"
+          type="text"
+          className="input-box"
+          placeholder={originalColor}
+          value={color}
+          onChange={e => handleColor(e)}
+          onKeyDown={e => handleColor(e)}
+          pattern="[a-fA-F\d]+"
+          maxLength="6"
+          spellCheck="false" />
       </div>
     </>
   )
