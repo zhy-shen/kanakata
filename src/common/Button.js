@@ -52,7 +52,7 @@ function Button({
     }
 
     else if (spChar === "Paste") {
-      navigator.clipboard.readText().then((clipText) => setText(clipText));
+      navigator.clipboard.readText().then((clipText) => setText(clipText.replace(/(\r\n|\n|\r)/gm," ")));
     }
 
     else if (spChar === "Mode") {
