@@ -69,17 +69,17 @@ function InputBox({
   return (
     <>
       <InputBoxHeader
-          text={text}
-          setText={setText}
-          ready={ready}
-          board={board}
-          newUI={newUI}
-          output={output}
-          engTrans={engTrans}
-          handleText={handleText}
-          expanded={expanded}
-          setExpanded={setExpanded}
-        />
+        text={text}
+        setText={setText}
+        ready={ready}
+        board={board}
+        newUI={newUI}
+        output={output}
+        engTrans={engTrans}
+        handleText={handleText}
+        expanded={expanded}
+        setExpanded={setExpanded}
+      />
       <KuroControl
         charSet={charSet}
         setCharSet={setCharSet}

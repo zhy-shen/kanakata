@@ -17,24 +17,24 @@ function InputBox({
 
   return (
     <div className={"header" + ((expanded) ? " expanded" : "")} >
-        <InputBoxFields
-          text={text}
-          ready={ready}
-          board={board}
-          output={output}
-          expanded={expanded}
-          engTrans={engTrans}
-          handleText={handleText}
-        />
-        <InputBoxControl
-          text={text}
-          setText={setText}
-          board={board}
-          newUI={newUI}
-          expanded={expanded}
-          setExpanded={setExpanded}
-        />
-      </div>
+      <InputBoxFields
+        text={text}
+        ready={ready}
+        board={board}
+        output={output}
+        expanded={expanded}
+        engTrans={engTrans}
+        handleText={handleText}
+      />
+      <InputBoxControl
+        text={text}
+        setText={setText}
+        board={board}
+        newUI={newUI}
+        expanded={expanded}
+        setExpanded={setExpanded}
+      />
+    </div>
   );
 }
 
