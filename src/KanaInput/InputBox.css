@@ -111,7 +111,7 @@
 
     & textarea,
     & h2 {
-      margin: auto 0 auto 8px;
+      margin: auto 0 auto 6px;
       display: block;
       color: var(--button-text-color);
       white-space: pre;

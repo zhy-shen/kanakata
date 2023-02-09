@@ -2,6 +2,15 @@
   display: flex;
   flex-grow: 1;
 
+  @media screen and (min-width: 500px) {
+    & .content.noboard {
+      align-self: center;
+      place-content: center;
+      flex-grow: 1;
+    }
+  }
+
+
   &:not(:has(.noboard)) {
     align-content: center;
     justify-content: center;
@@ -12,14 +21,19 @@
     display: flex;
     flex-direction: column;
 
+    &:has(.noboard) {
+      & .navigation {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 5;
+      }
+    }
+
     @media screen and (max-width: 500px) {
       
       &:has(.noboard) {
         & .navigation {
-          position: absolute;
-          left: 0;
-          right: 0;
-          z-index: 5;
           filter: none;
           border-radius: 0;
           overflow: scroll;
@@ -58,81 +72,96 @@
       height: fit-content;
       display: flex;
       flex-direction: column;
+    }
+  }
+}
 
-      @media screen and (max-width: 500px) {
 
-        &.noboard {
-          flex-grow: 1;
-          filter: var(--drop-shadow);
 
-          & .header {
-            clip-path: circle(180vh at 50% calc(-180vh + 370px));
-            margin: 0;
-            width: auto;
-            border-radius: 0;
-            padding-top: 140px;
-            padding-bottom: 50px;
-            filter: var(--drop-shadow);
-            top: 0;
-            transition: padding 0.5s, clip-path 0.5s, margin 0.5s;
-            gap: 25px;
+@media screen and (max-width: 500px) {
 
-            &.expanded {
-              clip-path: circle(180vh at 50% calc(-180vh + 670px));
+  .content.noboard {
+    flex-grow: 1;
+    filter: var(--drop-shadow);
 
-              & .input-boxes {
-                gap: 25px;
+    &:has(.expanded) {
+      z-index: 4;
+      margin-top: -100px;
+    }
 
-                & .input-wrapper {
-                  height: 170px;
+    & .header {
+      clip-path: circle(180vh at 50% calc(-180vh + 360px));
+      margin: 0;
+      width: auto;
+      border-radius: 0;
+      padding-top: 120px;
+      padding-bottom: 80px;
+      filter: var(--drop-shadow);
+      top: 0;
+      transition: padding 0.5s, clip-path 0.5s, margin 0.5s;
+      gap: 25px;
 
-                  & #input-box,
-                  & #input-translate{
-                    word-wrap: break-word;
-                    word-break: break-word;
-                    white-space: unset;
-                  }
+      & .input-boxes {
+        gap: 20px;
+      }
 
-                  & #input-translate {
-                    margin: 0 0 auto 6px;
-                  }
+      &.expanded {
+        clip-path: circle(180vh at 50% calc(-180vh + 360px - 70px + 54vh));
 
-                  &:has(ruby) {
-                    flex-flow: wrap;
-                    row-gap: 5px;
-                    overflow-y: scroll;
-                    align-content: flex-start;
-                  }
-                }
-              }
+        & .icon.expand {
+          transform: scale(1.3) rotate(-180deg);
+        }
 
-              margin-bottom: -340px;
+        & .input-boxes {
+          gap: 25px;
+
+          & .input-wrapper {
+            height: 26vh;
+
+            & #input-box,
+            & #input-translate{
+              word-wrap: break-word;
+              word-break: break-word;
+              white-space: unset;
             }
 
-            & .input-boxes {
-              transition: all 0.5s;
-              width: calc(100vw - 42px);
-
-              & #input-box,
-              & #input-translate {
-                transition: all 0.5s;
-                height: 170px;
-              }
-
-              & .input-wrapper {
-                transition: all 0.5s;
-              }
+            & #input-translate {
+              margin: 0 0 auto 6px;
             }
-          }
 
-          & .kuro-button-wrapper {
-            margin-bottom: 0;
-
-            & .kuro {
-              filter: none;
+            &:has(ruby) {
+              flex-flow: wrap;
+              row-gap: 5px;
+              overflow-y: scroll;
+              align-content: flex-start;
             }
           }
         }
+
+        margin-bottom: -340px;
+      }
+
+      & .input-boxes {
+        transition: height 0.5s, gap 0.5s;
+        width: calc(100vw - 42px);
+
+        & #input-box,
+        & #input-translate {
+          transition: height 0.5s, margin 0.5s;
+          height: 170px;
+        }
+
+        & .input-wrapper {
+          transition: height 0.5s, margin 0.5s;
+        }
+      }
+    }
+
+    & .kuro-button-wrapper {
+      margin-bottom: 0;
+
+      & .kuro {
+        filter: none;
       }
     }
   }
