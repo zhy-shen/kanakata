@@ -82,6 +82,7 @@
   .content.noboard {
     flex-grow: 1;
     filter: var(--drop-shadow);
+    transition: margin 0.5s;
 
     &:has(.expanded) {
       z-index: 4;
@@ -91,14 +92,14 @@
     & .header {
       clip-path: circle(180vh at 50% calc(-180vh + 360px));
       margin: 0;
+      gap: 25px;
       width: auto;
       border-radius: 0;
       padding-top: 120px;
       padding-bottom: 80px;
       filter: var(--drop-shadow);
       top: 0;
-      transition: padding 0.5s, clip-path 0.5s, margin 0.5s;
-      gap: 25px;
+      transition: height 0.5s, margin 0.5s, padding 0.5s, clip-path 0.5s;
       will-change: transform, clip-path, padding;
 
       & .control-box {
@@ -107,24 +108,26 @@
 
       & .input-boxes {
         gap: 20px;
-        transition: height 0.5s, gap 0.5s;
+        transition: height 0.5s, gap 0.5s, margin 0.5s;
         width: calc(100vw - 42px);
 
         & #input-box,
         & #input-translate {
           will-change: height;
-          transition: height 0.5s, margin 0.5s;
+          transition: height 0.5s;
           height: 170px;
         }
 
         & .input-wrapper {
           will-change: height;
-          transition: height 0.5s, margin 0.5s;
+          transition: height 0.5s;
         }
       }
 
       &.expanded {
         clip-path: circle(180vh at 50% calc(-180vh + 360px - 70px + 54vh));
+
+        margin-bottom: -340px;
 
         & .icon.expand {
           transform: scale(1.3) rotate(-180deg);
@@ -155,8 +158,6 @@
             }
           }
         }
-
-        margin-bottom: -340px;
       }
     }
 
