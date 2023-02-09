@@ -21,6 +21,8 @@ function InputBox( {
 } ) {
   const formats = ["normal", "spaced", "okurigana", "furigana"];
 
+  const [newUI, setNewUI] = React.useState(window.innerWidth < 500);
+
   const [expanded, setExpanded] = React.useState(false);
   const [engTrans, setEngTrans] = React.useState("Link Starting...");
   const [output, setOutput] = React.useState(formats.random()); //output format: [normal, spaced, okurigana, furigana]
@@ -51,6 +53,10 @@ function InputBox( {
     setText(e.target.value);
   }
 
+  const updateMedia = () => {
+    setNewUI(window.innerWidth < 500);
+  };
+
   useEffect(() => {
     //only translate when kuroshiro is ready
     if (ready) kuroTranslate();
@@ -59,6 +65,9 @@ function InputBox( {
   useEffect(() => {
     if (board) textReset();
     if (!ready) kuroInit();
+
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
   }, []);
   
   return (
@@ -87,8 +96,8 @@ function InputBox( {
         <div className="control-box">
           <Button key="copy" text={text} setText={setText} char="Copy" display={svgs.copy} />
           <Button key="paste" text={text} setText={setText} char="Paste" display={svgs.paste}/>
-          { !board &&
-            <Button key="expand" text={expanded} setText={setExpanded} char="Expand" />
+          { !board && newUI &&
+            <Button key="expand" text={expanded} setText={setExpanded} char="Expand" display={svgs.expand} />
           }
           <Button key="translate" text={text} setText={setText} char="Translate" display={svgs.translate} />
           {board &&
