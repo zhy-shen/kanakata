@@ -1,5 +1,4 @@
 import React from "react";
-import ColorControl from "./ColorControl"
 import "./MainNavigation.css";
 
 function MainNavigation({
@@ -41,7 +40,6 @@ function MainNavigation({
           {linkMarkup()}
         </ul>
       </div>
-      <ColorControl key="color" />
     </div>
   );
 }

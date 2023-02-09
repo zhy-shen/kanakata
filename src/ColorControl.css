@@ -76,6 +76,8 @@
 
 .mode-toggle {
   z-index: 3;
+  margin-bottom: 0;
+
   & button {
     background-color: var(--background-color);
     background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
@@ -110,5 +112,12 @@ body {
     & .sun {
       display: block;
     }
+  }
+}
+
+.color-control {
+  & > .color-input,
+  & > .mode-toggle {
+    margin-bottom: 0;
   }
 }

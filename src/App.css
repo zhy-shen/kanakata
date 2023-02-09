@@ -30,9 +30,16 @@
     }
 
     @media screen and (max-width: 500px) {
+      &:has(.noboard .expanded) {
+        & .navigation {
+          top: -100px;
+        }
+      }
       
       &:has(.noboard) {
         & .navigation {
+          top: 0;
+          transition: top 0.5s;
           filter: none;
           border-radius: 0;
           overflow: scroll;
@@ -91,14 +98,15 @@
 
     & .header {
       clip-path: circle(180vh at 50% calc(-180vh + 360px));
+      top: 0;
       margin: 0;
       gap: 25px;
       width: auto;
+      z-index: 5;
       border-radius: 0;
       padding-top: 120px;
-      padding-bottom: 80px;
+      padding-bottom: min(8vh, 80px);
       filter: var(--drop-shadow);
-      top: 0;
       transition: height 0.5s, margin 0.5s, padding 0.5s, clip-path 0.5s;
       will-change: transform, clip-path, padding;
 
@@ -115,7 +123,6 @@
         & #input-translate {
           will-change: height;
           transition: height 0.5s;
-          height: 170px;
         }
 
         & .input-wrapper {
@@ -125,8 +132,8 @@
       }
 
       &.expanded {
-        clip-path: circle(180vh at 50% calc(-180vh + 360px - 70px + 54vh));
-
+        clip-path: circle(180vh at 50% calc(-180vh + 360px - 70px - 72px + calc(100vh - 260px)));
+        padding-top: 40px;
         margin-bottom: -340px;
 
         & .icon.expand {
@@ -137,10 +144,12 @@
           gap: 25px;
 
           & .input-wrapper {
-            height: 26vh;
+            height: calc(50vh - 130px);
 
             & #input-box,
             & #input-translate{
+              overflow-y: scroll;
+              height: calc(50vh - 130px);
               word-wrap: break-word;
               word-break: break-word;
               white-space: unset;

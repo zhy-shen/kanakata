@@ -3,6 +3,7 @@ import KanaInput from "./KanaInput/KanaInput"
 import CardBoard from "./CardBoard/CardBoard"
 import MainNavigation from "./MainNavigation"
 import textArray from "./constants/defaultText"
+import ColorControl from "./ColorControl"
 import "./App.css"
 
 Array.prototype.random = function () {
@@ -15,7 +16,7 @@ function App({
   ready,
   setReady,
 }) {
-  
+
   const [page, setPage] = useState(0);
   const text = textArray.random();
 
@@ -43,6 +44,7 @@ function App({
           />}
         {(page === 2) && <KanaInput key="kanaInputLocal" local={true} board={true} />}
         {(page === 3) && <CardBoard key="cardBoard" />}
+        <ColorControl key="color" />
       </div>
     </div>
   )

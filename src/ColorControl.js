@@ -146,7 +146,7 @@ function ColorControl() {
   }, []);
 
   return (
-    <>
+    <div className="color-control">
       <div className="mode-toggle">
         <Button char="Mode" display={svg.sunMoon} onClick={modeClick} />
       </div>
@@ -155,7 +155,7 @@ function ColorControl() {
         <input
           id="color"
           type="text"
-          enterkeyhint="done"
+          enterKeyHint="done"
           className="input-box"
           placeholder={originalColor}
           value={color}
@@ -165,7 +165,7 @@ function ColorControl() {
           maxLength="6"
           spellCheck="false" />
       </div>
-    </>
+    </div>
   )
 }
 export default ColorControl;
