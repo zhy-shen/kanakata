@@ -10,7 +10,6 @@
     }
   }
 
-
   &:not(:has(.noboard)) {
     align-content: center;
     justify-content: center;
@@ -100,9 +99,28 @@
       top: 0;
       transition: padding 0.5s, clip-path 0.5s, margin 0.5s;
       gap: 25px;
+      will-change: transform, clip-path, padding;
+
+      & .control-box {
+        gap: 15px;
+      }
 
       & .input-boxes {
         gap: 20px;
+        transition: height 0.5s, gap 0.5s;
+        width: calc(100vw - 42px);
+
+        & #input-box,
+        & #input-translate {
+          will-change: height;
+          transition: height 0.5s, margin 0.5s;
+          height: 170px;
+        }
+
+        & .input-wrapper {
+          will-change: height;
+          transition: height 0.5s, margin 0.5s;
+        }
       }
 
       &.expanded {
@@ -139,21 +157,6 @@
         }
 
         margin-bottom: -340px;
-      }
-
-      & .input-boxes {
-        transition: height 0.5s, gap 0.5s;
-        width: calc(100vw - 42px);
-
-        & #input-box,
-        & #input-translate {
-          transition: height 0.5s, margin 0.5s;
-          height: 170px;
-        }
-
-        & .input-wrapper {
-          transition: height 0.5s, margin 0.5s;
-        }
       }
     }
 
