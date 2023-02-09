@@ -69,7 +69,7 @@ function ColorControl() {
 
   function checkColor(set, setColor) {
     let value = setColor || color;
-    
+
     if (testColor(value)) {
       inputWrapper.classList.add('custom')
       inputWrapper.style.setProperty('--color-input-background', '#' + value);
@@ -155,6 +155,7 @@ function ColorControl() {
         <input
           id="color"
           type="text"
+          enterkeyhint="done"
           className="input-box"
           placeholder={originalColor}
           value={color}
