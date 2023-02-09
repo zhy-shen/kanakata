@@ -61,7 +61,7 @@
 
   @media screen and (max-width: 1000px) {
     flex-direction: column;
-    padding: 25px 25px 20px;
+    padding: 25px 20px 20px;
     width: calc(100vw - 90px);
     border-radius: 60px;
     gap: 15px;
@@ -86,13 +86,12 @@
     scrollbar-width: none;
 
     &.ruby:not(.prepare) {
+      align-items: baseline;
       font-size: 24px;
-      place-items: center;
       padding: 12px 15px 12px 23px;
 
       &:has(ruby) {
         font-size: 20px;
-        place-items: flex-end;
       }
 
       & > * {
@@ -110,7 +109,7 @@
       display: none;
     }
 
-    & input,
+    & textarea,
     & h2 {
       margin: auto 0 auto 8px;
       display: block;
@@ -120,7 +119,7 @@
       position: relative;
     }
 
-    & input {
+    & textarea {
       width: 100%;
       background: none;
       border: none;
@@ -128,6 +127,7 @@
       font-size: 24px;
       margin-top: -1px;
       margin-left: 4px;
+      resize: none;
     }
 
     &:first-child > h2:first-child::after {

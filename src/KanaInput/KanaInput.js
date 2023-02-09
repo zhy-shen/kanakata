@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import KanaBoard from "./KanaBoard";
 import InputBox from "./InputBox";
 import InputBoxLocal from "./InputBoxLocal";
 import Kuroshiro from "kuroshiro-zhyshen";
 
 function KanaInput( {
+  kuroshiro,
+  setKuroShiro,
+  ready,
+  setReady,
   local,
   board,
   placeholder,
 } ) {
-  const [inputText, setInputText] = React.useState(placeholder || "インプット");
-  const [kuroshiro, setKuroShiro] = React.useState(new Kuroshiro());
-  const [ready, setReady] = React.useState(false);
+  
+  const [inputText, setInputText] = useState(placeholder || "インプット");
 
   return(
     <>
@@ -23,6 +26,7 @@ function KanaInput( {
         text={inputText}
         setText={setInputText}
         kuroshiro={kuroshiro}
+        setKuroShiro={setKuroShiro}
         ready={ready}
         setReady={setReady}
         board={board}

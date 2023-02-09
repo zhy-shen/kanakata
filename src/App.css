@@ -1,37 +1,26 @@
 #app {
   display: flex;
   flex-grow: 1;
-  align-content: center;
-  justify-content: center;
+
+  &:not(:has(.noboard)) {
+    align-content: center;
+    justify-content: center;
+  }
 
   & .main {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    & .navigation {
+      transition: all 0.3s;
 
-    /*
-    @media screen and (min-width: 1400px) {
-      flex-direction: row;
-      justify-content: space-evenly;
+      & .button-wrapper {
+        transition: all 0.3s;
 
-      &:not(:has(.noboard)) .content {
-        margin-top: 20px;
-      }
-
-      & .navigation {
-        display: flex;
-        align-items: center;
-        & ul {
-          flex-direction: column;
-          position: sticky;
-          top: 20px;
-          height: fit-content;
+        & .navigation-buttons {
+          transition: all 0.3s;
         }
       }
-    } */
-
-    & .noboard {
-      flex-grow: 1;
     }
 
     &:has(.noboard) {
@@ -40,23 +29,102 @@
         left: 0;
         right: 0;
         z-index: 5;
+        filter: none;
+        border-radius: 0;
+        overflow: scroll;
+
+        & .button-wrapper {
+          filter: none;
+          border-radius: 0;
+          margin: 0;
+          padding: 10px;
+
+          & .navigation-buttons {
+            max-width: none;
+          }
+        }
       }
     }
       
     & .navigation {
       margin: 20px 0;
     }
+
     & .content {
       height: fit-content;
       display: flex;
       flex-direction: column;
 
       &.noboard {
-        align-self: center; 
-        place-content: center;
+        flex-grow: 1;
+        filter: var(--drop-shadow);
+
+        & .header {
+          clip-path: circle(180vh at 50% calc(-180vh + 370px));
+          margin: 0;
+          width: auto;
+          border-radius: 0;
+          padding-top: 140px;
+          padding-bottom: 50px;
+          filter: var(--drop-shadow);
+          top: 0;
+          transition: padding 0.5s, clip-path 0.5s, margin 0.5s;
+          gap: 25px;
+
+          &.expanded {
+            clip-path: circle(180vh at 50% calc(-180vh + 670px));
+
+            & .input-boxes {
+              gap: 25px;
+
+              & .input-wrapper {
+                height: 170px;
+
+                & #input-box,
+                & #input-translate{
+                  word-wrap: break-word;
+                  word-break: break-word;
+                  white-space: unset;
+                }
+
+                & #input-translate {
+                  margin: 0 0 auto 6px;
+                }
+
+                &:has(ruby) {
+                  flex-flow: wrap;
+                  row-gap: 5px;
+                  overflow-y: scroll;
+                  align-content: flex-start;
+                }
+              }
+            }
+
+            margin-bottom: -390px;
+          }
+
+          & .input-boxes {
+            transition: height 0.5s;
+            width: calc(100vw - 42px);
+
+            & #input-box,
+            & #input-translate {
+              transition: height 0.5s;
+              height: 170px;
+            }
+
+            & .input-wrapper {
+              transition: height 0.5s;
+            }
+          }
+        }
 
         & .kuro-button-wrapper {
           margin-bottom: 0;
+
+          & .kuro {
+            filter: none;
+          }
         }
       }
     }
