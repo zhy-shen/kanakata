@@ -8,6 +8,14 @@
   border-radius: 40px;
 }
 
+.navigation-buttons,
+.navigation {
+  scrollbar-width: none;  /* Firefox */
+
+  &::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  }
+}
 
 .navigation-buttons {
   border-radius: 40px;
