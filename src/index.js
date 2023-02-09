@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import AppGlobal from "./AppGlobal";
 import "./index.css";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
   document.querySelector("body").classList.add('night-mode');
@@ -18,3 +19,5 @@ root.render(
     <AppGlobal />
   </React.StrictMode>
 );
+
+serviceWorkerRegistration.unregister();

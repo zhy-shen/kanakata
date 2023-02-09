@@ -1,0 +1,10 @@
+/* zen-kaku-gothic-new-500 - latin_japanese */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/zen-kaku-gothic-new-v13-latin_japanese-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./fonts/zen-kaku-gothic-new-v13-latin_japanese-500.woff') format('woff'), /* Modern Browsers */
+       url('./fonts/zen-kaku-gothic-new-v13-latin_japanese-500.ttf') format('truetype'); /* Safari, Android, iOS */
+}
