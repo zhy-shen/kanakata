@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import KanaBoard from "./KanaBoard";
 import InputBox from "./InputBox";
 import InputBoxLocal from "./InputBoxLocal";
-import Kuroshiro from "kuroshiro-zhyshen";
 
 function KanaInput( {
   kuroshiro,

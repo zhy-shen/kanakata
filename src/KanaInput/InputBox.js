@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import KuroControl from "./KuroControl";
-import InputBoxHeader from "./InputBoxHeader";
+import InputBoxHeader from "./InputHeader";
 import "./InputBox.css";
 
 //Kuroshiro
@@ -17,7 +17,7 @@ function InputBox({
 }) {
   const formats = ["normal", "spaced", "okurigana", "furigana"];
 
-  const [newUI, setNewUI] = React.useState(window.innerWidth < 500);
+  const [newUI, setNewUI] = React.useState(window.innerWidth < 1000);
 
   const [expanded, setExpanded] = React.useState(false);
   const [engTrans, setEngTrans] = React.useState("Link Starting...");
@@ -49,8 +49,8 @@ function InputBox({
     setText(e.target.value);
   }
 
-  const updateMedia = () => {
-    setNewUI(window.innerWidth < 500);
+  function updateMedia() {
+    setNewUI(window.innerWidth < 1000);
   };
 
   useEffect(() => {

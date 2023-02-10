@@ -1,6 +1,6 @@
 import React from "react";
-import InputBoxControl from "./InputBoxControl"
-import InputBoxFields from "./InputBoxFields"
+import InputBoxControl from "./InputControl"
+import InputBoxFields from "./InputFields"
 
 function InputBox({
   text,

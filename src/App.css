@@ -2,7 +2,7 @@
   display: flex;
   flex-grow: 1;
 
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 1000px) {
     & .content.noboard {
       align-self: center;
       place-content: center;
@@ -29,7 +29,7 @@
       }
     }
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 1000px) {
       &:has(.noboard .expanded) {
         & .navigation {
           top: -100px;
@@ -47,7 +47,7 @@
           & .button-wrapper {
             filter: none;
             border-radius: 0;
-            margin: 0;
+            margin: 0 auto;
             padding: 10px;
   
             & .navigation-buttons {
@@ -84,7 +84,7 @@
 
 
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1000px) {
 
   .content.noboard {
     flex-grow: 1;
