@@ -26,7 +26,7 @@
     & .kana-input-buttons {
       max-width: var(--max-content-width);
       margin-right: -8px;
-      overflow-y: scroll;
+      overflow-y: auto;
     }
   }
 }

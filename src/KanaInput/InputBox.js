@@ -17,7 +17,7 @@ function InputBox({
 }) {
   const formats = ["normal", "spaced", "okurigana", "furigana"];
 
-  const [newUI, setNewUI] = React.useState(window.innerWidth < 1000);
+  const [newUI, setNewUI] = React.useState(window.innerWidth < 3000);
 
   const [expanded, setExpanded] = React.useState(false);
   const [engTrans, setEngTrans] = React.useState("Link Starting...");
@@ -50,7 +50,7 @@ function InputBox({
   }
 
   function updateMedia() {
-    setNewUI(window.innerWidth < 1000);
+    setNewUI(window.innerWidth < 3000);
   };
 
   useEffect(() => {
@@ -75,6 +75,8 @@ function InputBox({
         board={board}
         newUI={newUI}
         output={output}
+        romaji={romaji}
+        charSet={charSet}
         engTrans={engTrans}
         handleText={handleText}
         expanded={expanded}

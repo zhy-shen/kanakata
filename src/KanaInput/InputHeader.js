@@ -9,6 +9,8 @@ function InputBox({
   board,
   newUI,
   output,
+  romaji,
+  charSet,
   engTrans,
   handleText,
   expanded,
@@ -16,12 +18,14 @@ function InputBox({
 }) {
 
   return (
-    <div className={"header" + ((expanded) ? " expanded" : "")} >
+    <div className={"header" + ((expanded) ? " expanded" : "")}>
       <InputBoxFields
         text={text}
         ready={ready}
         board={board}
         output={output}
+        romaji={romaji}
+        charSet={charSet}
         expanded={expanded}
         engTrans={engTrans}
         handleText={handleText}

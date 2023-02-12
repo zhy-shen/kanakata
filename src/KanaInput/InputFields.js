@@ -8,13 +8,20 @@ function InputBoxFields({
   ready,
   board,
   output,
+  romaji,
+  charSet,
   expanded,
   engTrans,
   handleText,
 }) {
 
+  let hint = "Convert to " + charSet + " " + output;
+  if (charSet === "romaji") {
+    hint += " (" + romaji + ")";
+  }
+
   return (
-    <div className="input-boxes">
+    <div className="input-boxes" data-translate={hint}>
       <div className="input-wrapper">
         {board ?
           <h2 id="input-box">{text}</h2>
@@ -30,7 +37,7 @@ function InputBoxFields({
           />
         }
       </div>
-      <div className={"input-wrapper translate" + ((output === "furigana") ? " ruby" : "") + ((!ready) ? " prepare" : "")}>
+      <div className={"input-wrapper translate" + ((output === "furigana") ? " ruby" : "") + ((!ready) ? " prepare" : "")} data-name={output.toUpperCase()}>
         {(output === "furigana" && ready) ? parse(engTrans) : <h2 id="input-translate">{engTrans}</h2>}
       </div>
     </div>
