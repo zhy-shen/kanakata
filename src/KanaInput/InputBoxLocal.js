@@ -1,22 +1,21 @@
 import React, { useEffect } from "react";
 import jpEnMap from "../constants/jpEnMap";
 import small from "../constants/jpEnmap/jpEnMapSmall";
-import svgs from "../common/svgs";
-import Button from "../common/Button";
+import ControlBox from "./ControlBox";
 import "./InputBox.css";
 
-function InputBoxLocal( {
-  text, 
+function InputBoxLocal({
+  text,
   setText,
-} ) {
+}) {
   let engTrans = "inputto";
 
   function autoTranslate() {
     const inputTRBox = document.querySelector(".input-wrapper.translate");
-    
-    inputTRBox.addEventListener('change', function(e) {
+
+    inputTRBox.addEventListener('change', function (e) {
       setText(e.detail);
-    }, {once : true} );
+    }, { once: true });
   }
 
   checkString();
@@ -35,7 +34,7 @@ function InputBoxLocal( {
 
       else if (i < string.length - 1) {
         let twoChar = string.substring(i, i + 2);
-        
+
         //check for doubling next syllable
         if (twoChar.charAt(0) === "ッ" || twoChar.charAt(0) === "っ") {
           if (hasChar(next) && !Object.hasOwn(small, next)) {
@@ -55,7 +54,7 @@ function InputBoxLocal( {
             engTemp += "~" + jpToEn(current);
           }
           else {
-            engTemp = engTemp.slice(0,-1) + jpToEn(current);
+            engTemp = engTemp.slice(0, -1) + jpToEn(current);
           }
         }
 
@@ -71,7 +70,7 @@ function InputBoxLocal( {
             engTemp += "~" + jpToEn(current);
           }
           else if (current !== "ッ" && current !== "っ") {
-            engTemp = engTemp.slice(0,-1) + jpToEn(current);
+            engTemp = engTemp.slice(0, -1) + jpToEn(current);
           }
         }
 
@@ -103,20 +102,18 @@ function InputBoxLocal( {
   return (
     <div className="header">
       <div className="input-boxes">
-      <div className="input-wrapper">
-        <h2 id="input-box">{text}</h2>
+        <div className="input-wrapper">
+          <h2 id="input-box">{text}</h2>
+        </div>
+        <div className="input-wrapper translate">
+          <h2 id="input-translate">{engTrans}</h2>
+        </div>
       </div>
-      <div className="input-wrapper translate">
-        <h2 id="input-translate">{engTrans}</h2>
-      </div>
-      </div>
-      <div className="control-box">
-        <Button key="copy" text={text} setText={setText} char="Copy" display={svgs.copy}/>
-        <Button key="paste" text={text} setText={setText} char="Paste" display={svgs.paste}/>
-        <Button key="translate" text={text} setText={setText} char="Translate" display={svgs.translate}/>
-        <Button key="space" text={text} setText={setText} char="Space" display={svgs.space}/>
-        <Button key="delete" text={text} setText={setText} char="Del" display={svgs.backspace}/>
-      </div>
+      <ControlBox
+        text={text}
+        setText={setText}
+        board={true}
+      />
     </div>
   );
 }

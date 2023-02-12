@@ -1,8 +1,9 @@
 import React from "react";
 import svgs from "../common/svgs";
 import Button from "../common/Button";
+import "./ControlBox.css";
 
-function InputBoxControl({
+function ControlBox({
   text,
   setText,
   board,
@@ -29,4 +30,4 @@ function InputBoxControl({
   );
 }
 
-export default InputBoxControl;
+export default ControlBox;

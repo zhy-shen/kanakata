@@ -1,0 +1,117 @@
+.main:has(.noboard) {
+  background: linear-gradient(180deg, var(--button-color) 30%, var(--background-color) 60%);
+
+  @media screen and (max-width: 1000px) {
+    background: linear-gradient(180deg, var(--button-color) 25%, var(--background-color) 55%);
+  }
+}
+
+.content.noboard {
+  flex-grow: 1;
+  filter: var(--drop-shadow);
+  transition: margin 0.5s;
+
+  &:has(.expanded) {
+    z-index: 4;
+  }
+
+  & .header {
+    flex-direction: column;
+    top: 0;
+    margin: 0 0 10px;
+    gap: 25px;
+    width: auto;
+    max-width: 90vw;
+    z-index: 5;
+    border-radius: 0;
+    padding: calc(45vh - 370px + 120px) max(5vw, calc(50vw - 500px)) min(8vh, 80px);
+    clip-path: circle(240vw at 50% calc(-240vw + 45vh));
+
+    filter: var(--drop-shadow);
+    transition: height 0.5s, margin 0.5s, padding 0.5s, clip-path 0.5s;
+    will-change: transform, clip-path, padding;
+
+    & .control-box {
+      gap: 15px;
+    }
+
+    & .input-boxes {
+      gap: 30px;
+      transition: height 0.5s, gap 0.5s, margin 0.5s;
+      max-width: 1000px;
+      position: relative;
+
+      &::before {
+        display: none;
+        top: -50px;
+        left: 10px;
+        font-size: 24px;
+        content: attr(data-translate);
+        position: absolute;
+        color: var(--button-text-color)
+      }
+
+      & #input-box,
+      & #input-translate {
+        width: 100%;
+        will-change: height;
+        transition: height 0.5s;
+      }
+
+      & .input-wrapper {
+        will-change: height;
+        transition: height 0.5s;
+      }
+    }
+
+    &.expanded {
+      clip-path: circle(320vw at 50% calc(-320vw + 360px - 69px - 80px + calc(90vh - 300px)));
+      padding: 40px max(5vw, calc(50vw - 500px));
+      margin-bottom: 20px;
+      margin-top: -95px;
+
+      & .icon.expand {
+        transform: scale(1.3) rotate(-180deg);
+      }
+
+      & .input-boxes {
+        gap: 25px;
+
+        & .input-wrapper {
+          height: calc(45vh - 150px);
+
+          & #input-box,
+          & #input-translate{
+            overflow-y: auto;
+            height: calc(45vh - 150px);
+            word-wrap: break-word;
+            word-break: break-word;
+            white-space: unset;
+          }
+
+          & #input-translate {
+            margin: 0 0 auto 6px;
+          }
+
+          &:has(ruby) {
+            flex-flow: wrap;
+            row-gap: 5px;
+            overflow-y: auto;
+            align-content: flex-start;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 1000px) {
+      padding: calc(34vh - 370px + 120px) max(5vw, calc(50vw - 500px)) min(8vh, 80px);
+      clip-path: circle(320vw at 50% calc(-320vw + 34vh));
+      
+      &.expanded {
+        @media (max-width: 850px) {
+          margin-bottom: -300px;
+        }
+      }
+    }
+  }
+}

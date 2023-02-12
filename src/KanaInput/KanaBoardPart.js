@@ -2,7 +2,6 @@ import React from "react";
 import Button from "../common/Button";
 import katagana from "../constants/katagana";
 import hiragana from "../constants/hiragana";
-//import "./KanaBoard.css";
 
 //key: JP value: EN\
 /*

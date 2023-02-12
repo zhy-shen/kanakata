@@ -67,3 +67,41 @@
     }
   }
 }
+
+#app {
+  & .main {
+    &:has(.noboard .expanded) {
+      & .navigation {
+        transform: translateY(-85px);
+      }
+    }
+    
+    &:has(.noboard) {
+      & .navigation {
+        padding: 20px 0 10px;
+        margin: 0;
+        z-index: 5;
+        background: var(--button-color);
+        transition: transform 0.5s;
+        max-width: 100vw;
+        overflow:auto;
+  
+        top: 0;
+        filter: none;
+        border-radius: 0;
+        overflow: scroll;
+  
+        & .button-wrapper {
+          filter: none;
+          border-radius: 0;
+          margin: 0 auto;
+          padding: 10px 20px;
+  
+          & .navigation-buttons {
+            max-width: none;
+          }
+        }
+      }
+    }
+  }
+}

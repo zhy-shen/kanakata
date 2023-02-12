@@ -96,7 +96,7 @@ function KuroControl( {
 
   return (
     <div className="kuro-button-wrapper">
-      <div className="kana-button-control kuro charset" data-name={"Charset: " + charSet}>
+      <div className="kana-button-control kuro charset" data-name={"Output: " + charSet}>
         { generateButtons(0) }
       </div>
       <div className="kana-button-control kuro mode" data-name={"Format: " + output}>

@@ -26,6 +26,6 @@
     font-size: 16px;
     content: attr(data-name);
     position: absolute;
-    color: var(--button-click-color)
+    color: var(--button-text-color)
   }
 }

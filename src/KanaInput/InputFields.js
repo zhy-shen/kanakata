@@ -1,5 +1,5 @@
 import React from "react";
-import "./InputBox.css";
+import "./InputFields.css";
 
 import parse from 'html-react-parser';
 

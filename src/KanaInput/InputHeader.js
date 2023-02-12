@@ -1,5 +1,5 @@
 import React from "react";
-import InputBoxControl from "./InputControl"
+import ControlBox from "./ControlBox"
 import InputBoxFields from "./InputFields"
 
 function InputBox({
@@ -30,7 +30,7 @@ function InputBox({
         engTrans={engTrans}
         handleText={handleText}
       />
-      <InputBoxControl
+      <ControlBox
         text={text}
         setText={setText}
         board={board}
