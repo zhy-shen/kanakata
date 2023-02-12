@@ -1,7 +1,8 @@
 .kuro-button-wrapper {
   display: flex;
   width: fit-content;
-  gap: 15px;
+  row-gap: 30px;
+  column-gap: 15px;
   align-self: center;
   flex-flow: wrap;
   place-content: space-evenly;
@@ -11,9 +12,20 @@
   margin: 0;
   width: fit-content;
   transition: opacity 0.3s, filter 0.3s;
+  position: relative;
+  top: 0;
 
   & button.ruby {
     padding-top: 7px;
     padding-bottom: 7px;
+  }
+
+  &::before {
+    top: -28px;
+    left: 20px;
+    font-size: 16px;
+    content: attr(data-name);
+    position: absolute;
+    color: var(--button-click-color)
   }
 }
