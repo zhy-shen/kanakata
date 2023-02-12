@@ -79,6 +79,7 @@ function KuroControl( {
 
     return (
       <button
+        type="button"
         key={names.short[index][subIndex]}
         className={markupClass}
         onClick={() => switchMode(index, element)}

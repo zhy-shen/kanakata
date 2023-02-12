@@ -50,6 +50,7 @@
       &.active {
         --button-text-color: var(--button-click-text-color);
         --background-color: var(--button-highlight-color);
+        color: var(--background-color-copy);
       }
 
       &:hover:not(.empty) {

@@ -47,6 +47,7 @@ function ColorControl() {
     if (set === "true") {
       document.querySelector('body').style.setProperty('--main-color', h + ', ' + s + '%')
       document.querySelector('body').style.setProperty('--l', l + '%')
+      setColor('');
 
       if (l > colorThreshold) {
         body.classList.add('light');
@@ -157,6 +158,7 @@ function ColorControl() {
           type="text"
           enterKeyHint="done"
           className="input-box"
+          autocomplete="off"
           placeholder={originalColor}
           value={color}
           onChange={e => handleColor(e)}
