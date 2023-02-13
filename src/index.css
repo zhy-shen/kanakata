@@ -24,7 +24,8 @@ body {
   --button-click-color: #e3e3e3;
   --button-click-text-color: hsl(var(--hsl-main));
 
-  --text-color-half-opacity: hsl(var(--hsl-dark), 0.5);
+  --button-color-half-opacity: hsla(var(--hsl-main), 0.5);
+  --text-color-half-opacity: hsla(var(--hsl-dark), 0.5);
 
   --background-color: hsl(var(--main-color), calc(var(--l) - 10%));
   --background-color-copy: hsl(var(--main-color), calc(var(--l) - 10%));

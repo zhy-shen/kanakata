@@ -21,8 +21,10 @@
   }
 
   &::before {
-    top: -28px;
-    left: 20px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
     font-size: 16px;
     content: attr(data-name);
     position: absolute;

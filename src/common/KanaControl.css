@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   grid-template-columns: repeat(5, 1fr);
   position: sticky;
-  top: 270px;
+  top: 260px;
   z-index: 1;
   background: var(--button-color);
   padding: 10px 12px;

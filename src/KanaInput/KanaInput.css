@@ -33,6 +33,7 @@
 
     & .control-box {
       gap: 15px;
+      justify-content: center;
     }
 
     & .input-boxes {

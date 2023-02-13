@@ -16,10 +16,10 @@
     --drop-shadow: drop-shadow(1px 1px 1px hsla(var(--main-color), var(--l-dark), 0.35));
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     flex-direction: column;
-    padding: 25px 20px 20px;
-    border-radius: 60px;
+    padding: 20px;
+    border-radius: 45px;
     gap: 15px;
 
     & .input-boxes {

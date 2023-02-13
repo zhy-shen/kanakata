@@ -2,10 +2,10 @@
   & .control-box {
     @media screen and (max-width: 450px) {
       overflow: auto;
-      max-width: calc(100vw - 90px);
       padding-bottom: 2px;
       padding-right: 2px;
       margin-bottom: -2px;
+      margin-right: -2px;
       border-radius: 40px;
     }
 
@@ -23,7 +23,6 @@
 .header .control-box {
   display: flex;
   gap: 10px;
-  margin: 0 auto;
 
   & .button-wrap button {
     background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
