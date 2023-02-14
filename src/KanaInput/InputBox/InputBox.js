@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import KuroControl from "./KuroControl";
+import KuroControl from "../KuroControl";
 import InputBoxHeader from "./InputHeader";
 import "./InputBox.css";
 

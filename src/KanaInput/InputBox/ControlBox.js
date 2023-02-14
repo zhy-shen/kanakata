@@ -1,6 +1,6 @@
 import React from "react";
-import svgs from "../common/svgs";
-import Button from "../common/Button";
+import svgs from "../../common/svgs";
+import Button from "../../common/Button";
 import "./ControlBox.css";
 
 function ControlBox({

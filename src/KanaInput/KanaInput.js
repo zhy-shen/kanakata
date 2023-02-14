@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import KanaBoard from "./KanaBoard";
-import InputBox from "./InputBox";
-import InputBoxLocal from "./InputBoxLocal";
+import InputBox from "./InputBox/InputBox";
+import InputBoxLocal from "./InputBox/InputBoxLocal";
 import "./KanaInput.css";
 
 function KanaInput( {
