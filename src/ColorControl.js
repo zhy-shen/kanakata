@@ -158,7 +158,7 @@ function ColorControl() {
           type="text"
           enterKeyHint="done"
           className="input-box"
-          autocomplete="off"
+          autoComplete="off"
           placeholder={originalColor}
           value={color}
           onChange={e => handleColor(e)}

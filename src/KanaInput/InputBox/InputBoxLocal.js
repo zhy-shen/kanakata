@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import jpEnMap from "../constants/jpEnMap";
-import small from "../constants/jpEnmap/jpEnMapSmall";
-import ControlBox from "./ControlBox";
+import jpEnMap from "../../constants/jpEnMap";
+import small from "../../constants/jpEnmap/jpEnMapSmall";
+import ControlBox from "../ControlBox";
 import "./InputBox.css";
 
 function InputBoxLocal({
