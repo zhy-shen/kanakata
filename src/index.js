@@ -13,6 +13,13 @@ if (parseFloat(window.getComputedStyle(document.body).getPropertyValue('--l')) >
   document.querySelector("body").classList.add('light');
 }
 
+String.prototype.encode = function () {
+  return encodeURIComponent(this);
+}
+String.prototype.decode = function () {
+  return decodeURIComponent(this);
+}
+
 const root = ReactDOM.createRoot(document.getElementById("app"));
 root.render(
   <React.StrictMode>

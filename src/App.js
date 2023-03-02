@@ -16,9 +16,10 @@ function App({
   ready,
   setReady,
 }) {
-
+  let params = (new URL(document.location)).searchParams;
+  
   const [page, setPage] = useState(0);
-  const text = textArray.random();
+  const text = params.get("text") ? params.get("text").decode() : textArray.random();
 
   return (
     <div className="main">

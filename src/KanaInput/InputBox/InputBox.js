@@ -15,15 +15,31 @@ function InputBox({
   setReady,
   board,
 }) {
+  let params = (new URL(document.location)).searchParams;
+
+  const charSets = ["hiragana", "katakana", "romaji"];
   const formats = ["normal", "spaced", "okurigana", "furigana"];
 
-  const [newUI, setNewUI] = React.useState(window.innerWidth < 3000);
+  const initialCharSet = charSets.includes(params.get("c")) ? params.get("c") : charSets.random()
+  const initialFormat = formats.includes(params.get("f")) ? params.get("f") : formats.random()
 
+  const [newUI, setNewUI] = React.useState(window.innerWidth < 3000);
   const [expanded, setExpanded] = React.useState(false);
   const [engTrans, setEngTrans] = React.useState("Link Starting...");
-  const [output, setOutput] = React.useState(formats.random()); //output format: [normal, spaced, okurigana, furigana]
-  const [charSet, setCharSet] = React.useState("romaji"); //output set: [hiragana, katakana, romaji]
-  const [romaji, setRomaji] = React.useState("hepburn"); //[nippon, passport, hepburn]
+  const [charSet, setCharSet] = React.useState(initialCharSet); //output set: [hiragana, katakana, romaji]
+  const [output, setOutput] = React.useState(initialFormat); //output format: [normal, spaced, okurigana, furigana]
+  const [romaji, setRomaji] = React.useState(params.get("r") || "hepburn"); //[nippon, passport, hepburn]
+
+  function setURL() {
+    let url = "";
+    url += "?text=" + text + "&f=" + output + "&c=" + charSet + "&r=" + romaji;
+
+    window.history.pushState({}, "", url || window.location.href.split("?")[0]);
+  }
+
+  useEffect(() => {
+    setURL();
+  }, [text, output, charSet, romaji])
 
   function textReset() {
     const inputTRBox = document.querySelector(".header");
