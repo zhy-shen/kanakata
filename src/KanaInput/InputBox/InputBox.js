@@ -34,6 +34,10 @@ function InputBox({
     let url = "";
     url += "?text=" + text + "&f=" + output + "&c=" + charSet + "&r=" + romaji;
 
+    if (params.get("color")) {
+      url += "&color=" + params.get("color");
+    }
+
     window.history.pushState({}, "", url || window.location.href.split("?")[0]);
   }
 

@@ -37,6 +37,7 @@ function App({
         {(page === 1) &&
           <KanaInput
             key="kanaBoard"
+            placeholder={text}
             board={true}
             kuroshiro={kuroshiro}
             setKuroShiro={setKuroShiro}

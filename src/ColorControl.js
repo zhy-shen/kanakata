@@ -6,6 +6,7 @@ import "./ColorControl.css"
 let input, inputWrapper, body;
 
 function ColorControl() {
+
   const colorThreshold = 65;
   const [originalColor, setOriginalColor] = React.useState(123456);
   const [color, setColor] = React.useState('');
@@ -74,15 +75,36 @@ function ColorControl() {
     if (testColor(value)) {
       inputWrapper.classList.add('custom')
       inputWrapper.style.setProperty('--color-input-background', '#' + value);
-      (set === "true") ? hexToHSL(value, "true") : hexToHSL(value);
+
+      if (set === "true") {
+        hexToHSL(value, "true");
+        setURL(value);
+      }
+      else {
+        hexToHSL(value);
+      }
+
       (hexToHSL(value) > colorThreshold) ? inputWrapper.classList.remove('light') : inputWrapper.classList.add('light');
     }
     else {
+      setURL();
       inputWrapper.classList.remove('custom')
       inputWrapper.style.removeProperty('--color-input-background')
     }
 
     setOriginalColor(hslToHex(window.getComputedStyle(body).getPropertyValue('--button-color')));
+  }
+
+  function setURL(color) {
+    let params = (new URL(document.location)).searchParams;
+    let url = "";
+    url += "?text=" + params.get("text") + "&f=" + params.get("f") + "&c=" + params.get("c") + "&r=" + params.get("r");
+
+    if (color) {
+      url += "&color=" + color;
+    }
+
+    window.history.replaceState({}, "", url || window.location.href.split("?")[0]);
   }
 
   function modeClick() {
@@ -132,8 +154,8 @@ function ColorControl() {
 
   function handleColor(e) {
     setColor(e.target.value);
-    
-    if(e.nativeEvent.inputType === "insertLineBreak" || e.key === "Enter") {
+
+    if (e.nativeEvent.inputType === "insertLineBreak" || e.key === "Enter") {
       checkColor("true");
       return
     };
@@ -143,6 +165,12 @@ function ColorControl() {
 
   useEffect(() => {
     reselect();
+
+    let params = (new URL(document.location)).searchParams;
+    if (params.get("color")) {
+      checkColor("true", params.get("color"));
+    }
+
     setOriginalColor(hslToHex(window.getComputedStyle(body).getPropertyValue('--button-color')));
   }, []);
 
